@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/_form :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/blog}">Blogs</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/home/bestseller.html"></div>
+		<div class="swiper-viewport">
+			<div id="banner0" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+							alt="Left Banner" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+
+	<main>
+		<div id="category-blogs" class="container">
+			<div id="content" class="col-sm-9">
+				<h2 class="page_title">Blog</h2>
+				<div class="row">
+					<th:block th:each="item: ${blogList}">
+						<div class="blog-layout product-list blog-category col-sm-6">
+							<div class="blog-block row">
+								<div class="blog-info col-lg-6">
+									<div class="image">
+										<a th:href="@{|/blog/${item.Namesearch}|}" class="blog-img">
+											<img th:src="@{|/assets/images/imageBlog/${item.logo}|}"
+											alt="Consectetur adipiscing" th:title="${item.title}"
+											class="img-responsive" />
+										</a>
+										<div class="zoom-post">
+											<a class="hover-zoom"
+												th:href="@{|/assets/images/imageBlog/${item.banner}|}"
+												data-lightbox="example-set" title="Consectetur adipiscing"></a>
+											<a class="hover-post" th:href="@{|/blog/${item.Namesearch}|}"></a>
+										</div>
+									</div>
+								</div>
+								<div class="caption-blog col-lg-6">
+									<div class="caption blog-description">
+										<span class="block-date"> [[${item.Uploadday}]]</span>
+										<h4 class="blog-title">
+											<strong><a th:href="@{|/blog/${item.Namesearch}|}">[[${item.title}]]</a>
+											</strong>
+										</h4>
+										<div class="blog-text">
+											<span>[(${#strings.substring(item.description,0,120)})]...</span>
+										</div>
+										<div class="blog-group clearfix">
+											<a class="blog-read btn-default"
+												th:href="@{|/blog/${item.Namesearch}|}" title="Read More">Xem
+												thêm</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</th:block>
+				</div>
+				<form id="formPage" action="" method="get">
+				<div class="pro_pagination">
+					<div class="row">
+						<div class="col-sm-6 text-left">Hiển thị 1 đến 8 của
+							[[${blogList.totalElements}]] SP
+							([[${blogList.totalPages}]] Trang)</div>
+						<div class="col-sm-6 text-right">
+							<input id="indexPage" name="p" value="0" type="hidden">
+							<ul class="pagination">
+								<li id="first"
+									th:class="${(blogList.number==0)?'disabled':''}"><a
+									onclick="firstPage(0)">|&lt;</a></li>
+								<li id="prev"
+									th:class="${(blogList.number==0)?'disabled':''}"><a
+									th:onclick="prevPage([(${blogList.number-1})])">&lt;</a></li>
+								<li id="next"
+									th:class="${(blogList.number>=blogList.totalPages-1)?'disabled':''}">
+									<a th:onclick="nextPage([(${blogList.number+1})])">&gt;</a>
+								</li>
+								<li id="last"
+									th:class="${(blogList.number>=blogList.totalPages-1)?'disabled':''}">
+									<a th:onclick="lastPage([(${blogList.totalPages-1})])">&gt;|</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</main>
+
+</body>
+<th:block id="material">
+	<script>
+		$(document).ready(function() {
+			var headerfixed = 0;
+			if (headerfixed == 1) {
+				$(window).scroll(function() {
+					if ($(window).width() > 991) {
+						if ($(this).scrollTop() > 150) {
+							$(".header-bottom").addClass("header-fixed");
+						} else {
+							$(".header-bottom").removeClass("header-fixed");
+						}
+					} else {
+						$(".header-bottom").removeClass("header-fixed");
+					}
+				});
+			} else {
+				$(".header-bottom").removeClass("header-fixed");
+			}
+		});
+	</script>
+	<script src="/assets/user/javascript/list-product.js"></script>
+</th:block>
+</html>

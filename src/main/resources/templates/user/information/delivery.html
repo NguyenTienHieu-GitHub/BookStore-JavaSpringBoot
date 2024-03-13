@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{/user/layout/_form :: dynamic(
+            ~{::main},
+            ~{::#aside},
+            ~{::#material},
+            ~{::#breadcums}
+            )}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <th:block id="breadcums">
+      <ul class="breadcrumb">
+        <li><a th:href="@{/index}">Trang chủ</a></li>
+        <li><a
+				th:href="@{/delivery}">Thông tin giao hàng</a></li>
+      </ul>
+    </th:block>
+
+    <th:block id="aside">
+      <div th:replace="/user/home/our_testimonial.html"></div>
+      <div class="swiper-viewport">
+        <div id="banner0" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#"
+                ><img
+                  src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+                  alt="Left Banner"
+                  class="img-responsive"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="/user/home/special_product.html"></div>
+
+      <div th:replace="/user/home/newsletter.html"></div>
+
+      <div class="swiper-viewport">
+        <div id="banner2" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#"
+                ><img
+                  src="/assets/user/image/cache/catalog/banners/banner-dung3.jpg"
+                  alt="Right Banner2"
+                  class="img-responsive"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </th:block>
+
+    <main>
+      
+       
+        <div id="content" class="col-sm-9">
+            <h1>Thông tin</h1>
+            <div class="about-us clearfix shop-content">
+        <div class="col-sm-6">
+          <div class="cms-block">
+            <h4>Thông tin đóng gói, vận chuyển hàng</h4>
+            <p>
+                Với đa phần đơn hàng, Fahasa.com cần vài giờ làm việc để kiểm tra thông tin và đóng gói hàng. Nếu các sản phẩm đều <strong>có sẵn hàng</strong>, Fahasa.com sẽ nhanh chóng <strong>bàn giao cho đối tác vận chuyển</strong>. Nếu đơn hàng có <strong>sản phẩm sắp phát hành</strong>, Fahasa.com sẽ <strong>ưu tiên giao những sản phẩm có hàng trước</strong> cho Quý khách hàng. <br>
+
+                Trong một số trường hợp, hàng nằm <strong>không có sẵn tại kho gần nhất, thời gian giao hàng có thể chậm hơn so với dự kiến do điều hàng</strong>. Các phí vận chuyển phát sinh, Fahasa.com sẽ <strong>hỗ trợ hoàn toàn.</strong> <br>
+                
+                Thời gian giao hàng <strong>không tính</strong> thứ 7, Chủ nhật, các ngày Lễ, Tết và không bao gồm tuyến huyện đảo xa. <br> 
+                
+                THỜI GIAN VÀ CHI PHÍ GIAO HÀNG TẠI TỪNG KHU VỰC TRONG LÃNH THỔ VIỆT NAM:<br>
+                
+                <strong>1. Nội thành TP.HCM và Hà Nội</strong> <br>
+                
+                Thời gian: 1-2 ngày<br>
+                Chi phí: 15.000đ/ đơn hàng (không giới hạn giá trị)<br>
+                
+                <strong>2. Các tỉnh thành khác</strong> <br>
+                
+                Thời gian: 2-3 ngày<br>
+                Chi phí: 30.000đ/ đơn hàng (không giới hạn giá trị)<br>
+               
+            </p>
+          </div>
+        </div>  
+        <div class="col-sm-6">
+          <img title="cms-img" src="https://dongphuc4mua.vn/wp-content/uploads/2018/05/banner-bai-viet-03-compressed.jpg" alt="cms-img" class="img-responsive">
+        </div>
+      </div></div>
+          </div>
+      </div>
+      
+        
+      
+    </main>
+
+    <script>
+      $(document).ready(function () {
+        var headerfixed = 0;
+        if (headerfixed == 1) {
+          $(window).scroll(function () {
+            if ($(window).width() > 991) {
+              if ($(this).scrollTop() > 150) {
+                $(".header-bottom").addClass("header-fixed");
+              } else {
+                $(".header-bottom").removeClass("header-fixed");
+              }
+            } else {
+              $(".header-bottom").removeClass("header-fixed");
+            }
+          });
+        } else {
+          $(".header-bottom").removeClass("header-fixed");
+        }
+      });
+    </script>
+  </body>
+</html>

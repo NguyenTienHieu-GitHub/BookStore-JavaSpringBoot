@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/_form :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Reset Password</title>
+
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/account/order/search}">Tìm kiếm đơn hàng</a></li>
+		</ul>
+
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/account/account_aside.html"></div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<div class="alert alert-dismissible"
+				th:classappend="${alertModel.alert}"
+				th:style="${alertModel.display?'display: block;':'display:none'}">
+				[[${alertModel.content}]]
+				<button type="button" class="close" data-dismiss="alert">×</button>
+			</div>
+			<h1>Tìm kiếm đơn hàng</h1>
+			<p>Nhập mã đơn hàng bạn muốn tìm kiếm và nhấn nút search để xem
+				chi tiết đơn hàng.</p>
+			<form th:action="@{/account/order/search}" method="post"
+				class="form-horizontal">
+				<fieldset id="account">
+					<legend>Mã đơn hàng</legend>
+					<div class="form-group required" style="display: none;">
+						<label class="col-sm-2 control-label">Customer Group</label>
+						<div class="col-sm-10">
+							<div class="radio">
+								<label> <input type="radio" name="customer_group_id"
+									value="1" checked="checked" /> Default
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Nhập Mã</label>
+						<div class="col-sm-10">
+							<input class="form-control" th:value="${code}" name="code">
+						</div>
+					</div>
+				</fieldset>
+
+				<div class="buttons clearfix">
+					<div class="pull-right">
+						<input type="submit" value="Tiếp tục" class="btn btn-primary">
+					</div>
+				</div>
+			</form>
+		</div>
+	</main>
+</body>
+<th:block id="material">
+	<script src="/assets/user/angular/register.js"></script>
+</th:block>
+</html>

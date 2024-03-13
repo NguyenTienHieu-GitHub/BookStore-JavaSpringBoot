@@ -1,0 +1,22 @@
+<div id="content" class="col-sm-9">
+	<h2 class="hidden">Tài Khoản</h2>
+	<div class="account-main">
+		<h3 class="account-list-heading">Tài Khoản</h3>
+		<ul class="list-unstyled account-list-content">
+			<li><a th:href="@{/account/information}">Thông tin tài khoản</a></li>
+			<li><a th:href="@{/account/change-password}">Đổi mật khẩu</a></li>
+			<li><a th:href="@{/account/address}">Sổ địa chỉ</a></li>
+			<li><a th:href="@{/account/favorite}">Sản phẩm yêu thích</a></li>
+		</ul>
+		<h3 class="account-list-heading">Đơn Hàng</h3>
+		<ul class="list-unstyled account-list-content">
+			<li><a th:href="@{/account/order}">Xem lịch sử đơn hàng</a></li>
+			<li><a th:href="@{/account/order/search}">Tìm kiếm đơn hàng</a></li>
+		</ul>
+		<h3 class="account-list-heading">Hoạt Động</h3>
+		<ul class="list-unstyled account-list-content">
+			<li><a th:href="@{/logout}">Đăng xuất</a></li>
+		</ul>
+
+	</div>
+</div>

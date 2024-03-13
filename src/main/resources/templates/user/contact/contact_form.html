@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/_form :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a>Liên hệ</a></li>
+		</ul>		
+	</th:block>
+	 <th:block id="aside">
+      <div th:replace="/user/home/our_testimonial.html"></div>
+      <div class="swiper-viewport">
+        <div id="banner0" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#"
+                ><img
+                  src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+                  alt="Left Banner"
+                  class="img-responsive"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="/user/home/special_product.html"></div>
+
+      <div th:replace="/user/home/newsletter.html"></div>
+
+      <div class="swiper-viewport">
+        <div id="banner2" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#"
+                ><img
+                  src="/assets/user/image/cache/catalog/banners/banner-dung3.jpg"
+                  alt="Right Banner2"
+                  class="img-responsive"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </th:block>
+
+	<main>
+		<div th:replace="/user/contact/contact_detail.html"></div>
+	</main>
+
+</body>
+<th:block id="material">
+	<script src="/assets/user/javascript/detail-product.js"></script>
+	<script src="/assets/user/angular/contact-app.js"></script>
+</th:block>
+</html>

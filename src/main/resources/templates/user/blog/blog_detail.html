@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/_form :: dynamic(
+            ~{::main},
+            ~{::#aside},
+            ~{::#material},
+            ~{::#breadcums}
+            )}">
+<head>
+<meta charset="UTF-8" />
+<title>Blogs</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/blog}">Blogs</a></li>
+			<li><a th:href="@{|/blog/${blogInfor.id}|}">[[${blogInfor.title}]]</a></li>
+		</ul>
+	</th:block>
+
+	<th:block id="aside">
+		<div th:replace="/user/home/our_testimonial.html"></div>
+		<div class="swiper-viewport">
+			<div id="banner0" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+							alt="Left Banner" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="/user/home/special_product.html"></div>
+
+		<div th:replace="/user/home/newsletter.html"></div>
+
+		<div class="swiper-viewport">
+			<div id="banner2" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung3.jpg"
+							alt="Right Banner2" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-9">
+			<h2 class="page_title">
+				<strong>[[${blogInfor.title}]]</strong>
+			</h2>
+			<div class="">
+				<div class="article-container">
+					<div class="image" id="content-blogs">
+						<ul class="thumbnails">
+							<li>
+								<div class="thumbnail">
+									<img th:src="@{|/assets/images/imageBlog/${blogInfor.banner}|}"
+										th:title="${blogInfor.title}" />
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="caption-blog">
+						<span class="block-date"><i>Ngày đăng: [[${blogInfor.Uploadday}]]</i>
+							<span style="float: right;"><i>Người viết: [[${blogUser.fullname}]]</i></span>
+						</span>
+						<h3 class="article-page-title hidden">[[${blogInfor.title}]]</h3>
+						<div class="singblog-description blog-text" style="color: black;">
+							<span>[(${blogInfor.content})]</span>
+						</div>
+					</div>
+					<div class="shop-content">
+						<h3 class="leave-hedding">Để lại bình luận</h3>
+						<div id="post_comment" class="post-comment">
+							<form id="commnt_form" class="form-horizontal" method="post"
+								onsubmit="saveComment();return false">
+								<div class="form-group required">
+									<label class="col-sm-3 control-label">Tên</label>
+									<div class="col-sm-9">
+										<input type="text" name="author" placeholder="Tên"
+											class="form-control" required />
+									</div>
+								</div>
+								<div class="form-group required">
+									<label class="col-sm-3 control-label">Email</label>
+									<div class="col-sm-9">
+										<input type="email" name="email" placeholder="Email"
+											class="form-control" required />
+									</div>
+								</div>
+								<div class="form-group required">
+									<label class="col-sm-3 control-label">Bình luận</label>
+									<div class="col-sm-9">
+										<textarea name="comment_text" placeholder="Nội dung..."
+											class="form-control" rows="6" maxlength="250" minlength="25"
+											required></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label"></label>
+									<div class="col-sm-9 text-left">
+										<button type="submit" class="btn btn-group-sm btn-default"
+											name="button">Xác nhận</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+<th:block id="material">
+
+</th:block>
+</html>

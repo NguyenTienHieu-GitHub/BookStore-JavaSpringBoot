@@ -1,0 +1,144 @@
+<div id="content" class="col-sm-9" ng-app="contact-app"
+	ng-controller="contact-ctrl">
+	<h1 class="page_title title">Đánh giá khách hàng</h1>
+	<div class="row" style="margin-bottom: 40px">
+	
+	<!-- <th:block th:if="${#request.remoteUser}"> -->
+	<!-- <div class="col-lg-2 col-md-2 comment-customer">
+		<div class="location-title title">
+			 NGuyen van A:
+		</div>
+	</div>
+	<div class="col-lg-10 col-md-10 comment-customer">
+		NGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van A
+		NGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van A
+		NGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van ANGuyen van A
+	</div> -->
+	<form class="form-horizontal">
+							<table class="table table-striped table-bordered">
+								<tbody ng-repeat="item in pager.items">
+									<tr>
+										<td style="width: 50%;"><strong>{{item.name}}</strong></td>
+										<td class="text-right">{{item.date | date:'dd/MM/yyyy'}}</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<p>{{item.content}}</p> <!-- {{starYellow(item.star)}} --> 
+											<span
+											ng-repeat="i in starYellow(item.star)" class="fa fa-stack"><i
+												class="fa fa-star fa-stack-2x"></i><i
+												class="fa fa-star-o fa-stack-2x"></i></span><span
+											ng-repeat="i in greyYellow(item.star)" class="fa fa-stack"><i
+												class="fa fa-star-o fa-stack-2x"></i></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							 <div class="buttons clearfix">
+							<div id="pagination" class="pull-left">
+								<button type="button" id="button-review" title="Lùi"
+									ng-click="pager.prev()" class="btn btn-primary">|<<</button>
+								<button type="button" class="btn btn-primary disabled">{{pager.page
+									+1}}</button>
+								<button type="button" id="button-review" title="Tiếp"
+									ng-click="pager.next()" class="btn btn-primary">>>|</button>
+							</div>
+							</div>
+	</form>
+	
+	</div>
+	<!-- </th:block> -->
+	<hr class="contact-width">
+
+	<h1 class="page_title title">Liên hệ chúng tôi</h1>
+	<div class="row">
+		<div class="col-sm-12">
+			<h3 class="contact-title">Vị trí</h3>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 contact-left">
+			<div class="content-details">
+				<div class="location-info">
+					<div class="location-title title">
+						<i class="fa fa-home"></i> Cửa hàng
+					</div>
+					<div class="content-address">778/B1 Nguyễn Kiệm, P.4, Q. Phú Nhuận, TP. Hồ Chí Minh.</div>
+					<a
+						href="https://www.google.com/maps/place/Tr%C6%B0%C6%A1%CC%80ng+Cao+%C4%90%C4%83%CC%89ng+FPT+Polytechnic/@10.8118623,106.6777233,17z/data=!3m1!4b1!4m5!3m4!1s0x317528dfcf546de7:0xf872809fb8deded!8m2!3d10.811857!4d106.679912?hl=vi-VN"
+						target="_blank" class="btn btn-info"><i
+						class="fa fa-map-marker"></i> Bản đồ</a>
+				</div>
+				<div class="phone-info">
+					<div class="phone-title title">
+						<i class="fa fa-mobile"></i> Di động
+					</div>
+					<div class="content-number">092-335-5522</div>
+				</div>
+				<div class="fax-info">
+					<div class="fax-title title">
+						<i class="fa fa-fax"></i> Fax
+					</div>
+					<div class="fax-number">11225553321</div>
+				</div>
+				<div class="openstore-info">
+					<div class="open-title title">
+						<i class="fa fa-clock-o"></i> Thời gian làm việc
+					</div>
+					<div class="openstore-detail"> 11:00 AM To 7:00 PM</div>
+				</div>
+				<div class="comment-info">
+					<div class="comment-title title">
+						<i class="fa fa-comments-o"></i> Bình luận
+					</div>
+					<div class="comment-detail"> Xin vui lòng để lại ý kiến đánh giá cửa hàng.</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 contact-right">
+			<div id="notification" style="display: none;"
+								class="alert alert-dismissible">
+
+								<button type="button" class="close" data-dismiss="alert">×</button>
+							</div>
+			<form
+				action="https://opencart.mahardhi.com/MT05/ecart/02/index.php?route=information/contact"
+				method="post" enctype="multipart/form-data" class="form-horizontal">
+				<fieldset>
+					<legend>Mẫu đơn</legend>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-name">Tên:</label>
+						<div class="col-sm-10">
+							<input type="text" name="name" id="input-name"  
+								class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-email">E-Mail:
+							</label>
+						<div class="col-sm-10">
+							<input type="email" name="email" id="input-email" 
+								class="form-control">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-review">Ý kiến:</label>
+						<div class="col-sm-10">
+							<textarea name="text" rows="10" id="input-review"
+								class="form-control"></textarea>
+						</div>
+					</div>
+
+				</fieldset>
+				<div class="buttons clearfix">
+					<div class="pull-right">
+						<button type="button" id="button-review"
+										th:onclick="addContact()"
+										class="btn btn-primary">Xác nhận</button>
+					</div>
+				</div>
+			</form>
+			
+		</div>
+
+	</div>
+</div>

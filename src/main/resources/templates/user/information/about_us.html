@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/_form :: dynamic(
+            ~{::main},
+            ~{::#aside},
+            ~{::#material},
+            ~{::#breadcums}
+            )}">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/aboutUs}">Về chúng tôi</a></li>
+		</ul>
+	</th:block>
+
+	<th:block id="aside">
+		<div th:replace="/user/home/our_testimonial.html"></div>
+		<div class="swiper-viewport">
+			<div id="banner0" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+							alt="Left Banner" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="/user/home/special_product.html"></div>
+
+		<div th:replace="/user/home/newsletter.html"></div>
+
+		<div class="swiper-viewport">
+			<div id="banner2" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung3.jpg"
+							alt="Right Banner2" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+
+	<main>
+
+
+		<div id="content" class="col-sm-9">
+			<h1>Thông tin</h1>
+			<div class="about-us clearfix shop-content">
+				<div class="col-sm-6">
+					<div class="cms-block">
+						<h4>Chúng ta là ai?</h4>
+						<p>
+							Như mọi người ai cũng biết, <strong>Fahasa</strong> là một chuỗi
+							nhà sách lớn trên cả nước. <strong>Fahasa</strong> đã phát triển
+							với chi nhánh trên 3 miền Việt Nam, lọt top 10 nhà bán lẻ hàng
+							đầu châu Á, <strong>Fahasa</strong> mở trang online, <strong>Fahasa</strong>
+							kết hợp với Kinokuya chuyên bán sách Nhật chính hiệu… Nói tóm
+							lại, <strong>Fahasa</strong> đã phát triển vô cùng thành công. <strong>Fahasa</strong>
+							gia nhập thị trường sách online cũng không tính là sớm. Hình như
+							sau sự bùng nỗ của Tiki.vn và Vinabooks thì mới xuất hiện <strong>Fahasa</strong>.
+							Ban đầu lúc trang online mới phát hành, chính mình cũng không
+							muốn mua trên đó, vì giá mắc hơn trên Tiki nhiều, vả lại giao
+							diện order cũng khó khăn. Nhưng giờ đây khi bạn xem lại bảng xếp
+							hạng các trang bán sách trực tuyến, <strong>Fahasa</strong> đã là
+							địa chỉ bán giá rẻ nhất. Tại sao lại như vậy? Mình có thể nghĩ
+							đến 2 nguyên nhân: Nguyên nhân 1: Do <strong>Fahasa</strong> là
+							một đơn vị lâu năm, có địa vị vững chắc trong thị trường phân
+							phối sách truyền thống. Điều này đồng nghĩa với việc <strong>Fahasa</strong>
+							có lượng tiền tài dồi dào và nền tảng cố định, bán sách Online
+							chẳng qua là một hoạt động đầu tư để phát triển hướng đi mới cho
+							công ty trong giai đoạn dài hạn. Không như Tiki chỉ xuất thân từ
+							1 start-up non trẻ (~5 năm), kinh doanh chủ yếu chỉ ở mảng
+							Online, tiền lực không đủ để chịu chi mạnh tay như <strong>Fahasa</strong>.
+
+							Nguyên nhân 2: Cũng liên quan đến nguyên nhân 1. Vì <strong>Fahasa</strong>
+							đang có dự định tấn công thị trường bán trực tuyến, để đối đầu
+							với các ông lớn như Tiki, Vinabooks thì ngoài yếu tố dịch vụ,…
+							thì yếu tố về giá là quan trọng nhất. Không ít TH nhiều ông lớn
+							trên thế giới chấp nhận lỗ vốn chỉ để tham gia 1 thị trường mới.
+							<strong>Fahasa</strong> cũng vậy, có lẽ họ đang chấp nhận lỗ một
+							ít vốn để tạo dựng chỗ đứng cho chính mình. <br>
+
+						</p>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<img title="cms-img" th:src="@{/assets/images/banner/about.jpg}"
+						alt="cms-img" class="img-responsive">
+				</div>
+				<div class="col-sm-12">
+					<div class="cms-block">
+						<p>
+							<strong>Về hàng hóa</strong> <br> <br> Công ty FAHASA
+							chuyên kinh doanh: sách quốc văn, ngoại văn, văn hóa phẩm, văn
+							phòng phẩm, dụng cụ học tập, quà lưu niệm, đồ chơi dành cho trẻ
+							em… Một số Nhà sách trực thuộc Công ty FAHASA còn kinh doanh các
+							mặt hàng siêu thị như: hàng tiêu dùng, hàng gia dụng, hóa mỹ
+							phẩm… <br> <br> Sách quốc văn với nhiều thể loại đa
+							dạng như sách giáo khoa – tham khảo, giáo trình, sách học ngữ, từ
+							điển, sách tham khảo thuộc nhiều chuyên ngành phong phú: văn học,
+							tâm lý – giáo dục, khoa học kỹ thuật, khoa học kinh tế - xã hội,
+							khoa học thường thức, sách phong thủy, nghệ thuật sống, danh
+							ngôn, sách thiếu nhi, truyện tranh, truyện đọc, từ điển, công
+							nghệ thông tin, khoa học – kỹ thuật, nấu ăn, làm đẹp... của nhiều
+							Nhà xuất bản, nhà cung cấp sách có uy tín như: NXB Trẻ, Giáo Dục,
+							Kim Đồng, Văn hóa -Văn Nghệ, Tổng hợp TP.HCM, Chính Trị Quốc Gia;
+							Công ty Đông A, Nhã Nam, Bách Việt, Alphabook, Thái Hà, Minh Lâm,
+							Đinh Tị, Minh Long, TGM, Sáng Tạo Trí Việt, Khang Việt, Toàn
+							Phúc… <br> <br> Sách ngoại văn bao gồm: từ điển, giáo
+							trình, tham khảo, truyện tranh thiếu nhi , sách học ngữ, từ vựng,
+							ngữ pháp, luyện thi TOEFL, TOEIC, IELS…được nhập từ các NXB nước
+							ngoài như: Cambridge, Mc Graw-Hill, Pearson Education, Oxford,
+							Macmillan, Cengage Learning… <br> <br> Văn phòng phẩm,
+							dụng cụ học tập, đồ chơi dành cho trẻ em, hàng lưu niệm… đa dạng,
+							phong phú, mẫu mã đẹp, chất lượng tốt, được cung ứng bởi các công
+							ty, nhà cung cấp uy tín như: Thiên Long, XNK Bình Tây, Hạnh
+							Thuận, Ngô Quang, Việt Văn, Trương Vui, Hương Mi, Phương Nga,
+							Việt Tinh Anh, Chăm sóc trẻ em Việt, Mẹ và em bé… <br> <br>
+
+							Cùng với việc phát hành độc quyền nhiều ấn bản các loại của các
+							Nhà xuất bản là năng lực in ấn, sản xuất cung ứng nguồn hàng của
+							Xí nghiệp in FAHASA, đã giúp Công ty luôn chủ động được nguồn
+							hàng, nhất là các mặt hàng độc quyền như: lịch bloc, tập học
+							sinh, sổ tay cao cấp, agenda, văn phòng phẩm, dụng cụ học tập…
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+</body>
+</html>

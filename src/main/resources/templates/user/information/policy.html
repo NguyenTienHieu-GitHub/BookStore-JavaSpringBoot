@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{/user/layout/_form :: dynamic(
+            ~{::main},
+            ~{::#aside},
+            ~{::#material},
+            ~{::#breadcums}
+            )}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <th:block id="breadcums">
+      <ul class="breadcrumb">
+        <li><a th:href="@{/index}">Trang chủ</a></li>
+        <li><a
+				th:href="@{/policy}">Chính sách</a></li>
+      </ul>
+    </th:block>
+
+    <th:block id="aside">
+      <div th:replace="/user/home/our_testimonial.html"></div>
+      <div class="swiper-viewport">
+        <div id="banner0" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#"
+                ><img
+                  src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+                  alt="Left Banner"
+                  class="img-responsive"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="/user/home/newsletter.html"></div>
+
+      <div class="swiper-viewport">
+        <div id="banner2" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#"
+                ><img
+                  src="/assets/user/image/cache/catalog/banners/banner-dung3.jpg"
+                  alt="Right Banner2"
+                  class="img-responsive"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </th:block>
+
+    <main>
+      
+       
+        <div id="content" class="col-sm-9">
+            <h1>Thông tin</h1>
+            <div class="about-us clearfix shop-content">
+        <div class="col-sm-12">
+          <div class="cms-block">
+            <h4>Chính sách bảo mật?</h4>
+            <p>
+                <Strong>I. Thông tin bảo mật.</Strong><br>
+                Bảo mật thông tin khách hàng là một trong những ưu tiên hàng đầu nhằm tạo điều kiện mua sắm tốt nhất cho quý khách tại FAHASA. Chúng tôi hiểu sử dụng hợp lý và bảo mật thông tin sẽ thể hiện sự quan tâm của FAHASA dành cho quí khách. Vì thế, FAHASA cam kết việc sử dụng thông tin trên sẽ chỉ nhằm nâng cao chất lượng dịch vụ khách hàng và tạo môi trường mua sắm an tòan, tiện lợi tại FAHASA. Cụ thể, thông tin cá nhân của quý khách chỉ dùng với các mục đích sau:<br>
+                  1. Số điện thoại và địa chỉ Email của quý khách được dùng nhằm nâng cao chất lượng dịch vụ hỗ trợ khách hàng.<br>
+                
+                  2. Địa chỉ của quý khách chỉ được dùng để Fahasa thực thiện việc giao hàng mà quý khách đã đặt trên website <strong style="color:red;">Fahasa.com</strong>.<br>
+                
+                  3. Hành vị mua hàng của quý khách chỉ giúp Fahasa tạo một trải nghiệm mua sắm tốt hơn cho quý khách. <br>
+                
+                <strong>II. Fahasa cam kết bảo vệ thông tin của khách hàng</strong><br>
+                
+                FAHASA cam đoan sẽ không bán, chia sẻ dẫn đến làm lộ thông tin cá nhân của quý khách vì bất cứ mục đích gì. Tất cả thông tin giao dịch giữa quý khách và FAHASA sẽ được bảo mật qua phần mềm Secure Sockets Layer (SSL) bằng cách mã hóa tất cả thông tin quý khách nhập vào.<br>
+                FAHASA cam kết không lưu lại bất kỳ thông tin tài khoản ngân hàng, thông tin thẻ tín dụng và thông tin tài chính của quý khách.<br>
+                <strong>III. Trách nhiệm của khách hàng.</strong><br>
+                
+                Quý khách không nên trao đổi những thông tin tài khoản, thanh toán, giao nhận của mình cho 1 bên thứ 3 nào khác để tránh rò rỉ thông tin. Khi sử dụng chung máy tính với nhiều người, vui lòng thoát khỏi tài khoản mỗi khi không sử dụng dịch vụ của FAHASA nữa để tự bảo vệ thông tin về mật khẩu truy cập của mình. <br>
+                Ngoài ra, quý khách tuyệt đối không được sử dụng bất kỳ hình thức nào để can thiệp vào hệ thống hay làm thay đổi cấu trúc dữ liệu. Chúng tôi nghiêm cấm việc phát tán, truyền bá hay cổ vũ cho bất kỳ hoạt động nào nhằm can thiệp, phá hoại hay xâm nhập vào dữ liệu của hệ thống website. Mọi vi phạm sẽ bị tước bỏ mọi quyền lợi cũng như sẽ bị truy tố trước pháp luật nếu cần thiết. Mọi thông tin của quí khách tại FAHASA sẽ được chúng tôi bảo mật nhưng trong trường hợp pháp luật yêu cầu, chúng tôi buộc phải cung cấp thông tin này cho cơ quan pháp luật. <br>
+                 
+                FAHASA hiểu rằng quyền lợi của quý khách trong việc bảo vệ thông tin cá nhân cũng chính là trách nhiệm của Fahasa, nên trong bất kỳ trường hợp có thắc mắc, góp ý nào liên quan đến chính sách bảo mật của FAHASA, vui lòng liên hệ: <br>
+            </p>
+            <h4>Chính sách khách mua sỉ</h4>
+            <p>
+                Hiện nay, do mức chiết khấu trên <strong style="color:red;">Fahasa.com</strong> rất cao, đặc biệt vào các thời điểm chạy chương trình. Do đó đối với mỗi chương trình số lượng sản phẩm giảm sốc có giới hạn nhất định, vì vậy để đảm bảo quyền lợi của từng khách hàng, chúng tôi xin thông báo tiêu chí xét “Đơn Hàng Sỉ” và chính sách như sau: <br>
+
+
+1. Đơn hàng được gọi là “đơn hàng sỉ” khi có tổng giá trị các đơn hàng trong 1 ngày có giá trị: từ 3.000.000 đồng (Ba triệu đồng) trở lên. <br>
+- Các đơn hàng có cùng thông tin người mua hàng (cùng số điện thoại, cùng email hoặc cùng địa chỉ nhận hàng) thì được tính là đơn hàng của 1 khách hàng. <br>
+2. Chính sách giá (% chiết khấu giảm giá). Đây là chính sách chung chỉ mang tính tương đối. Xin quý khách vui lòng liên lạc với Fahasa để có chính sách giá chính xác nhất: <br>
+- Đối với Nhóm hàng sách kinh tế, Văn học: áp dụng mức giảm giá trên web tối đa không vượt quá 30%. <br>
+- Đối với Nhóm hàng sách thiếu nhi và tâm lý kỹ năng: áp dụng mức giảm giá trên web tối đa không vượt quá 20%. <br>
+- Đối với Nhóm hàng sách từ điển và sách ngoại văn : áp dụng mức giảm giá trên web tối đa không vượt quá 10%. <br>
+- Đối với Nhóm hàng văn phòng phẩm, đồ chơi, dụng cụ học sinh: áp dụng mức giảm giá trên web tối đa không vượt quá 15%. <br>
+- Đối với Nhóm hàng giấy photo, sản phẩm điện tử, văn hóa phẩm: áp dụng mức giảm giá trên web tối đa không vượt quá 5%. <br>
+
+Quý khách có nhu cầu mua sỉ, vui lòng liên hệ phòng kinh doanh <strong style="color:red;">Fahasa.com</strong>: 092-335-5522 hoặc Email: cskh@hotro.ecart.vn.
+
+            </p>
+            <h4>Chính sách đổi / trả / hoàn tiền</h4>
+            <p>
+                Chúng tôi luôn trân trọng sự tin tưởng và ủng hộ của khách hàng khi đặt mua sản phẩm tại <strong style="color:red;">Fahasa.com</strong>. Do đó chúng tôi luôn cố gắng hoàn thiện dịch vụ tốt nhất phục vụ mọi nhu cầu mua sắm của quý khách. <br> <br>
+
+<strong style="color:red;">Fahasa.com</strong> chúng tôi luôn luôn cam kết tất cả các sản phẩm bán tại <strong style="color:red;" >Fahasa.com</strong> 100% là những sản phẩm chất lượng và xuất xứ nguồn gốc rõ ràng, hợp pháp cũng như an toàn cho người tiêu dùng. <br> <br>
+
+Để việc mua sắm của quý khách tại <strong style="color:red;">Fahasa.com</strong> là trải nghiệm dịch vụ thân thiện, chúng tôi hy vọng quý khách lúc nhận hàng kiểm tra kỹ lại: <br>
+
+- Số lượng.<br>
+
+- Tên sản phẩm và chất lượng sản phẩm. <br>
+
+- Thông tin sản phẩm, thông tin người nhận <strong><i>(Đối chiếu với thông tin trên phiếu giao hàng được bỏ trong hộp)</i></strong> trong lúc nhận hàng trước khi ký nhận và thanh toán tiền cho nhân viên giao nhận. <br> <br>
+
+Tuy nhiên để quý khách yên tâm hơn trong việc mua sắm và trải nghiệm dịch vụ của <strong style="color:red;">Fahasa.com</strong>, chúng tôi xây dựng chính sách đổi/ trả/ hoàn tiền trên tinh thần bảo vệ quyền lợi người tiêu dùng nhằm cam kết với quý khách về chất lượng sản phẩm và dịch vụ của chúng tôi. <br> <br>
+
+Khi quý khách hàng có hàng hóa mua tại <strong style="color:red;">Fahasa.com</strong> cần đổi/ trả, xin quý khách hàng liên hệ với chúng tôi qua hotline 1900-636467 hoặc truy cập <strong style="color:red;">Fahasa.com/doi-tra-hang</strong> để tìm hiểu thêm về chính sách đổi/trả: <br> <br>
+
+<strong> Lưu ý: Các sản phẩm thuộc "Phiên chợ sách cũ" sẽ không được áp dụng chính sách đổi trả của Fahasa.com</strong> <br> <br>
+<strong><u>1. Thời gian giải quyết đổi trả</u></strong> <br>
+		<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Đơn hàng của quý khách
+được giao hàng thành công</th>
+      <th scope="col">Đơn hàng quý khách
+
+đang trên đường đi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Thời gian giải quyết</th>
+      <td>Tối đa 30 ngày.</td>
+      <td>Khi nhận được yêu cầu từ quý khách</td>
+    </tr>
+    <tr>
+      <th scope="row">Nội dung được giải quyết</th>
+      <td>	
+Theo hiện trạng đơn hàng cần đổi/trả. (xem cụ thể tại #2 điều kiện đổi trả)</td>
+      <td>Chúng tôi chỉ hỗ trợ quý khách đổi mặt hàng khác để phù hợp hơn với nhu cầu của quý khách/hủy đơn hàng(*)</td>
+    </tr>
+    <tr>
+      <td colspan="3">(*) Nếu quý khách hủy đơn hàng cũ, đã chuyển khoản thanh toán thành công,mà không có nhu cầu đặt lại đơn hàng khác → chúng tôi sẽ hoàn tiền lại cho Quý khách trong vòng 7 ngày làm việc qua hệ thống ngân hàng kể từ ngày nhận và giải quyết yêu cầu cho quý khách.</td>
+    
+    </tr>
+  </tbody>
+</table>
+            </p>
+          </div>
+        </div>  
+        <!-- <div class="col-sm-6">
+          <img title="cms-img" src="https://opencart.mahardhi.com/MT05/ecart/02/image/catalog/about.jpg" alt="cms-img" class="img-responsive">
+        </div> -->
+      </div></div>
+          </div>
+      </div>
+      
+        
+      
+    </main>
+
+    <script>
+      $(document).ready(function () {
+        var headerfixed = 0;
+        if (headerfixed == 1) {
+          $(window).scroll(function () {
+            if ($(window).width() > 991) {
+              if ($(this).scrollTop() > 150) {
+                $(".header-bottom").addClass("header-fixed");
+              } else {
+                $(".header-bottom").removeClass("header-fixed");
+              }
+            } else {
+              $(".header-bottom").removeClass("header-fixed");
+            }
+          });
+        } else {
+          $(".header-bottom").removeClass("header-fixed");
+        }
+      });
+    </script>
+  </body>
+</html>

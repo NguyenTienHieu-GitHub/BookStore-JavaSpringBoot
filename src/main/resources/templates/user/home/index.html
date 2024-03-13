@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/_form :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums"></th:block>
+	<th:block id="aside">
+		<div th:replace="/user/home/our_testimonial.html"></div>
+		<div class="swiper-viewport">
+			<div id="banner0" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+							alt="Left Banner" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="/user/home/special_product.html"></div>
+		
+		<div th:replace="/user/home/newsletter.html"></div>
+		
+		<div class="swiper-viewport">
+				<div id="banner2" class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="#"><img
+								src="/assets/user/image/cache/catalog/banners/banner-dung3.jpg"
+								alt="Right Banner2" class="img-responsive" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+	</th:block>
+
+	<main>
+		<div id="content" class="col-sm-6">
+			<div th:replace="/user/home/slideshow.html"></div>
+
+			<div th:replace="/user/home/latest_product.html"></div>
+			<div class="banner-outer container-outer html1">
+				<div class="html1-inner">
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="banner1">
+								<div class="inner1">
+									<a href="#"><img src="/assets/user/image/catalog/banners/banner-nam1.png"
+										alt="" class="img-responsive" style="width: 180%"></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="banner2">
+								<div class="inner1">
+									<a href="#"><img src="/assets/user/image/catalog/banners/banner-nam2.png"
+										alt="" class="img-responsive"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div th:replace="/user/home/blog.html"></div>
+			
+			<div th:replace="/user/home/featured_products.html"></div>
+			<div th:replace="/user/home/manufacturer.html"></div>
+		</div>
+		<aside id="column-right" class="col-sm-3 hidden-xs">
+			<div th:replace="/user/home/bestseller.html"></div>
+			<div class="swiper-viewport">
+				<div id="banner1" class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="#"><img
+								src="/assets/user/image/cache/catalog/banners/banner-dung2.jpg"
+								alt="Right Banner" class="img-responsive" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div th:replace="/user/home/our_service.html"></div>
+			
+			<div th:replace="/user/home/favorite.html"></div>
+
+			
+		</aside>
+	</main>
+
+</body>
+<th:block id="material">
+
+</th:block>
+</html>

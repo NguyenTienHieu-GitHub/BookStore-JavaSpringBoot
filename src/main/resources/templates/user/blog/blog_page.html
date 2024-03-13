@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/_form :: dynamic(
+            ~{::main},
+            ~{::#aside},
+            ~{::#material},
+            ~{::#breadcums}
+            )}">
+<head>
+<meta charset="UTF-8" />
+<title>Blogs</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{blog}">Blogs</a></li>
+		</ul>
+	</th:block>
+
+	<th:block id="aside">
+		<div th:replace="/user/home/our_testimonial.html"></div>
+		<div class="swiper-viewport">
+			<div id="banner0" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+							alt="Left Banner" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="/user/home/special_product.html"></div>
+
+		<div th:replace="/user/home/newsletter.html"></div>
+
+		<div class="swiper-viewport">
+			<div id="banner2" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+							alt="Right Banner2" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+
+	<main>
+		<div id="category-blogs" class="container">
+			<div id="content" class="col-sm-9">
+				<h2 class="page_title">Blog</h2>
+				<div class="row">
+					<th:block th:each="item: ${blogList}">
+						<div class="blog-layout product-list blog-category col-sm-6">
+							<div class="blog-block row">
+								<div class="blog-info col-lg-6">
+									<div class="image">
+										<a href="#" class="blog-img"> <img
+											th:src="@{|/assets/images/imageBlog/${item.image}|}"
+											alt="Consectetur adipiscing" th:title="${item.title}"
+											class="img-responsive" />
+										</a>
+										<div class="zoom-post">
+											<a class="hover-zoom"
+												th:href="@{|/assets/images/imageBlog/${item.image}|}"
+												data-lightbox="example-set" title="Consectetur adipiscing"></a>
+											<a class="hover-post"
+												href="https://opencart.mahardhi.com/MT05/ecart/02/index.php?route=blog/article&amp;article_id=1"></a>
+										</div>
+									</div>
+								</div>
+								<div class="caption-blog col-lg-6">
+									<div class="caption blog-description">
+										<span class="block-date"> [[${item.uploadday}]]</span> <span
+											class="blog-comment hidden">2 Comments</span>
+										<h4 class="blog-title">
+											<strong><a href="#">[[${item.title}]]</a> </strong>
+										</h4>
+										<div class="blog-text">
+											<span>[[${#strings.substring(item.content,0,120)}]]...</span>
+										</div>
+										<div class="blog-group clearfix">
+											<a class="blog-read btn-default"
+												th:onclick="location.href = '/blog/[(${item.id})]'"
+												title="Read More">Read More</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</th:block>
+				</div>
+				<div class="pro_pagination">
+					<div class="row">
+						<div class="col-sm-6 text-left">Showing 1 to 5 of 5 (1
+							Pages)</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+
+	<script>
+		$(document).ready(function() {
+			var headerfixed = 0;
+			if (headerfixed == 1) {
+				$(window).scroll(function() {
+					if ($(window).width() > 991) {
+						if ($(this).scrollTop() > 150) {
+							$(".header-bottom").addClass("header-fixed");
+						} else {
+							$(".header-bottom").removeClass("header-fixed");
+						}
+					} else {
+						$(".header-bottom").removeClass("header-fixed");
+					}
+				});
+			} else {
+				$(".header-bottom").removeClass("header-fixed");
+			}
+		});
+	</script>
+</body>
+</html>

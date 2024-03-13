@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/layout/_form :: dynamic(
+				~{::main},
+				~{::#aside},
+				~{::#material},
+				~{::#breadcums}
+				)}">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+	<th:block id="breadcums">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/index}">Trang chủ</a></li>
+			<li><a th:href="@{/uu-dai}">Ưu đãi</a></li>
+		</ul>
+	</th:block>
+	<th:block id="aside">
+		<div th:replace="/user/list/refine_search.html"></div>
+		<div th:replace="/user/home/bestseller.html"></div>
+		<div class="swiper-viewport">
+			<div id="banner0" class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#"><img
+							src="/assets/user/image/cache/catalog/banners/banner-dung1.jpg"
+							alt="Left Banner" class="img-responsive" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+
+	<main>
+		<form id="formPage" action="" method="get">
+			<div th:replace="/user/list/list_product_sales.html"></div>
+		</form>
+	</main>
+
+</body>
+<th:block id="material">
+	<script src="/assets/user/javascript/list-product.js"></script>
+</th:block>
+</html>

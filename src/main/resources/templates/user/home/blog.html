@@ -1,0 +1,89 @@
+<div class="box mblog section mt-30">
+	<div class="box-content">
+		<div class="page-title section">
+			<h3>Blog</h3>
+		</div>
+		<div class="block_box row">
+			<div id="blogcarousel" class="blogs-block blog-carousel clearfix"
+				data-items="2">
+				<th:block th:each="item: ${listBlog}">
+				<div class="blog-block product-layout col-xs-12">
+					<div class="item">
+						<div class="blog-info">
+							<div class="image">
+								<a th:href="@{|/blog/${item.Namesearch}|}"><img
+									th:src="@{|/assets/images/imageBlog/${item.banner}|}" alt=""
+									th:title="${item.title}" class="img-responsive" /></a>
+								<div class="zoom-post">
+									<a class="hover-zoom"
+										th:href="@{|/assets/images/imageBlog/${item.banner}|}"
+										data-lightbox="example-set" title="Consectetur adipiscing..."></a>
+									<a class="hover-post" href=""></a>
+								</div>
+							</div>
+
+						</div>
+						<div class="caption blog-description">
+							<div class="link_info">
+								<span class="block-date">[[${item.Uploadday}]]</span> <span
+									class="blog-comment hidden">2 Comments</span>
+								<h4 class="">
+									<a th:href="@{|/blog/${item.Namesearch}|}">[[${item.title}]]</a>
+								</h4>
+								<div class="blog-text-title">
+									<span>[(${#strings.substring(item.description,0,120)})]...</span>
+								</div>
+								<a class="blog-read btn-default" th:href="@{|/blog/${item.Namesearch}|}" title="Read more">Đọc Thêm</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				</th:block>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document)
+			.ready(
+					function() {
+						const direc = $('html').attr('dir');
+
+						$('.blog-carousel')
+								.each(
+										function() {
+											if ($(this).closest('#column-left').length == 0
+													&& $(this).closest(
+															'#column-right').length == 0) {
+												$(this)
+														.addClass(
+																'owl-carousel owl-theme');
+												const items = $(this).data(
+														'items') || 2;
+												const sliderOptions = {
+													loop : false,
+													nav : true,
+													navText : [
+															'<i class="fa fa-caret-left"></i>',
+															'<i class="fa fa-caret-right"></i>' ],
+													dots : false,
+													items : items,
+													responsiveRefreshRate : 200,
+													responsive : {
+														0 : {
+															items : 1
+														},
+														481 : {
+															items : items
+														}
+													}
+												};
+												if (direc == 'rtl')
+													sliderOptions['rtl'] = true;
+												$(this).owlCarousel(
+														sliderOptions);
+											}
+										});
+					});
+</script>

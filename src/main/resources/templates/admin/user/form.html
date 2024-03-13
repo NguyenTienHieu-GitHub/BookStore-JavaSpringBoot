@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/admin/layout/_form :: dynamic(
+				~{::main},
+				~{::#javascriptResource},
+				~{::#cssResource}
+				)}">
+<th:block id="cssResource">
+	<!-- Angular -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	<!-- Plugins For This Page -->
+	<link rel="stylesheet"
+		href="/assets/admin/global/vendor/formvalidation/formValidation.min599c.css?v4.0.2">
+
+	<link rel="stylesheet"
+		href="/assets/admin/base/assets/examples/css/forms/validation.min599c.css?v4.0.2">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</th:block>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main ng-app="user-form-app" ng-controller="user-form-ctrl">
+		<!-- Page -->
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">Thông Tin Người Dùng</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="../index.html">Trang
+							chủ</a></li>
+					<li class="breadcrumb-item"><a href="javascript:void(0)">Người
+							dùng</a></li>
+					<li class="breadcrumb-item active">Thông tin</li>
+				</ol>
+			</div>
+
+			<div class="page-content container-fluid">
+				<!-- Panel Full Example -->
+				<div class="panel">
+					<div class="panel-body">
+						<form th:action="@{/admin/users/form}" method="post"
+							id="exampleFullForm" name="formUser">
+							<div class="row row-lg">
+								<div class="col-xl-6 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Họ
+											và tên <span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-user" aria-hidden="true"></i>
+												</span> <input id="fullName" ng-model="form.fullName"
+													data-maxlength="30" data-minlength="7" type="text"
+													class="form-control" placeholder="John Witch">
+												<div class="invalid-tooltip" id="showErrorFullName"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Giới
+											tính </label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-university" aria-hidden="true"></i>
+												</span> <select class="form-control" id="gender"
+													ng-model="form.gender">
+													<option selected value="0">Nữ</option>
+													<option value="1">Nam</option>
+												</select>
+												<div class="invalid-tooltip" id="showErrorGender"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Bản
+											tin </label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-university" aria-hidden="true"></i>
+												</span> <select class="form-control" id="news" ng-model="form.news">
+													<option selected="selected" value="0">Không</option>
+													<option value="1">Có</option>
+												</select>
+												<div class="invalid-tooltip" id="showErrorNews"></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="col-xl-6 form-horizontal">
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Email
+											<span class="required">*</span>
+										</label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-envelope" aria-hidden="true"></i>
+												</span> <input type="email" class="form-control" id="email"
+													ng-model="form.email" placeholder="email@email.com">
+												<div class="invalid-tooltip" id="showErrorEmail"></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-xl-12 col-md-3 form-control-label">Ngày
+											sinh </label>
+										<div class="col-xl-12 col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon"> <i
+													class="fa fa-calendar" aria-hidden="true"></i>
+												</span> <input type="date" class="form-control" id="birthday">
+												<div class="invalid-tooltip" id="showErrorBirthday"></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="form-group col-xl-12 text-right padding-top-m">
+									<th:block th:if="${!enableBtnUpdate}">
+										<a th:href="@{/admin/user/form}"
+											class="btn btn-success text-light" id="validateButton1">
+											<i class="fa fa-refresh" aria-hidden="true"></i> Làm mới
+										</a>
+										<button id="btnSave" type="button" ng-click="save()"
+											class="btn btn-primary">
+											<i class="fa fa-save" aria-hidden="true"></i> Lưu
+										</button>
+									</th:block>
+									<th:block th:if="${enableBtnUpdate}">
+										<input type="hidden" id="demo" th:value="${userId}" />
+										<a th:href="@{/admin/user/update/{id}(id=${userId})}"
+											class="btn btn-success text-light" id="validateButton1">
+											<i class="fa fa-refresh" aria-hidden="true"></i> Khôi phục
+										</a>
+										<button id="btnUpdate" type="button" ng-click="update()"
+											class="btn btn-info">
+											<i class="fa fa-pencil" aria-hidden="true"></i> Cập nhật
+										</button>
+									</th:block>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- End Panel Full Example -->
+			</div>
+
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade"
+			ng-class="{true:'modal-info', false:'modal-danger'}[info.status]"
+			id="modalSuccess">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="modal-title">Thông Báo!</h4>
+					</div>
+					<div class="modal-body">
+						<p>{{info.content}}</p>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-primary text-light">Xác nhận</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal -->
+	</main>
+</body>
+<th:block id="javascriptResource">
+	<!-- Plugins For This Page -->
+	<script
+		src="/assets/admin/global/vendor/formvalidation/framework/bootstrap4.min599c.js?v4.0.2"></script>
+
+	<script
+		src="/assets/admin/base/assets/examples/js/forms/validation.min599c.js?v4.0.2"></script>
+
+	<!-- Plugins For This Page -->
+	<script
+		src="/assets/admin/global/vendor/jquery-placeholder/jquery.placeholder599c.js?v4.0.2"></script>
+	<script
+		src="/assets/admin/global/js/Plugin/input-group-file.min599c.js?v4.0.2"></script>
+	<th:block th:if="${!enableBtnUpdate}">
+		<script src="/assets/admin/angular/user/user-form-create-ctrl.js"></script>
+	</th:block>
+	<th:block th:if="${enableBtnUpdate}">
+		<script src="/assets/admin/angular/user/user-form-update-ctrl.js"></script>
+	</th:block>
+</th:block>
+</html>
