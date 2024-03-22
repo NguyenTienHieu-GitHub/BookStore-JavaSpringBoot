@@ -25,12 +25,87 @@
 								title="Your Store" alt="Your Store" class="img-responsive" /></a>
 						</div>
 
-						<div class="header-links col-md-4">
+
+					</div>
+				</div>
+			</div>
+			<div class="header-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="header-left col-lg-3 col-md-3 hidden-sm hidden-xs">
+							<div class="menu-list">
+								<div class="box-categories">
+									<span>Danh Mục</span>
+								</div>
+							</div>
+						</div>
+						<div class="header-right col-md-6 col-xs-9">
+
+							<div class="header-more">
+								<!-- start menu -->
+								<nav id="menu" class="navbar navbar_menu">
+									<div class="navbar-header">
+										<button type="button" class="btn btn-navbar navbar-toggle"
+												id="btnMenuBar">
+											<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+										</button>
+									</div>
+									<div id="topCategoryList" class="main-menu menu-navbar clearfix"
+										 data-more=More>
+										<div class="menu-close hidden-lg hidden-md">
+											<div id="logo" class="col-md-4">
+												<a th:href="@{/}"><img style="width: 65%"
+																	   th:src="@{|/assets/user/image/catalog/${information.logo}|}"
+																	   title="Your Store" alt="Your Store" class="img-responsive" /></a>
+											</div><i class="icon-close"></i>
+										</div>
+										<ul class="nav navbar-nav moreMenu">
+											<li class="menulist home"><a id="home" th:href="@{/index}">Trang chủ</a></li>
+											<li class="menulist"><a th:href="@{/uu-dai}">Ưu Đãi</a></li>
+											<li class="menulist"><a th:href="@{/contact}">Liên Hệ</a></li>
+											<li class="menulist"><a href="#">Thương Hiệu</a></li>
+											<li class="menulist"><a th:href="@{/blog}">Blogs</a></li>
+										</ul>
+									</div>
+
+									<!--Menu dropdown-->
+									<div class="dropdown menu-dropdown">
+										<button class="btn more-icon dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M384 480c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0zM224 352c-6.7 0-13-2.8-17.6-7.7l-104-112c-6.5-7-8.2-17.2-4.4-25.9s12.5-14.4 22-14.4l208 0c9.5 0 18.2 5.7 22 14.4s2.1 18.9-4.4 25.9l-104 112c-4.5 4.9-10.9 7.7-17.6 7.7z"/></svg>
+										</button>
+										<ul class="dropdown-menu item-dropdown account-link-toggle menu-item-more" aria-labelledby="dropdownMenuButton">
+											<li class="menulist home"><a id="home" th:href="@{/index}">Trang chủ</a></li>
+											<li class="menulist"><a th:href="@{/uu-dai}">Ưu Đãi</a></li>
+											<li class="menulist"><a th:href="@{/contact}">Liên Hệ</a></li>
+											<li class="menulist"><a href="#">Thương Hiệu</a></li>
+											<li class="menulist"><a th:href="@{/blog}">Blogs</a></li>
+										</ul>
+									</div>
+								</nav>
+
+							</div>
+							<!-- start search -->
+							<div class="btn_search">
+								<div class="header-search">
+									<div id="mahardhiSearch" class="input-group mahardhi-search">
+										<input type="text" id="search" value=""
+											placeholder="Tìm sản phẩm..."
+											class="form-control input-lg ui-autocomplete-input" /> <span
+											class="btn-search input-group-btn">
+											<button type="button" onclick="search()" class="btn btn-default btn-lg">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="header-links col-md-3">
 							<!-- start account -->
 							<div id="header_ac" class="dropdown">
 								<a href="#" title="My Account" class="dropdown-toggle"
-									data-toggle="dropdown"> <i class="fa fa-user"></i> <span
-									class="account-main hidden-sm hidden-xs"> <span>Tài
+								   data-toggle="dropdown"> <i class="fa fa-user"></i> <span
+										class="account-main hidden-sm hidden-xs"> <span>Tài
 											Khoản</span> <th:block th:unless="${#request.remoteUser}">
 											<span>Đăng ký</span>
 										</th:block> <th:block th:if="${#request.remoteUser}">
@@ -39,10 +114,10 @@
 								</span>
 								</a>
 								<ul
-									class="dropdown-menu dropdown-menu-right account-link-toggle">
+										class="dropdown-menu dropdown-menu-right account-link-toggle">
 									<th:block th:if="${#request.remoteUser}">
 										<th:block
-											th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_DIRECTOR')}">
+												th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_DIRECTOR')}">
 											<li><a th:href="@{/admin/index}">
 												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" height="18px" width="18px" class="icon-item-user"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M308.5 135.3c7.1-6.3 9.9-16.2 6.2-25c-2.3-5.3-4.8-10.5-7.6-15.5L304 89.4c-3-5-6.3-9.9-9.8-14.6c-5.7-7.6-15.7-10.1-24.7-7.1l-28.2 9.3c-10.7-8.8-23-16-36.2-20.9L199 27.1c-1.9-9.3-9.1-16.7-18.5-17.8C173.9 8.4 167.2 8 160.4 8h-.7c-6.8 0-13.5 .4-20.1 1.2c-9.4 1.1-16.6 8.6-18.5 17.8L115 56.1c-13.3 5-25.5 12.1-36.2 20.9L50.5 67.8c-9-3-19-.5-24.7 7.1c-3.5 4.7-6.8 9.6-9.9 14.6l-3 5.3c-2.8 5-5.3 10.2-7.6 15.6c-3.7 8.7-.9 18.6 6.2 25l22.2 19.8C32.6 161.9 32 168.9 32 176s.6 14.1 1.7 20.9L11.5 216.7c-7.1 6.3-9.9 16.2-6.2 25c2.3 5.3 4.8 10.5 7.6 15.6l3 5.2c3 5.1 6.3 9.9 9.9 14.6c5.7 7.6 15.7 10.1 24.7 7.1l28.2-9.3c10.7 8.8 23 16 36.2 20.9l6.1 29.1c1.9 9.3 9.1 16.7 18.5 17.8c6.7 .8 13.5 1.2 20.4 1.2s13.7-.4 20.4-1.2c9.4-1.1 16.6-8.6 18.5-17.8l6.1-29.1c13.3-5 25.5-12.1 36.2-20.9l28.2 9.3c9 3 19 .5 24.7-7.1c3.5-4.7 6.8-9.5 9.8-14.6l3.1-5.4c2.8-5 5.3-10.2 7.6-15.5c3.7-8.7 .9-18.6-6.2-25l-22.2-19.8c1.1-6.8 1.7-13.8 1.7-20.9s-.6-14.1-1.7-20.9l22.2-19.8zM112 176a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM504.7 500.5c6.3 7.1 16.2 9.9 25 6.2c5.3-2.3 10.5-4.8 15.5-7.6l5.4-3.1c5-3 9.9-6.3 14.6-9.8c7.6-5.7 10.1-15.7 7.1-24.7l-9.3-28.2c8.8-10.7 16-23 20.9-36.2l29.1-6.1c9.3-1.9 16.7-9.1 17.8-18.5c.8-6.7 1.2-13.5 1.2-20.4s-.4-13.7-1.2-20.4c-1.1-9.4-8.6-16.6-17.8-18.5L583.9 307c-5-13.3-12.1-25.5-20.9-36.2l9.3-28.2c3-9 .5-19-7.1-24.7c-4.7-3.5-9.6-6.8-14.6-9.9l-5.3-3c-5-2.8-10.2-5.3-15.6-7.6c-8.7-3.7-18.6-.9-25 6.2l-19.8 22.2c-6.8-1.1-13.8-1.7-20.9-1.7s-14.1 .6-20.9 1.7l-19.8-22.2c-6.3-7.1-16.2-9.9-25-6.2c-5.3 2.3-10.5 4.8-15.6 7.6l-5.2 3c-5.1 3-9.9 6.3-14.6 9.9c-7.6 5.7-10.1 15.7-7.1 24.7l9.3 28.2c-8.8 10.7-16 23-20.9 36.2L315.1 313c-9.3 1.9-16.7 9.1-17.8 18.5c-.8 6.7-1.2 13.5-1.2 20.4s.4 13.7 1.2 20.4c1.1 9.4 8.6 16.6 17.8 18.5l29.1 6.1c5 13.3 12.1 25.5 20.9 36.2l-9.3 28.2c-3 9-.5 19 7.1 24.7c4.7 3.5 9.5 6.8 14.6 9.8l5.4 3.1c5 2.8 10.2 5.3 15.5 7.6c8.7 3.7 18.6 .9 25-6.2l19.8-22.2c6.8 1.1 13.8 1.7 20.9 1.7s14.1-.6 20.9-1.7l19.8 22.2zM464 304a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
 												Quản lý</a></li>
@@ -76,17 +151,17 @@
 									<li class="language">
 										<div class="language-box">
 											<form action="#" method="post" enctype="multipart/form-data"
-												id="form-language">
+												  id="form-language">
 												<button class="btn btn-link dropdown-toggle"
-													data-toggle="dropdown">
+														data-toggle="dropdown">
 													<span class="drop-text">Ngôn ngữ:</span> <span class="code">vi</span>
 												</button>
 												<ul class="language-dropdown lang">
 													<li>
 														<button class="btn btn-link btn-block language-select"
-															type="button" name="en-gb">
+																type="button" name="en-gb">
 															<img src="/assets/user/catalog/language/vi/vi.png"
-																alt="VietName" title="VietName" /> VietNam
+																 alt="VietName" title="VietName" /> VietNam
 														</button>
 													</li>
 												</ul>
@@ -101,8 +176,8 @@
 							<div class="header_cart">
 								<div id="cart" class="btn-group btn-block">
 									<button type="button" data-toggle="dropdown"
-										data-loading-text="Loading..."
-										class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+											data-loading-text="Loading..."
+											class="btn btn-inverse btn-block btn-lg dropdown-toggle">
 										<span id="cart-total"><span class="hidden-sm hidden-xs">Giỏ
 												Hàng</span> <span class="cart-item">[[${session.sessionProduct.countAllProduct}]]<span
 												class="hidden-sm hidden-xs"> sp
@@ -113,22 +188,22 @@
 											<li class="cart-content-product">
 												<table class="table table-striped">
 													<tbody>
-														<th:block th:each="item: ${session.sessionProduct.items}">
-															<tr>
-																<td class="text-center product-cart-thumb"><a
+													<th:block th:each="item: ${session.sessionProduct.items}">
+														<tr>
+															<td class="text-center product-cart-thumb"><a
 																	href=""><img
-																		th:src="@{|/assets/images/imageProduct/${item.product.image1}|}"
-																		th:title="${item.product.name}" class="img-thumbnail">
-																</a></td>
-																<td class="text-left product-cart-details"><a
+																	th:src="@{|/assets/images/imageProduct/${item.product.image1}|}"
+																	th:title="${item.product.name}" class="img-thumbnail">
+															</a></td>
+															<td class="text-left product-cart-details"><a
 																	href="" class="product-item-name">[[${item.product.name}]]</a>
-																	<div class="product-cart-info">
+																<div class="product-cart-info">
 																		<span class="product-cart-qty">[[${item.quality}]]
 																			x </span> <span class="product-cart-price">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]₫</span>
-																	</div></td>
+																</div></td>
 
-															</tr>
-														</th:block>
+														</tr>
+													</th:block>
 													</tbody>
 												</table>
 											</li>
@@ -136,15 +211,15 @@
 												<div>
 													<table class="table table-bordered">
 														<tbody>
-															<tr>
-																<td class="text-left"><strong>Tổng</strong></td>
-																<td class="text-right">[[${#numbers.formatInteger(session.sessionProduct.amount,3,'POINT')}]]₫</td>
-															</tr>
+														<tr>
+															<td class="text-left"><strong>Tổng</strong></td>
+															<td class="text-right">[[${#numbers.formatInteger(session.sessionProduct.amount,3,'POINT')}]]₫</td>
+														</tr>
 														</tbody>
 													</table>
 													<p class="text-right product-cart-button">
 														<a th:href="@{/shop/cart}"
-															class="btn cart-btn addtocart-btn">Giỏ hàng</a>&nbsp;&nbsp;&nbsp;<a
+														   class="btn cart-btn addtocart-btn">Giỏ hàng</a>&nbsp;&nbsp;&nbsp;<a
 															th:href="@{/shop/cart/checkout}"
 															class="btn cart-btn checkout-btn">Thanh toán</a>
 													</p>
@@ -152,74 +227,13 @@
 											</li>
 										</th:block>
 										<th:block
-											th:unless="${session.sessionProduct.getCount() != 0}">
+												th:unless="${session.sessionProduct.getCount() != 0}">
 											<li>
 												<p class="text-center product-cart-empty">Giỏ hàng của
 													bạn đang trống!</p>
 											</li>
 										</th:block>
 									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="header-bottom">
-				<div class="container">
-					<div class="row">
-						<div class="header-left col-lg-3 col-md-3 hidden-sm hidden-xs">
-							<div class="menu-list">
-								<div class="box-categories">
-									<span>Danh Mục</span>
-								</div>
-							</div>
-						</div>
-						<div class="header-center col-md-6 col-xs-3">
-							<!-- start menu -->
-							<nav id="menu" class="navbar navbar_menu">
-								<div class="navbar-header">
-									<button type="button" class="btn btn-navbar navbar-toggle"
-										id="btnMenuBar">
-										<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-									</button>
-								</div>
-								<div id="topCategoryList" class="main-menu menu-navbar clearfix"
-									data-more=More>
-									<div class="menu-close hidden-lg hidden-md">
-										<div id="logo" class="col-md-4">
-											<a th:href="@{/}"><img style="width: 65%"
-																   th:src="@{|/assets/user/image/catalog/${information.logo}|}"
-																   title="Your Store" alt="Your Store" class="img-responsive" /></a>
-										</div><i class="icon-close"></i>
-									</div>
-									<ul class="nav navbar-nav">
-										<li class="menulist home"><a id="home"
-											th:href="@{/index}">Trang chủ</a></li>
-										<li class="menulist"><a th:href="@{/uu-dai}">Ưu Đãi</a></li>
-										<li class="menulist"><a th:href="@{/contact}">Liên Hệ</a></li>
-										<li class="menulist"><a href="#">Thương Hiệu</a></li>
-										<li class="blog"><a th:href="@{/blog}">Blogs</a></li>
-
-									</ul>
-								</div>
-							</nav>
-
-						</div>
-						<div class="header-right col-md-3 col-xs-9">
-							<!-- start search -->
-							<div class="btn_search">
-								<div class="header-search">
-									<div id="mahardhiSearch" class="input-group mahardhi-search">
-										<input type="text" id="search" value=""
-											placeholder="Tìm sản phẩm..."
-											class="form-control input-lg ui-autocomplete-input" /> <span
-											class="btn-search input-group-btn">
-											<button type="button" onclick="search()" class="btn btn-default btn-lg">
-												<i class="fa fa-search"></i>
-											</button>
-										</span>
-									</div>
 								</div>
 							</div>
 						</div>
