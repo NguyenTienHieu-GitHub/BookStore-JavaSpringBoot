@@ -170,3 +170,23 @@ $(document).ready(function() {
 	});
 });
 
+// checked start comment
+document.addEventListener("DOMContentLoaded", function() {
+	var stars = document.querySelectorAll('input[type="radio"]');
+	stars.forEach(function(star) {
+		star.addEventListener('change', function() {
+			var checkedStar = document.querySelector('input[type="radio"]:checked');
+			var checkedStarValue = parseInt(checkedStar.value);
+			var starLabels = document.querySelectorAll('.star-label');
+			starLabels.forEach(function(starLabel, index) {
+				var starIcon = starLabel.querySelector('.star-icon');
+				if (index < checkedStarValue) {
+					starIcon.style.fill = "#ffcc00";
+				} else {
+					starIcon.style.fill = "#000";
+				}
+			});
+		});
+	});
+});
+

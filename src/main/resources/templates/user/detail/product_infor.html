@@ -277,26 +277,42 @@
 									<label class="control-label">Số sao</label>
 								</div>
 								<div class="col-sm-10 radio-star">
-									<div class="radio-icon">
-										<input type="radio" id="radio1" name="rating" title="1 sao" value="1" />
-										<label for="radio1"><i class="fa fa-star-o fa-stack-1x"></i></label>
-									</div>
-									<div class="radio-icon">
-										<input type="radio" id="radio2" name="rating" title="2 sao" value="2" />
-										<label for="radio2"><i class="fa fa-star-o fa-stack-2x"></i></label>
-									</div>
-									<div class="radio-icon">
+
+									<input type="radio" id="radio1" name="rating" title="1 sao" value="1" />
+									<label for="radio1" class="star-label">
+										<svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<!-- Mã SVG của icon sao -->
+											<path d="M12 2L9.31 8.25H2L7.53 12.66L5.5 19L12 15.75L18.5 19L16.47 12.66L22 8.25H14.69L12 2Z"/>
+										</svg>
+									</label>
+									<input type="radio" id="radio2" name="rating" title="2 sao" value="2" />
+									<label for="radio2" class="star-label">
+										<svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<!-- Mã SVG của icon sao -->
+											<path d="M12 2L9.31 8.25H2L7.53 12.66L5.5 19L12 15.75L18.5 19L16.47 12.66L22 8.25H14.69L12 2Z"/>
+										</svg>
+									</label>
 									<input type="radio" id="radio3" name="rating" title="3 sao" value="3" />
-									<label for="radio3"><i class="fa fa-star-o fa-stack-3x"></i></label>
-									</div>
-									<div class="radio-icon">
+									<label for="radio3" class="star-label">
+										<svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<!-- Mã SVG của icon sao -->
+											<path d="M12 2L9.31 8.25H2L7.53 12.66L5.5 19L12 15.75L18.5 19L16.47 12.66L22 8.25H14.69L12 2Z"/>
+										</svg>
+									</label>
 									<input type="radio" id="radio4" name="rating" title="4 sao" value="4" />
-									<label for="radio4"><i class="fa fa-star-o fa-stack-4x"></i></label>
-									</div>
-									<div class="radio-icon">
+									<label for="radio4" class="star-label">
+										<svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<!-- Mã SVG của icon sao -->
+											<path d="M12 2L9.31 8.25H2L7.53 12.66L5.5 19L12 15.75L18.5 19L16.47 12.66L22 8.25H14.69L12 2Z"/>
+										</svg>
+									</label>
 									<input type="radio" id="radio5" name="rating" title="5 sao" value="5" />
-									<label for="radio5"><i class="fa fa-star-o fa-stack-5x"></i></label>
-									</div>
+									<label for="radio5" class="star-label">
+										<svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+											<!-- Mã SVG của icon sao -->
+											<path d="M12 2L9.31 8.25H2L7.53 12.66L5.5 19L12 15.75L18.5 19L16.47 12.66L22 8.25H14.69L12 2Z"/>
+										</svg>
+									</label>
 								</div>
 							</div>
 						</th:block>
@@ -304,11 +320,21 @@
 						<div class="buttons clearfix">
 							<div id="pagination" class="pull-left">
 								<button type="button" id="button-review" title="Lùi"
-									ng-click="pager.prev()" class="btn btn-primary">|<<</button>
+									ng-click="pager.prev()" class="btn btn-primary">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+										<path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+									</svg>
+								</button>
 								<button type="button" class="btn btn-primary disabled">{{pager.page
 									+1}}</button>
 								<button type="button" id="button-review" title="Tiếp"
-									ng-click="pager.next()" class="btn btn-primary">>>|</button>
+									ng-click="pager.next()" class="btn btn-primary">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"/>
+										<path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"/>
+									</svg>
+								</button>
 							</div>
 
 							<th:block th:if="${#request.remoteUser}">

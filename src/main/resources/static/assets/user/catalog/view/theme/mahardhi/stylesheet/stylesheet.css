@@ -565,6 +565,9 @@ header {
 }
 .header-top {
     display: flex;
+    justify-content: center;
+    padding: 4px 15px;
+    background-color: var(--secondary-hover-color);
 }
 .customer-support {   
     color: var(--primary-hover-color);
@@ -592,11 +595,12 @@ header {
     display: none;
 }
 .more-icon {
-    background-color: var(--secondary-color);
-    fill: var(--secondary-hover-color);
-    width: 74px;
-    height: 71px;
-    padding-right: 10px;
+    background-color: var(--secondary-hover-color);
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 5px;
+    padding-left: 10px;
+    margin-right: 10px;
 }
 .menu-item-more > li{
     padding: 0 20px;
@@ -616,13 +620,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 8px;
 }
 .btn_search {
     position: relative;
     display: inline-block;
     cursor: pointer;
     background: var(--primary-hover-color);
-    max-width: 500px;
+    max-width: 550px;
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -633,7 +638,7 @@ header {
     height: 40px;
 }
 .header-search{
- max-width: 500px;
+ max-width: 550px;
 }
 .header-search .icon-close {
     position: absolute;
@@ -790,7 +795,6 @@ header {
 /*cart*/
 .header_cart {
     position: relative;
-    margin-left: 30px;
 }
 #cart {
     vertical-align: top;
@@ -1012,9 +1016,10 @@ td.cart-total-title {
     }
     .header_cart{
         margin-left: 15px;
-    }    
-    .header-top {       
-        justify-content: space-between;
+    }
+    .header-top {
+        background: var(--secondary-hover-color);
+
     }    
     header{
         margin-bottom: 20px;
@@ -1407,7 +1412,7 @@ td.cart-total-title {
         display: none;
     }
     .menu-dropdown button:hover a{
-        color: var(--secondary-hover-color);
+        color: var(--primary-color);
     }
 }
 @media (max-width: 480px) {
@@ -1444,7 +1449,7 @@ td.cart-total-title {
 /*----------------------------------------------*/
 @media (min-width: 1341px){
     .menu-list {
-        width: 69.05%;
+        width: 100%;
     }
 }
 .box-categories {
@@ -1808,7 +1813,7 @@ ul.category-list > li {
 .btn {
     font-size: 14px;
     line-height: 20px;
-    border-radius: 0;
+    border-radius: 5px;
 }
 .btn-xs {
     font-size: 9px;
@@ -2487,7 +2492,6 @@ button.pro_comper:hover,
     border: none;
     background: var(--secondary-hover-color);
     color: var(--primary-hover-color);
-    padding: 12px 30px;
     border-radius: 5px;
 }
 .product-list .product-thumb .addcart:hover{
@@ -5138,27 +5142,29 @@ a.thumbnail {
     margin: 0 0 15px 0;
     font-size: 18px;
 }
-/*Comment Star*/
-.radio-star {
+/* Ẩn input radio mặc định */
+input[type="radio"] {
+    display: none;
+}
+
+/* Định dạng icon sao */
+.star-icon {
+    width: 24px;
+    height: 24px;
+    fill: #000; /* Màu mặc định của icon */
+}
+
+/* Màu icon khi input radio được chọn */
+input[type="radio"]:checked + .star-label .star-icon {
+    fill: #ffcc00; /* Màu của icon khi checked */
+}
+
+/* Căn giữa icon */
+.star-label {
     display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
 }
-.radio-icon input[type="radio"] {
-    display: none; /* Ẩn radio button */
-}
-
-.radio-icon label {
-    cursor: pointer; /* Biểu tượng có thể nhấp chuột */
-    display: inline-block;
-}
-
-.radio-icon label i {
-    margin-right: 5px; /* Khoảng cách giữa biểu tượng và văn bản */
-}
-
-.radio-icon input[type="radio"]:checked + label i {
-    color: green; /* Màu của biểu tượng khi được chọn */
-}
-
 /*----------------------------------------------*/
 /* checkout-cart */
 /*----------------------------------------------*/

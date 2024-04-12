@@ -8,35 +8,24 @@
 	<div class="top-header">
 		<nav id="top"></nav>
 		<header>
-			<div class="container">
-				<div class="row">
-					<div class="header-top">
-						<div class="customer-support col-md-4 hidden-xs">
-							<i class="fa fa-phone"></i>
-							<div>
-								<span>Hỗ Trợ Khách Hàng</span> <span>[[${information.phone}]]</span>
-							</div>
-						</div>
-
-						<!-- start logo -->
-						<div id="logo" class="col-md-4">
-							<a th:href="@{/}"><img style="width: 65%"
-								th:src="@{|/assets/user/image/catalog/${information.logo}|}"
-								title="Your Store" alt="Your Store" class="img-responsive" /></a>
-						</div>
-
-
-					</div>
+			<div class="header-top">
+				<!-- start logo -->
+				<div id="banner" class="">
+					<a th:href="@{/}">
+						<img src="/assets/user/image/cache/catalog/banners/header-banner.jpg"
+						title="Your Store" alt="Your Store" class="img-responsive" />
+					</a>
 				</div>
 			</div>
 			<div class="header-bottom">
 				<div class="container">
 					<div class="row">
 						<div class="header-left col-lg-3 col-md-3 hidden-sm hidden-xs">
-							<div class="menu-list">
-								<div class="box-categories">
-									<span>Danh Mục</span>
-								</div>
+							<!-- start logo -->
+							<div id="logo" class="">
+								<a th:href="@{/}"><img style="width: 65%"
+													   th:src="@{|/assets/user/image/catalog/${information.logo}|}"
+													   title="Your Store" alt="Your Store" class="img-responsive" /></a>
 							</div>
 						</div>
 						<div class="header-right col-md-6 col-xs-9">
@@ -70,10 +59,15 @@
 
 									<!--Menu dropdown-->
 									<div class="dropdown menu-dropdown">
-										<button class="btn more-icon dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M384 480c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0zM224 352c-6.7 0-13-2.8-17.6-7.7l-104-112c-6.5-7-8.2-17.2-4.4-25.9s12.5-14.4 22-14.4l208 0c9.5 0 18.2 5.7 22 14.4s2.1 18.9-4.4 25.9l-104 112c-4.5 4.9-10.9 7.7-17.6 7.7z"/></svg>
+										<button class="btn more-icon dropdown-toggle" type="button"data-toggle="dropdown">
+											<svg xmlns="http://www.w3.org/2000/svg" width="36" height="39" fill="white" class="bi bi-grid" viewBox="0 0 16 16">
+												<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+											</svg>
+											<svg xmlns="http://www.w3.org/2000/svg" style="mar-bottom: 10px" width="20" height="16" fill="white" class="bi bi-chevron-down" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+											</svg>
 										</button>
-										<ul class="dropdown-menu item-dropdown account-link-toggle menu-item-more" aria-labelledby="dropdownMenuButton">
+										<ul class="dropdown-menu">
 											<li class="menulist home"><a id="home" th:href="@{/index}">Trang chủ</a></li>
 											<li class="menulist"><a th:href="@{/uu-dai}">Ưu Đãi</a></li>
 											<li class="menulist"><a th:href="@{/contact}">Liên Hệ</a></li>
@@ -92,7 +86,7 @@
 											placeholder="Tìm sản phẩm..."
 											class="form-control input-lg ui-autocomplete-input" /> <span
 											class="btn-search input-group-btn">
-											<button type="button" onclick="search()" class="btn btn-default btn-lg">
+											<button type="submit" onclick="search()" class="btn btn-default btn-lg">
 												<i class="fa fa-search"></i>
 											</button>
 										</span>
