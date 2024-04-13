@@ -28,7 +28,7 @@
 													   title="Your Store" alt="Your Store" class="img-responsive" /></a>
 							</div>
 						</div>
-						<div class="header-right col-md-6 col-xs-9">
+						<div class="header-right col-md-6 col-xs-8">
 
 							<div class="header-more">
 								<!-- start menu -->
@@ -49,17 +49,17 @@
 											</div><i class="icon-close"></i>
 										</div>
 										<ul class="nav navbar-nav moreMenu">
-											<li class="menulist home"><a id="home" th:href="@{/index}">Trang chủ</a></li>
-											<li class="menulist"><a th:href="@{/uu-dai}">Ưu Đãi</a></li>
-											<li class="menulist"><a th:href="@{/contact}">Liên Hệ</a></li>
-											<li class="menulist"><a href="#">Thương Hiệu</a></li>
-											<li class="menulist"><a th:href="@{/blog}">Blogs</a></li>
+											<li class="menu-header"><a id="home" th:href="@{/index}">Trang chủ</a></li>
+											<li class="menu-header"><a th:href="@{/uu-dai}">Ưu Đãi</a></li>
+											<li class="menu-header"><a th:href="@{/contact}">Liên Hệ</a></li>
+											<li class="menu-header"><a href="#">Thương Hiệu</a></li>
+											<li class="menu-header"><a th:href="@{/blog}">Blogs</a></li>
 										</ul>
 									</div>
 
 									<!--Menu dropdown-->
 									<div class="dropdown menu-dropdown">
-										<button class="btn more-icon dropdown-toggle" type="button"data-toggle="dropdown">
+										<button class="btn more-icon dropdown-toggle" type="button">
 											<svg xmlns="http://www.w3.org/2000/svg" width="36" height="39" fill="white" class="bi bi-grid" viewBox="0 0 16 16">
 												<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
 											</svg>
@@ -68,11 +68,11 @@
 											</svg>
 										</button>
 										<ul class="dropdown-menu">
-											<li class="menulist home"><a id="home" th:href="@{/index}">Trang chủ</a></li>
-											<li class="menulist"><a th:href="@{/uu-dai}">Ưu Đãi</a></li>
-											<li class="menulist"><a th:href="@{/contact}">Liên Hệ</a></li>
-											<li class="menulist"><a href="#">Thương Hiệu</a></li>
-											<li class="menulist"><a th:href="@{/blog}">Blogs</a></li>
+											<li class="menu-header"><a id="home" th:href="@{/index}">Trang chủ</a></li>
+											<li class="menu-header"><a th:href="@{/uu-dai}">Ưu Đãi</a></li>
+											<li class="menu-header"><a th:href="@{/contact}">Liên Hệ</a></li>
+											<li class="menu-header"><a href="#">Thương Hiệu</a></li>
+											<li class="menu-header"><a th:href="@{/blog}">Blogs</a></li>
 										</ul>
 									</div>
 								</nav>
@@ -82,10 +82,15 @@
 							<div class="btn_search">
 								<div class="header-search">
 									<div id="mahardhiSearch" class="input-group mahardhi-search">
-										<input type="text" id="search" value=""
+										<input type="text" id="search"
 											placeholder="Tìm sản phẩm..."
-											class="form-control input-lg ui-autocomplete-input" /> <span
-											class="btn-search input-group-btn">
+											class="form-control input-lg ui-autocomplete-input" />
+										<span id="x-mark-id" class="x-mark" >
+										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+										</svg>
+											</span>
+										<span class="btn-search input-group-btn">
 											<button type="submit" onclick="search()" class="btn btn-default btn-lg">
 												<i class="fa fa-search"></i>
 											</button>
@@ -96,19 +101,20 @@
 						</div>
 						<div class="header-links col-md-3">
 							<!-- start account -->
-							<div id="header_ac" class="dropdown">
-								<a href="#" title="My Account" class="dropdown-toggle"
-								   data-toggle="dropdown"> <i class="fa fa-user"></i> <span
-										class="account-main hidden-sm hidden-xs"> <span>Tài
-											Khoản</span> <th:block th:unless="${#request.remoteUser}">
-											<span>Đăng ký</span>
-										</th:block> <th:block th:if="${#request.remoteUser}">
-											<span>Xin chào!</span>
+							<div id="1" class="dropdown header_ac">
+								<a title="My Account" class="dropdown-toggle icon-main"
+								   data-toggle="dropdown">
+									<i class="fa fa-user"></i>
+									<div class="account-main hidden-sm hidden-xs">
+										<th:block th:unless="${#request.remoteUser}">
+											<span>Tài Khoản</span>
 										</th:block>
-								</span>
+										<th:block th:if="${#request.remoteUser}">
+											<span>Xin chào</span>
+										</th:block>
+								</div>
 								</a>
-								<ul
-										class="dropdown-menu dropdown-menu-right account-link-toggle">
+								<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
 									<th:block th:if="${#request.remoteUser}">
 										<th:block
 												th:if="${#request.isUserInRole('ROLE_ADMIN') || #request.isUserInRole('ROLE_DIRECTOR')}">
@@ -142,28 +148,6 @@
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" height="18px" width="18px" class="icon-item-user"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg>
 											Quên mật khẩu</a></li>
 									</th:block>
-									<li class="language">
-										<div class="language-box">
-											<form action="#" method="post" enctype="multipart/form-data"
-												  id="form-language">
-												<button class="btn btn-link dropdown-toggle"
-														data-toggle="dropdown">
-													<span class="drop-text">Ngôn ngữ:</span> <span class="code">vi</span>
-												</button>
-												<ul class="language-dropdown lang">
-													<li>
-														<button class="btn btn-link btn-block language-select"
-																type="button" name="en-gb">
-															<img src="/assets/user/catalog/language/vi/vi.png"
-																 alt="VietName" title="VietName" /> VietNam
-														</button>
-													</li>
-												</ul>
-												<input type="hidden" name="code" value="" /> <input
-													type="hidden" name="redirect" value="#" />
-											</form>
-										</div>
-									</li>
 								</ul>
 							</div>
 							<!-- start cart -->
@@ -172,10 +156,12 @@
 									<button type="button" data-toggle="dropdown"
 											data-loading-text="Loading..."
 											class="btn btn-inverse btn-block btn-lg dropdown-toggle">
-										<span id="cart-total"><span class="hidden-sm hidden-xs">Giỏ
-												Hàng</span> <span class="cart-item">[[${session.sessionProduct.countAllProduct}]]<span
-												class="hidden-sm hidden-xs"> sp
-													[[${#numbers.formatInteger(session.sessionProduct.amount,session.sessionProduct.amount==0?0:3,'POINT')}]]₫</span></span></span>
+										<span id="cart-total">
+											<span class="hidden-sm hidden-xs">Giỏ Hàng</span>
+											<span class="cart-item">[[${session.sessionProduct.countAllProduct}]]
+<!--												<span class="hidden-sm hidden-xs"> sp [[${#numbers.formatInteger(session.sessionProduct.amount,session.sessionProduct.amount==0?0:3,'POINT')}]]₫</span>-->
+											</span>
+										</span>
 									</button>
 									<ul class="dropdown-menu header-cart-toggle pull-right ">
 										<th:block th:if="${session.sessionProduct.getCount() != 0}">
@@ -192,10 +178,9 @@
 															<td class="text-left product-cart-details"><a
 																	href="" class="product-item-name">[[${item.product.name}]]</a>
 																<div class="product-cart-info">
-																		<span class="product-cart-qty">[[${item.quality}]]
-																			x </span> <span class="product-cart-price">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]₫</span>
-																</div></td>
-
+																		<span class="product-cart-qty">[[${item.quality}]] x </span> <span class="product-cart-price">[[${#numbers.formatInteger(item.product.price,3,'POINT')}]]₫</span>
+																</div>
+															</td>
 														</tr>
 													</th:block>
 													</tbody>
@@ -230,6 +215,49 @@
 									</ul>
 								</div>
 							</div>
+							<!--	Language-->
+							<div id="2" class="dropdown header_ac">
+								<a title="Language" class="dropdown-toggle"
+								   data-toggle="dropdown">
+									<i class="fa fa-globe"></i>
+									<div class="account-main hidden-sm hidden-xs">
+											<span>Ngôn Ngữ</span>
+
+									</div>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
+									<li class="language">
+										<div class="language-box">
+											<form action="#" method="post" enctype="multipart/form-data"
+												  id="form-language">
+												<button class="btn btn-link dropdown-toggle"
+														data-toggle="dropdown">
+													<span class="drop-text">Ngôn ngữ:</span> <span class="code">vi</span>
+												</button>
+												<ul class="language-dropdown lang">
+													<li>
+														<button class="btn btn-link btn-block language-select"
+																type="button" name="en-gb">
+															<img src="/assets/user/catalog/language/vi/vi.png"
+																 alt="VietName" title="VietName" /> VietNam
+														</button>
+													</li>
+													<li>
+														<button class="btn btn-link btn-block language-select"
+																type="button" name="en-gb">
+															<img src="/assets/user/catalog/language/en-gb/en-gb.png"
+																 alt="VietName" title="VietName" /> English
+														</button>
+													</li>
+												</ul>
+												<input type="hidden" name="code" value="" /> <input
+													type="hidden" name="redirect" value="#" />
+											</form>
+										</div>
+									</li>
+								</ul>
+							</div>
+
 						</div>
 					</div>
 				</div>
