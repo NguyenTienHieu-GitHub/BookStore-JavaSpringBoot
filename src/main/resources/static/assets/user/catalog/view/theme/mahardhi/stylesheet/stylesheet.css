@@ -1245,7 +1245,7 @@ td.cart-total-title {
     }
     #menu .dropdown-menu,
     #menu .hiden_menu.menu_drop .dropdown-inner,
-        #menu .column-1 .dropdown-inner .dropdown-submenu ul.sub-menu {
+    #menu .column-1 .dropdown-inner .dropdown-submenu ul.sub-menu {
         position: absolute;
         top: 100px;
         padding: 8px 0;

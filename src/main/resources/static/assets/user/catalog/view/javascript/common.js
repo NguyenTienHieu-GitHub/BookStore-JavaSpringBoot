@@ -508,3 +508,27 @@ $(document).delegate('.agree', 'click', function(e) {
 		});
 	}
 })(window.jQuery);
+
+$(document).ready(function(){
+	$('.dropdown-toggle').click(function(){
+		var $dropdownMenu = $(this).next('.dropdown-menu');
+		var $otherDropdownMenus = $('.dropdown-menu').not($dropdownMenu);
+
+		if (!$dropdownMenu.hasClass('show')) {
+			$otherDropdownMenus.removeClass('show');
+			$dropdownMenu.addClass('show');
+		} else {
+			$dropdownMenu.removeClass('show');
+		}
+	});
+
+	// Ngăn chặn sự kiện click lan truyền lên đến phần tử cha khi click vào dropdown menu
+	$('.dropdown-menu').click(function(e){
+		e.stopPropagation();
+	});
+
+	// Đóng dropdown menu khi click bất kỳ nơi nào trên trang
+	$(document).click(function(){
+		$('.dropdown-menu').removeClass('show');
+	});
+});

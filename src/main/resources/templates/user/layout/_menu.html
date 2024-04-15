@@ -34,13 +34,11 @@
 								<!-- start menu -->
 								<nav id="menu" class="navbar navbar_menu">
 									<div class="navbar-header">
-										<button type="button" class="btn btn-navbar navbar-toggle"
-												id="btnMenuBar">
+										<button type="button" class="btn btn-navbar navbar-toggle" id="btnMenuBar">
 											<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
 										</button>
 									</div>
-									<div id="topCategoryList" class="main-menu menu-navbar clearfix"
-										 data-more=More>
+									<div id="topCategoryList" class="main-menu menu-navbar clearfix" data-more=More>
 										<div class="menu-close hidden-lg hidden-md">
 											<div id="logo" class="col-md-4">
 												<a th:href="@{/}"><img style="width: 65%"
@@ -102,8 +100,8 @@
 						<div class="header-links col-md-3">
 							<!-- start account -->
 							<div id="1" class="dropdown header_ac">
-								<a title="My Account" class="dropdown-toggle icon-main"
-								   data-toggle="dropdown">
+								<a title="My Account" id="dropdownLink1" role="button" class="dropdown-toggle icon-main"
+								   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="fa fa-user"></i>
 									<div class="account-main hidden-sm hidden-xs">
 										<th:block th:unless="${#request.remoteUser}">
@@ -153,9 +151,9 @@
 							<!-- start cart -->
 							<div class="header_cart">
 								<div id="cart" class="btn-group btn-block">
-									<button type="button" data-toggle="dropdown"
+									<button type="button" id="dropdownMenuButton" data-toggle="dropdown"
 											data-loading-text="Loading..."
-											class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+											class="btn btn-inverse btn-block btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">
 										<span id="cart-total">
 											<span class="hidden-sm hidden-xs">Giỏ Hàng</span>
 											<span class="cart-item">[[${session.sessionProduct.countAllProduct}]]
@@ -163,7 +161,7 @@
 											</span>
 										</span>
 									</button>
-									<ul class="dropdown-menu header-cart-toggle pull-right ">
+									<ul class="dropdown-menu pull-right  ">
 										<th:block th:if="${session.sessionProduct.getCount() != 0}">
 											<li class="cart-content-product">
 												<table class="table table-striped">
@@ -217,12 +215,11 @@
 							</div>
 							<!--	Language-->
 							<div id="2" class="dropdown header_ac">
-								<a title="Language" class="dropdown-toggle"
-								   data-toggle="dropdown">
+								<a title="Language" id="dropdownLink2" role="button" class="dropdown-toggle"
+								   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="fa fa-globe"></i>
 									<div class="account-main hidden-sm hidden-xs">
 											<span>Ngôn Ngữ</span>
-
 									</div>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-right account-link-toggle">
@@ -237,7 +234,7 @@
 												<ul class="language-dropdown lang">
 													<li>
 														<button class="btn btn-link btn-block language-select"
-																type="button" name="en-gb">
+																type="button" name="vi">
 															<img src="/assets/user/catalog/language/vi/vi.png"
 																 alt="VietName" title="VietName" /> VietNam
 														</button>
@@ -246,7 +243,7 @@
 														<button class="btn btn-link btn-block language-select"
 																type="button" name="en-gb">
 															<img src="/assets/user/catalog/language/en-gb/en-gb.png"
-																 alt="VietName" title="VietName" /> English
+																 alt="English" title="English" /> English
 														</button>
 													</li>
 												</ul>

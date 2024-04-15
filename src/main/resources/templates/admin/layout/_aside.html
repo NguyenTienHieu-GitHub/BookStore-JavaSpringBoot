@@ -31,7 +31,7 @@
 									</a></li>
 									<li class="site-menu-item"><a
 										th:href="@{/admin/employees/form}"> <span
-											class="site-menu-title">Thông tin nhân viên</span>
+											class="site-menu-title">Thêm nhân viên</span>
 									</a></li>
 								</ul></li>
 						</th:block>
@@ -190,7 +190,7 @@
 										</a></li>
 										<li class="site-menu-item"><a
 											th:href="@{/admin/nav1/form}"> <span
-												class="site-menu-title">Thông Tin Menu Bậc 1</span>
+												class="site-menu-title">Thêm Menu Bậc 1</span>
 										</a></li>
 									</ul></li>
 							</ul>
@@ -206,7 +206,7 @@
 										</a></li>
 										<li class="site-menu-item"><a
 											th:href="@{/admin/nav2/form}"> <span
-												class="site-menu-title">Thông Tin Menu Bậc 2</span>
+												class="site-menu-title">Thêm Menu Bậc 2</span>
 										</a></li>
 									</ul></li>
 							</ul>
@@ -222,7 +222,7 @@
 										</a></li>
 										<li class="site-menu-item"><a
 											th:href="@{/admin/shop/form}"> <span
-												class="site-menu-title">Thông Tin Shop</span>
+												class="site-menu-title">Thêm Shop</span>
 										</a></li>
 									</ul></li>
 							</ul>
@@ -238,7 +238,7 @@
 										</a></li>
 										<li class="site-menu-item"><a
 											th:href="@{/admin/discount/form}"> <span
-												class="site-menu-title">Thông Tin Mã</span>
+												class="site-menu-title">Thêm Mã</span>
 										</a></li>
 										<li class="site-menu-item"><a
 											th:href="@{/admin/discount/user/list}"> <span
@@ -246,11 +246,12 @@
 										</a></li>
 									</ul></li>
 							</ul></li>
-						<li class="site-menu-item has-sub"><a
-							href="javascript:void(0)"> <i class="site-menu-icon wb-users"
-								aria-hidden="true"></i> <span class="site-menu-title">Tiện
-									Ích</span> <span class="site-menu-arrow"></span>
-						</a>
+						<li class="site-menu-item has-sub">
+							<a href="javascript:void(0)">
+								<i class="site-menu-icon wb-users" aria-hidden="true"></i>
+								<span class="site-menu-title">Tiện Ích</span>
+								<span class="site-menu-arrow"></span>
+							</a>
 							<ul class="site-menu-sub">
 								<li class="site-menu-item"><a
 									th:href="@{/admin/extend/specification}"> <span
@@ -264,7 +265,8 @@
 									th:href="@{/admin/extend/crop-image}"> <span
 										class="site-menu-title">Chỉnh Hình</span>
 								</a></li>
-							</ul></li>
+							</ul>
+						</li>
 						<th:block th:if="${#request.isUserInRole('ROLE_DIRECTOR')}">
 							<li class="site-menu-category">Thống kê</li>
 							<li class="site-menu-item has-sub"><a
@@ -309,7 +311,6 @@
 								</ul></li>
 						</th:block>
 					</ul>
-
 				</div>
 			</div>
 		</div>
