@@ -1,9 +1,6 @@
 /**
- * @(#)ProductDao.java 2021/10/10.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/10/10.
+ * @(#)ProductDao.java.
+ *
  * Version 1.00.
  */
 package poly.store.dao;
@@ -21,8 +18,8 @@ import poly.store.model.StatisticalProductDay;
 /**
  * Class thuc hien truy van thong tin bang Product trong database
  * 
- * @author KHOA-PH
- * @version 1.00
+ *
+ *
  */
 public interface ProductDao extends JpaRepository<Product, Integer>{
 	@Query("SELECT p FROM Product p WHERE p.Deleteday = null")

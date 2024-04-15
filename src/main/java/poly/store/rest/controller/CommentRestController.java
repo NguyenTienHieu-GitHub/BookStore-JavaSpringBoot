@@ -1,9 +1,6 @@
 /**
  * @(#)CommentRestController.java 2021/11/08.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/11/08.
+ *
  * Version 1.00.
  */
 package poly.store.rest.controller;
@@ -28,7 +25,7 @@ import poly.store.service.CommentService;
 /**
  * Class cung cap cac dich vu rest api cho bang comment
  * 
- * @author khoa-ph
+ *
  * @version 1.00
  */
 @CrossOrigin("*")

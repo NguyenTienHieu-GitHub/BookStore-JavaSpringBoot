@@ -1,9 +1,6 @@
 /**
- * @(#)EmployeeRestController.java 2021/09/10.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/10.
+ * @(#)EmployeeRestController.java.
+ *
  * Version 1.00.
  */
 package poly.store.rest.controller;
@@ -24,8 +21,8 @@ import poly.store.service.UserRoleService;
 /**
  * Class cung cap cac dich vu rest api cho bang employee
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @CrossOrigin("*")
 @RestController

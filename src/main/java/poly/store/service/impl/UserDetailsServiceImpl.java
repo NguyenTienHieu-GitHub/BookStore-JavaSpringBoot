@@ -1,9 +1,6 @@
 /**
- * @(#)UserDetailsServiceImpl.java 2021/09/09
- * 
- * Copyright(C) 2021 by PHOENIX FIVE
- * 
- * Last_Update 2021/09/09
+ * @(#)UserDetailsServiceImpl.java.
+ *
  * Version 1.00.
  */
 package poly.store.service.impl;
@@ -28,8 +25,8 @@ import org.springframework.security.core.userdetails.User;
 /**
  * Class dung de phan quyen cho project
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

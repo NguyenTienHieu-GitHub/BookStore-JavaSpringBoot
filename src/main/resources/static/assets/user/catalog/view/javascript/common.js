@@ -344,24 +344,43 @@ $(document).delegate('.agree', 'click', function(e) {
 		type: 'get',
 		dataType: 'html',
 		success: function(data) {
-			html  = '<div id="modal-agree" class="modal">';
-			html += '  <div class="modal-dialog">';
-			html += '    <div class="modal-content">';
-			html += '      <div class="modal-header">';
-			html += '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-			html += '        <h4 class="modal-title">' + $(element).text() + '</h4>';
-			html += '      </div>';
-			html += '      <div class="modal-body">' + data + '</div>';
-			html += '    </div>';
-			html += '  </div>';
-			html += '</div>';
+			// Log the AJAX response data to check if it contains the expected content
+			console.log('AJAX Response Data:', data);
 
-			$('body').append(html);
+			// Wait for the document to be ready before accessing the content
+			$(document).ready(function() {
+				// Check if the content exists and log it
+				var content = $('#policy-text').html();
+				console.log('Content:', content);
 
-			$('#modal-agree').modal('show');
+				// Proceed only if content exists
+				if (content) {
+					// Create and display the modal
+					var html = '<div id="modal-agree" class="modal">';
+					html += '  <div class="modal-dialog">';
+					html += '    <div class="modal-content">';
+					html += '      <div class="modal-header">';
+					html += '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+					html += '        <h4 class="modal-title">' + $(element).text() + '</h4>';
+					html += '      </div>';
+					html += '      <div class="modal-body">' + content + '</div>';
+					html += '    </div>';
+					html += '  </div>';
+					html += '</div>';
+
+					$('body').append(html);
+					$('#modal-agree').modal('show');
+				} else {
+					console.log('No content found.');
+				}
+			});
+		},
+		error: function(xhr, status, error) {
+			console.error("Error fetching data:", error);
 		}
 	});
 });
+
 
 // Autocomplete */
 (function($) {

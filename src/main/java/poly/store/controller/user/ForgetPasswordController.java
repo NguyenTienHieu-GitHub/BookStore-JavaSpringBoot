@@ -1,9 +1,6 @@
 /**
- * @(#)ForgetPasswordController.java 2021/09/09.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/09.
+ * @(#)ForgetPasswordController.java.
+ *
  * Version 1.00.
  */
 package poly.store.controller.user;
@@ -27,8 +24,8 @@ import poly.store.service.impl.MailerServiceImpl;
 /**
  * Class de lay lai mat khau
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Controller
 public class ForgetPasswordController {

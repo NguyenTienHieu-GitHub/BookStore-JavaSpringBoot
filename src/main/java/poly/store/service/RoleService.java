@@ -1,9 +1,6 @@
 /**
- * @(#)RoleService.java 2021/08/24.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/08/26.
+ * @(#)RoleService.java.
+ *
  * Version 1.00.
  */
 package poly.store.service;
@@ -15,8 +12,8 @@ import poly.store.entity.Role;
 /**
  * Class cung cap cac dich vu thao tac voi table Roles trong database
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 public interface RoleService {
 	

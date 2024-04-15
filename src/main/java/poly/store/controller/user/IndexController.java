@@ -1,9 +1,6 @@
 /**
- * @(#)IndexController.java 2021/09/07.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/22.
+ * @(#)IndexController.java.
+ *
  * Version 1.00.
  */
 package poly.store.controller.user;
@@ -37,8 +34,8 @@ import poly.store.service.UserRoleService;
 /**
  * Class de hien thi trang chu nguoi dung
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Controller
 public class IndexController {

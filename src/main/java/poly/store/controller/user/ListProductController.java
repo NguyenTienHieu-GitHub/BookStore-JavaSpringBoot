@@ -1,9 +1,6 @@
 /**
- * @(#)IndexController.java 2021/10/12.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/10/12.
+ * @(#)IndexController.java.
+ *
  * Version 1.00.
  */
 package poly.store.controller.user;
@@ -38,8 +35,8 @@ import poly.store.service.SessionService;
 /**
  * Class de danh sach san pham
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Controller
 public class ListProductController {

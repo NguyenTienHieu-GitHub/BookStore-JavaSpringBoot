@@ -1,9 +1,6 @@
 /**
- * @(#)SecurityConfig.java 2021/09/09.
- * 
- * Copyright(C) 2021 by PHOENIX FIVE.
- * 
- * Last_Update 2021/09/09.
+ * @(#)SecurityConfig.java.
+ *
  * Version 1.00.
  */
 package poly.store.config;
@@ -27,8 +24,8 @@ import poly.store.service.impl.UserDetailsServiceImpl;
 /**
  * Class dung de phan quyen cho project
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Configuration
 @EnableWebSecurity

@@ -1,9 +1,6 @@
 /**
- * @(#)LoginController.java 2021/09/09.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/09.
+ * @(#)LoginController.java.
+ *
  * Version 1.00.
  */
 package poly.store.controller.user;
@@ -29,8 +26,8 @@ import poly.store.validator.user.LoginFormValidator;
 /**
  * Class su ly cac hoat dong dang nhap cua nguoi dung
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Controller
 public class LoginController {

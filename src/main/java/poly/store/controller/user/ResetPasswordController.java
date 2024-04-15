@@ -1,9 +1,6 @@
 /**
- * @(#)ResetPasswordController.java 2021/09/09.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/09.
+ * @(#)ResetPasswordController.java.
+ *
  * Version 1.00.
  */
 package poly.store.controller.user;
@@ -30,8 +27,8 @@ import poly.store.validator.user.ResetPassValidator;
 /**
  * Class lam moi lai mat khau
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  *
  */
 @Controller

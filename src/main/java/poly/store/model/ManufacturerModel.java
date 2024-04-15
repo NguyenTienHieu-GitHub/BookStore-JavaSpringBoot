@@ -1,9 +1,6 @@
 /**
- * @(#)ManufacturerModel.java 2021/09/21.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/21.
+ * @(#)ManufacturerModel.java.
+ *
  * Version 1.00.
  */
 package poly.store.model;
@@ -15,8 +12,8 @@ import lombok.NoArgsConstructor;
 /**
  * Class thong tin truy van cua bang Manufacturer
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Data
 @NoArgsConstructor

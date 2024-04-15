@@ -1,9 +1,6 @@
 /**
- * @(#)RegisterFormValidator.java 2021/09/08.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/08.
+ * @(#)RegisterFormValidator.java.
+ *
  * Version 1.00.
  */
 package poly.store.validator.user;
@@ -22,8 +19,8 @@ import poly.store.service.UserService;
 /**
  * Class bat loi form register.html
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Component
 public class RegisterFormValidator implements Validator {

@@ -1,9 +1,6 @@
 /**
- * @(#)UserRole.java 2021/08/19.
- * 
- * Copyright(C) 2021 by PHOENIX FIVE.
- * 
- * Last_Update 2021/08/19.
+ * @(#)UserRole.java.
+ *
  * Version 1.00.
  */
 package poly.store.entity;

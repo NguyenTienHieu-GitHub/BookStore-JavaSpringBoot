@@ -1,9 +1,6 @@
 /**
- * @(#)RoleServiceImpl.java 2021/09/09.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/09.
+ * @(#)RoleServiceImpl.java.
+ *
  * Version 1.00.
  */
 package poly.store.service.impl;
@@ -21,8 +18,8 @@ import poly.store.service.RoleService;
  * Class trien khai theo interface RoleService, Thao tac voi Class RoleDao de
  * thuc hien cac tac vu tuong ung
  * 
- * @author KHOA-PH
- * @version 1.00
+ *
+ *
  */
 @Service
 public class RoleServiceImpl implements RoleService {

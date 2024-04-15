@@ -1,9 +1,6 @@
 /**
- * @(#)RoleDao.java 2021/08/24.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/08/24.
+ * @(#)RoleDao.java.
+ *
  * Version 1.00.
  */
 package poly.store.dao;
@@ -20,8 +17,8 @@ import poly.store.entity.UserRole;
 /**
  * Class thuc hien truy van thong tin bang Role trong database
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 public interface RoleDao extends JpaRepository<Role, Integer>{
 	@Query("SELECT u.role.name FROM UserRole u WHERE u.user.id = :uid")

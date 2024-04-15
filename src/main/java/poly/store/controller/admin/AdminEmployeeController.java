@@ -1,9 +1,6 @@
 /**
- * @(#)AdminEmployeeController.java 2021/09/10.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/13.
+ * @(#)AdminEmployeeController.java.
+ *
  * Version 1.00.
  */
 package poly.store.controller.admin;
@@ -20,8 +17,8 @@ import poly.store.common.Constants;
 /**
  * Class dung de quan ly nhan vien
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Controller
 public class AdminEmployeeController {

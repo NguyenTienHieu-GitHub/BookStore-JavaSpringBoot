@@ -1,9 +1,6 @@
 /**
- * @(#)Constants.java 2021/09/08.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/10.
+ * @(#)Constants.java.
+ *
  * Version 1.00.
  */
 package poly.store.common;
@@ -11,8 +8,8 @@ package poly.store.common;
 /**
  * Class chua thong tin constant
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 public class Constants {
 

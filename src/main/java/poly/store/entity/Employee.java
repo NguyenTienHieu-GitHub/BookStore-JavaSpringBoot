@@ -1,9 +1,6 @@
 /**
- * @(#)Employee.java 2021/09/10.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/10.
+ * @(#)Employee.java.
+ *
  * Version 1.00.
  */
 package poly.store.entity;
@@ -27,8 +24,8 @@ import lombok.NoArgsConstructor;
 /**
  * Class chua thong tin Employee
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @SuppressWarnings("serial")
 @Data

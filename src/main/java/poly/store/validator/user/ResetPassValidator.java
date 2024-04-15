@@ -1,9 +1,6 @@
 /**
- * @(#)ResetPassValidator.java 2021/08/27.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/08/27.
+ * @(#)ResetPassValidator.java.
+ *
  * Version 1.00.
  */
 package poly.store.validator.user;
@@ -18,8 +15,8 @@ import poly.store.model.ResetPassword;
 /**
  * Class bat loi form reset-password.html
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Component
 public class ResetPassValidator implements Validator {

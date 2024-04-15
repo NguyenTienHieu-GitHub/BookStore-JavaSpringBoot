@@ -1,9 +1,6 @@
 /**
- * @(#)AdminProductController.java 2021/10/08.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/10/08.
+ * @(#)AdminProductController.java.
+ *
  * Version 1.00.
  */
 package poly.store.controller.admin;
@@ -18,8 +15,8 @@ import poly.store.common.Constants;
 /**
  * Class dung de quan ly san pham
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Controller
 public class AdminProductController {

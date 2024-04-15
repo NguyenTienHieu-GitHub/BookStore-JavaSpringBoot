@@ -1,9 +1,6 @@
 /**
- * @(#)AdminIndexController.java 2021/09/10.
- * 
- * Copyright(C) 2021 by PHOENIX TEAM.
- * 
- * Last_Update 2021/09/10.
+ * @(#)AdminIndexController.java.
+ *
  * Version 1.00.
  */
 package poly.store.controller.admin;
@@ -26,8 +23,8 @@ import poly.store.service.UserService;
 /**
  * Class de hien thi trang chu quan tri
  * 
- * @author khoa-ph
- * @version 1.00
+ *
+ *
  */
 @Controller
 public class AdminIndexController {
