@@ -345,12 +345,12 @@ $(document).delegate('.agree', 'click', function(e) {
 		dataType: 'html',
 		success: function(data) {
 			// Log the AJAX response data to check if it contains the expected content
-			console.log('AJAX Response Data:', data);
+			// console.log('AJAX Response Data:', data);
 
 			// Wait for the document to be ready before accessing the content
 			$(document).ready(function() {
 				// Check if the content exists and log it
-				var content = $('#policy-text').html();
+				var content = $(data).find('#policy-text').html();
 				console.log('Content:', content);
 
 				// Proceed only if content exists
@@ -380,7 +380,6 @@ $(document).delegate('.agree', 'click', function(e) {
 		}
 	});
 });
-
 
 // Autocomplete */
 (function($) {
