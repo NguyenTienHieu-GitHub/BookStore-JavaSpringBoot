@@ -120,13 +120,13 @@ public class CheckOutController {
 		cartService.clearDiscount();
 		model.addAttribute("cart", cartService);
 		
-		mailerService.queue(address.getUser().getEmail(), "Đặt Hàng Thành Công Tại Web FAHASA", 
+		mailerService.queue(address.getUser().getEmail(), "Đặt Hàng Thành Công Tại Web BookStore Fahasha",
 				"Kính chào " + address.getUser().getFullname() +",<br>"
 				+ "Cảm ơn bạn đã mua hàng tại FAHASA. Mã đơn hàng của bạn là " + code + "<br>"
 				+ "Xin vui lòng click vào đường link http://localhost:8080/account/order/invoice/" + code + " để xem chi tiết hóa đơn.<br>"
 				+ "<br><br>"
 				+ "Xin chân thành cảm ơn đã sử dụng dịch vụ,<br>"
-				+ "FASAHA SHOP");
+				+ "BOOKSTORE FASAHA");
 		
 		
 		return "redirect:/shop/cart/checkout/success";
