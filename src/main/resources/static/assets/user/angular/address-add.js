@@ -45,8 +45,8 @@ function checkForm(){
         check = 0;
     }
     else{
-        if(detail.length < 10 || detail.length > 200){
-            $("#errorDetail").text("Địa chỉ nhận hàng phải từ 10 đến 200 ký tự!");
+        if(detail.length < 5 || detail.length > 200){
+            $("#errorDetail").text("Địa chỉ nhận hàng phải từ 5 đến 200 ký tự!");
             $("#detail").css("border-color", "#dc3545"); 
             $("#lblDetail").css("color", "#dc3545"); 
             check = 0;
@@ -123,6 +123,8 @@ app.controller("address-add-ctrl", function ($scope, $http) {
   $scope.initialize = function () {
     $http.get("/rest/province").then((resp) => {
       $scope.province = resp.data;
+    }).catch(function(error) {
+        console.error('Error loading json:', error);
     });
   };
 
@@ -132,6 +134,8 @@ app.controller("address-add-ctrl", function ($scope, $http) {
     var id = $("#province").val();
     $http.get("/rest/district/" + id).then((resp) => {
       $scope.district = resp.data;
+    }).catch(function(error) {
+        console.error('Error loading provinces:', error);
     });
   });
 
@@ -140,20 +144,26 @@ app.controller("address-add-ctrl", function ($scope, $http) {
     var idDistrict = $("#district").val();
     $http.get("/rest/ward/" + idProvince + "/" + idDistrict).then((resp) => {
       $scope.ward = resp.data;
+    }).catch(function(error) {
+        console.error('Error loading wards:', error);
     });
   });
 
-  $scope.addAddress = function () {
+  $scope.updateAddress = function () {
     if(checkForm()){
         $scope.form.province = $("#province").val();
         $scope.form.district = $("#district").val();
         $scope.form.ward = $("#ward").val();
         var item = angular.copy($scope.form);
-        $http.post(`/rest/address/form`, item).then((resp) => {           
+        $http.post(`/rest/address/form`, item).then((resp) => {
             $scope.form = {};
             $("#alert").show();
+        }).catch(function(error) {
+            console.error('Error loading address/form:', error);
         });
     }
   }
 });
+
+
 

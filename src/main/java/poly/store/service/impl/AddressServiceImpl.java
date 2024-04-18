@@ -29,15 +29,15 @@ public class AddressServiceImpl implements AddressService{
 	
 	@Autowired
 	UserDao userDao;
-	
+
 	@Override
 	public List<Address> findListAddressByEmail(String username) {
 		return addressDao.findListAddressByEmail(username);
 	}
 
 	RestTemplate rest = new RestTemplate();
-	String url = "https://addressapi-812db-default-rtdb.firebaseio.com/.json";
-	
+	String url = "https://provinces-1b7c6-default-rtdb.firebaseio.com/.json";
+
 	@Override
 	public List<Province> findAllProvince() {
 		ProvinceDao list = rest.getForObject(url, ProvinceDao.class);
@@ -46,7 +46,7 @@ public class AddressServiceImpl implements AddressService{
 
 	@Override
 	public List<District> findDistrictByIdProvince(Integer id) {
-		ProvinceDao list = rest.getForObject(url, ProvinceDao.class);	
+		ProvinceDao list = rest.getForObject(url, ProvinceDao.class);
 		List<District> listDistrict = list.get(id).getDistricts();		
 		return listDistrict;
 	}

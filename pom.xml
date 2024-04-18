@@ -87,7 +87,13 @@
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>8.0.0</version> <!-- Replace with the latest version -->
+		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>

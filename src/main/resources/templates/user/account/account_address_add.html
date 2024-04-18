@@ -68,8 +68,7 @@
 							for="input-payment-country">Tỉnh/ Thành phố</label>
 						<div class="col-sm-10">
 							<select class="form-control" id="province">
-								<option hidden="true" value="">Vui lòng chọn tỉnh/thành
-									phố</option>
+								<option hidden="true" value="">Vui lòng chọn tỉnh/thành phố</option>
 								<option ng-repeat="item in province" ng-value="$index" ng-selected="item.name == form.province">
 									{{item.name}}</option>
 							</select>
@@ -104,11 +103,10 @@
 				<div class="buttons clearfix">
 					<input type="hidden" id="demo" th:value="${addressId}" />
 					<div class="pull-left">
-						<a th:href="@{/account/address}" class="btn btn-default">Trở
-							lại</a>
+						<a th:href="@{/account/address}" class="btn btn-default">Trở lại</a>
 					</div>
 					<div class="pull-right">
-						<a ng-click="updateAddress()" class="btn btn-primary">Tiếp tục</a>
+						<a ng-click="updateAddress()" class="btn btn-primary">Tiếp Tục</a>
 					</div>
 				</div>
 			</div>

@@ -31,8 +31,9 @@
 						<td class="text-left">[[${item.Fullname}]]<br />[[${item.detail}]]<br />[[${item.phone}]]<br />[[${item.ward}]],
 							[[${item.district}]], [[${item.province}]]
 						</td>
-						<td class="text-right"><a th:href="@{|/account/address/update/${item.id}|}" class="btn btn-info">Chỉnh
-								sửa</a> &nbsp; <a th:href="@{|/account/address/delete/${item.id}|}" class="btn btn-danger">Xóa</a></td>
+						<td class="text-right">
+							<a th:href="@{|/account/address/update/${item.id}|}" class="btn btn-info">Chỉnh sửa</a> &nbsp;
+							<a th:href="@{|/account/address/delete/${item.id}|}" class="btn btn-danger">Xóa</a></td>
 					</tr>
 				</table>
 			</div>

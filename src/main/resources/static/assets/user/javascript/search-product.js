@@ -47,6 +47,7 @@ function hiddenIcon() {
 	if (inputSearch.value !== '') {
 		// Input có giá trị
 		xmarkIcon.classList.add("active"); // Hiển thị icon
+
 		// console.log("Input có giá trị");
 	} else {
 		// Input không có giá trị

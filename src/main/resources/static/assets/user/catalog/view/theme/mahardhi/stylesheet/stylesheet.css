@@ -2042,7 +2042,9 @@ ul.category-list > li {
     color: var(--primary-hover-color);
     background: var(--secondary-color);
 }
-
+.btn-icon-search:hover i{
+    font-weight: 900;
+}
 /* list group */
 .list-group a {
     border: none;
