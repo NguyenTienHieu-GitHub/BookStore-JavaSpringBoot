@@ -5,7 +5,7 @@ $(document).ready(function(){
 });
 
 function disableAddress(){
-    $("#txtAddress").text("Bước 1: Phương thức vận chuyển");
+    $("#txtAddress").text("Bước 2: Địa chỉ giao hàng");
     $("#btnAddress").css("display", "none");
     $("#collapse-payment-address").css("display", "none");
 }
@@ -97,8 +97,8 @@ function checkForm(){
         check = 0;
     }
     else{
-        if(detail.length < 10 || detail.length > 200){
-            $("#errorDetail").text("Địa chỉ nhận hàng phải từ 10 đến 200 ký tự!");
+        if(detail.length < 5 || detail.length > 200){
+            $("#errorDetail").text("Địa chỉ nhận hàng phải từ 5 đến 200 ký tự!");
             $("#detail").css("border-color", "#dc3545"); 
             $("#lblDetail").css("color", "#dc3545"); 
             check = 0;
@@ -201,12 +201,26 @@ app.controller("checkout-ctrl", function ($scope, $http) {
         $scope.form.district = $("#district").val();
         $scope.form.ward = $("#ward").val();
         var item = angular.copy($scope.form);
-        $http.post(`/rest/address/form`, item).then((resp) => {           
+        $http.post(`/rest/address/form`, item).then((resp) => {
+            // Lưu trữ cờ vào localStorage
+            localStorage.setItem('showAlert', 'true');
             location.reload();
+        }).catch(function(error) {
+            console.error('Error loading address/form:', error);
         });
     }
   }
 });
+
+// Kiểm tra xem có hiển thị alert sau khi trang đã tải lại không
+      $(document).ready(function () {
+          var showAlert = localStorage.getItem('showAlert');
+          if (showAlert === 'true') {
+              $("#alert").show();
+              // Xóa cờ khỏi localStorage sau khi đã hiển thị alert
+              localStorage.removeItem('showAlert');
+          }
+      });
 
 function transferAddress(){
 	enableAddress();
