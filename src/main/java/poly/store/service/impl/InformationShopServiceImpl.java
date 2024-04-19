@@ -123,7 +123,7 @@ public class InformationShopServiceImpl implements InformationShopService{
 	public InformationShop getOneInformationShop() {	
 		InformationShop informationShop = informationDao.getOneInformationShop();
 		String phone = informationShop.getPhone().substring(0, 3) + "-" + informationShop.getPhone().substring(3, 6) + "-" + informationShop.getPhone().substring(6);
-		String fax = "+82 " + informationShop.getFax().substring(1, 4) + " " + informationShop.getFax().substring(4, 7) + " " + informationShop.getFax().substring(7);
+		String fax = "+84 " + informationShop.getFax().substring(1, 4) + " " + informationShop.getFax().substring(4, 7) + " " + informationShop.getFax().substring(7);
 		informationShop.setPhone(phone);
 		informationShop.setFax(fax);
 		return informationShop;
