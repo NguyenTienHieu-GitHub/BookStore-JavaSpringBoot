@@ -1,8 +1,4 @@
-/**
- * @(#)Page404Controller.java.
- *
- * Version 1.00.
- */
+
 package poly.store.controller.user;
 
 import org.springframework.stereotype.Controller;
@@ -14,10 +10,6 @@ import poly.store.common.Constants;
 /**
  * Class hien thi man hinh loi 
  * khi nguoi dung truy cap khong dung vai tro
- * 
- *
- *
- *
  */
 @Controller
 public class Page404Controller {

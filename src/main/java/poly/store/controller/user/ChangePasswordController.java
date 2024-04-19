@@ -7,8 +7,10 @@ import poly.store.common.Constants;
 
 @Controller
 public class ChangePasswordController {
+	// Hiển thị trang thay đổi mật khẩu
 	@GetMapping("/account/change-password")
 	public String index() {
-		return Constants.USER_DISPLAY_ACCOUNT_CHANGE_PASSWORD;
+		return Constants.USER_DISPLAY_ACCOUNT_CHANGE_PASSWORD; // Trả về trang hiển thị thay đổi mật khẩu
 	}
 }
+

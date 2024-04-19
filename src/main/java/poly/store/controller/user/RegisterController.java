@@ -1,14 +1,8 @@
-/**
- * @(#)RegisterController.java.
- *
- * Version 1.00.
- */
 package poly.store.controller.user;
 
 import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,138 +25,89 @@ import poly.store.service.UserService;
 import poly.store.service.impl.MailerServiceImpl;
 import poly.store.validator.user.RegisterFormValidator;
 
-/**
- * Class tao moi mot tai khoan
- * 
- *
- *
- *
- */
 @Controller
 public class RegisterController {
-	// Thong tin bat loi form
 	@Autowired
-	RegisterFormValidator registerFormValidator;
+	RegisterFormValidator registerFormValidator; // Validator để kiểm tra định dạng của dữ liệu đăng ký
 
-	// Thong tin user service
 	@Autowired
-	UserService userService;
+	UserService userService; // Service để thao tác với thông tin người dùng
 
-	// Class cung cap cac service lam viec voi session
 	@Autowired
-	SessionService sessionService;
+	SessionService sessionService; // Service để quản lý session của người dùng
 
-	// Class cung cap service gui mail
 	@Autowired
-	MailerServiceImpl mailerService;
+	MailerServiceImpl mailerService; // Service để gửi email
 
-	// Thong tin role service
 	@Autowired
-	RoleService roleService;
+	RoleService roleService; // Service để quản lý vai trò của người dùng
 
-	// Thong tin user role service
 	@Autowired
-	UserRoleService userRoleService;
+	UserRoleService userRoleService; // Service để quản lý mối quan hệ giữa người dùng và vai trò
 
-	/**
-	 * Rang buoc form voi trinh bat loi
-	 * 
-	 * @param binder
-	 */
+	// Thiết lập Validator cho đối tượng UserRegister
 	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		Object target = binder.getTarget();
-		if (target == null) {
-			return;
+	public void initBinder(WebDataBinder binder) { // Khai báo phương thức initBinder với tham số là WebDataBinder
+		Object target = binder.getTarget(); // Lấy đối tượng mục tiêu từ binder
+		if (target == null) { // Nếu mục tiêu là null
+			return; // Kết thúc phương thức
 		}
-		if (target.getClass() == UserRegister.class) {
-			binder.setValidator(registerFormValidator);
+		if (target.getClass() == UserRegister.class) { // Nếu lớp của mục tiêu là UserRegister
+			binder.setValidator(registerFormValidator); // Thiết lập validator cho binder
 		}
 	}
 
-	/**
-	 * Hien thi trang register
-	 * 
-	 * @param model
-	 * @return man hinh register
-	 */
+	// Xử lý yêu cầu GET để hiển thị form đăng ký
 	@GetMapping("/register")
-	public String displayFormRegister(Model model) {
-		// Rang buoc form ten userRegister voi model UserRegister.class
-		UserRegister userRegister = new UserRegister();
-		model.addAttribute("userRegister", userRegister);
+	public String displayFormRegister(Model model) { // Phương thức hiển thị form đăng ký, nhận một Model làm tham số
+		UserRegister userRegister = new UserRegister(); // Tạo một đối tượng UserRegister mới
+		model.addAttribute("userRegister", userRegister); // Thêm đối tượng UserRegister vào model với tên là "userRegister"
 
-		// Hien thi trang register
-		return Constants.USER_DISPLAY_REGISTER;
+		return Constants.USER_DISPLAY_REGISTER; // Trả về view cho form đăng ký
 	}
 
-	/**
-	 * Xu ly form register
-	 * 
-	 * @param model
-	 * @param userRegister
-	 * @param result
-	 * @return Trang register neu co loi. Nguoc lai qua trang xac thuc email.
-	 */
+	// Xử lý yêu cầu POST từ form đăng ký
 	@PostMapping("/register")
-	public String handlerRegisterForm(Model model, @ModelAttribute("userRegister") @Validated UserRegister userRegister,
-			BindingResult result) {
+	public String handlerRegisterForm(Model model,
+									  @ModelAttribute("userRegister") @Validated UserRegister userRegister,
+									  BindingResult result) {
 		if (result.hasErrors()) {
-			return Constants.USER_DISPLAY_REGISTER;
+			return Constants.USER_DISPLAY_REGISTER; // Nếu có lỗi, hiển thị lại form đăng ký
 		} else {
 			if (userRegister.isConfirmTerm() == false) {
 				model.addAttribute("checkTerm", true);
-				return Constants.USER_DISPLAY_REGISTER;
+				return Constants.USER_DISPLAY_REGISTER; // Nếu không đồng ý điều khoản, hiển thị lại form đăng ký
 			} else {
-				// Random ma xac nhan co 6 chu so
+				// Tạo mã xác nhận và gửi qua email
 				int code = (int) Math.floor(((Math.random() * 899999) + 100000));
 				userRegister.setCode(code);
-				// Gui ma xac nhan qua mail
 				mailerService.queue(userRegister.getEmail(), "Xác nhận email!", "Code xác nhận của bạn là: " + code);
 
-				// Luu thong tin vao session user de tien hanh xac nhan ma
-				sessionService.set("user", userRegister);
+				sessionService.set("user", userRegister); // Lưu thông tin người dùng vào session
 			}
 		}
-		return Constants.USER_DISPLAY_CONFIRM_CODE;
+		return Constants.USER_DISPLAY_CONFIRM_CODE; // Chuyển hướng đến trang xác nhận mã
 	}
 
-	/**
-	 * Hien thi man hinh dang ky neu nguoi dung refresh page Muc dich la han che
-	 * nguoi dung truy cap trai phep
-	 * 
-	 * @param model
-	 * @return trang register
-	 */
+	// Xử lý yêu cầu GET để hiển thị form xác nhận mã
 	@GetMapping("/register/confirm-code")
 	public String displayFormConfirmMail(Model model) {
-		// Hien thi trang register
-		return "redirect:/register";
+		return "redirect:/register"; // Chuyển hướng về trang đăng ký nếu truy cập trực tiếp vào đường dẫn này
 	}
 
-	/**
-	 * Xu ly trang confirm-code
-	 * 
-	 * @param model
-	 * @param userRegisterForm
-	 * @param result
-	 * @return Trang dang ky thanh cong.
-	 */
+	// Xử lý yêu cầu POST từ form xác nhận mã
 	@PostMapping("/register/confirm-code")
 	public String handlerFormConfirmMail(Model model,
-			@ModelAttribute("userRegister") @Validated UserRegister userRegisterForm, BindingResult result) {
-		// Lay thong tin session user
-		UserRegister userRegister = sessionService.get("user");
-		// Bat loi bo trong field
-		if (userRegisterForm.getConfirmCode().isEmpty()) {
-			result.rejectValue("confirmCode", "NotBlank.userRegister.confirmCode");
+										 @ModelAttribute("userRegister") @Validated UserRegister userRegisterForm, BindingResult result) {
+		UserRegister userRegister = sessionService.get("user"); // Lấy thông tin đăng ký từ session
+		if (userRegisterForm.getConfirmCode().isEmpty()) { // Nếu mã xác nhận trống
+			result.rejectValue("confirmCode", "NotBlank.userRegister.confirmCode"); // Thêm lỗi vào BindingResult
 		} else {
-			// Bat loi ma xac nhan nguoi dung nhap khong trung voi code
-			if (!userRegisterForm.getConfirmCode().equals(String.valueOf(userRegister.getCode()))) {
-				result.rejectValue("confirmCode", "NotDuplicate.userRegister.confirmCode");
+			if (!userRegisterForm.getConfirmCode().equals(String.valueOf(userRegister.getCode()))) { // Nếu mã xác nhận không đúng
+				result.rejectValue("confirmCode", "NotDuplicate.userRegister.confirmCode"); // Thêm lỗi vào BindingResult
 			} else {
-				Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-				// Them moi mot user
+				// Tạo mới thông tin người dùng và lưu vào cơ sở dữ liệu
+				Timestamp timestamp = new Timestamp(System.currentTimeMillis()); // Lấy thời gian hiện tại
 				User user = new User();
 				user.setEmail(userRegister.getEmail());
 				user.setFullname(userRegister.getFullName());
@@ -170,24 +115,22 @@ public class RegisterController {
 				user.setCreateday(timestamp.toString());
 				user.setSubscribe(userRegister.getSubscribe());
 				userService.save(user);
-				// Tim thong tin role theo roleId
-				Role role = roleService.findRoleById(1);
-				// Them moi mot user co vai tro la ROLE_USER
+
+				// Lấy vai trò mặc định và lưu mối quan hệ người dùng-vai trò vào cơ sở dữ liệu
+				Role role = roleService.findRoleById(1); // Tìm vai trò mặc định
 				UserRole userRole = new UserRole();
 				userRole.setUser(user);
 				userRole.setRole(role);
 				userRoleService.save(userRole);
-				// Xoa thong tin session user cu
-				sessionService.remove("user");
+				sessionService.remove("user"); // Xóa thông tin người dùng khỏi session
 
-				// Hien thi man hinh dang ky thanh cong
+				// Hiển thị thông báo đăng ký thành công
 				model.addAttribute("alert", "Đăng ký thành công!");
 				model.addAttribute("message", "Chúc mừng bạn đã tạo mới một tài khoản thành công!");
 				return Constants.USER_DISPLAY_ALERT_STATUS;
 			}
 		}
 
-		// Hien thi lai man hinh xac nhan neu co loi
-		return Constants.USER_DISPLAY_CONFIRM_CODE;
+		return Constants.USER_DISPLAY_CONFIRM_CODE; // Hiển thị lại form xác nhận mã nếu có lỗi
 	}
 }

@@ -1,8 +1,3 @@
-/**
- * @(#)LoginController.java.
- *
- * Version 1.00.
- */
 package poly.store.controller.user;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,84 +18,58 @@ import poly.store.model.UserLogin;
 import poly.store.service.UserService;
 import poly.store.validator.user.LoginFormValidator;
 
-/**
- * Class su ly cac hoat dong dang nhap cua nguoi dung
- * 
- *
- *
- */
 @Controller
 public class LoginController {
 
-	// Trinh bat loi form
 	@Autowired
 	LoginFormValidator loginFormValidator;
 
-	// Cung cap cac dich vu cho lop user
 	@Autowired
 	UserService userService;
 
-	/**
-	 * Rang buoc form voi trinh bat loi
-	 * 
-	 * @param binder
-	 */
+	// Phương thức initBinder được gọi trước mỗi request để cấu hình WebDataBinder
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+		// Lấy đối tượng target (đối tượng được binding)
 		Object target = binder.getTarget();
 		if (target == null) {
 			return;
 		}
+		// Nếu đối tượng là UserLogin, thiết lập trình kiểm tra lỗi
 		if (target.getClass() == UserLogin.class) {
 			binder.setValidator(loginFormValidator);
 		}
 	}
 
-	/**
-	 * Hien thi trang login
-	 * 
-	 * @return trang login.html
-	 */
+	// Xử lý request GET đến "/login"
 	@GetMapping("/login")
 	public String login(Model model) {
-		// Rang buoc form ten userLogin voi model UserLogin.java
+		// Khởi tạo đối tượng UserLogin và thêm vào model để binding với form
 		UserLogin userLogin = new UserLogin();
 		model.addAttribute("userLogin", userLogin);
 
-		// Hien thi trang login.html
+		// Trả về trang đăng nhập
 		return Constants.USER_DISPLAY_LOGIN;
 	}
-	
-	/**
-	 * Xu ly qua trinh login
-	 * 
-	 * @param model
-	 * @param userLogin
-	 * @param result
-	 * @return Man hinh login neu co loi. Nguoc lai quay lai trang chu
-	 */
+
+	// Xử lý request POST đến "/login"
 	@PostMapping("/login")
 	public String handlerLoginForm(Model model, @ModelAttribute("userLogin") @Validated UserLogin userLogin,
-			BindingResult result) {
-		// Neu co loi se quay tro lai trang login
+								   BindingResult result) {
+		// Kiểm tra tính hợp lệ của dữ liệu nhập vào
 		if (result.hasErrors()) {
+			// Nếu có lỗi, quay lại trang đăng nhập để hiển thị lỗi
 			return Constants.USER_DISPLAY_LOGIN;
 		}
 
-		// Hien thi trang chu nguoi dung
+		// Nếu không có lỗi, chuyển hướng đến trang chính của ứng dụng
 		return Constants.USER_DISPLAY_INDEX;
 	}
-	
-	/**
-	 * Xu ly khi nguoi dung dang nhap thanh cong
-	 * 
-	 * @param model
-	 * @param principal
-	 * @return man hinh trang chu
-	 */
+
+	// Xử lý request GET đến "/login/success"
 	@GetMapping("/login/success")
 	public String loginSuccess(Model model, HttpServletRequest request) {
-		// Hien thi trang chu nguoi dung
+		// Chuyển hướng người dùng đến trang chính của ứng dụng
 		return "redirect:/index";
 	}
 }

@@ -12,11 +12,15 @@ import poly.store.service.UserService;
 @Controller
 public class ContactController {
 	@Autowired
-	ContactService contactService;
+	ContactService contactService; // Dịch vụ quản lý liên hệ
+
 	@Autowired
-	UserService userService;
+	UserService userService; // Dịch vụ quản lý người dùng
+
+	// Hiển thị trang liên hệ
 	@GetMapping("/contact")
 	public String index(Model model) {
-		return Constants.USER_DISPLAY_CONTACT;
+		return Constants.USER_DISPLAY_CONTACT; // Trả về trang hiển thị liên hệ
 	}
 }
+
