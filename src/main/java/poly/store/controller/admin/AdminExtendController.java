@@ -8,23 +8,18 @@ import poly.store.common.Constants;
 
 @Controller
 public class AdminExtendController {
-	/**
-	 * Hien thi giao dien tao thong so
-	 * 
-	 * @return trang tao thong so
-	 */
+
+	// Phương thức này xử lý khi người dùng truy cập vào trang mở rộng để quản lý các đặc tính (specification).
 	@GetMapping("/admin/extend/specification")
 	public String specification(Model model) {
+		// Trả về tên của view để hiển thị trang quản lý đặc tính
 		return Constants.USER_DISPLAY_ADMIN_EXTEND_SPECIFICATION;
 	}
-	
-	/**
-	 * Hien thi giao dien chinh sua hinh
-	 * 
-	 * @return trang chinh sua hinh
-	 */
+
+	// Phương thức này xử lý khi người dùng truy cập vào trang mở rộng để cắt ảnh (crop image).
 	@GetMapping("/admin/extend/crop-image")
 	public String cropImage(Model model) {
+		// Trả về tên của view để hiển thị trang cắt ảnh
 		return Constants.USER_DISPLAY_ADMIN_EXTEND_CROP_IMAGE;
 	}
 }

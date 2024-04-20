@@ -1,154 +1,145 @@
-/**
- * @(#)Constants.java.
- *
- * Version 1.00.
- */
 package poly.store.common;
 
 /**
- * Class chua thong tin constant
- * 
- *
- *
+ * Class chứa các hằng số.
  */
 public class Constants {
 
-	/* List man hinh user */
-	// Duong dan den man hinh trang chu nguoi dung
+	/* List màn hình người dùng */
+	// Đường dẫn đến màn hình trang chủ người dùng
 	public static final String USER_DISPLAY_INDEX = "user/home/index";
-	// Duong dan den man hinh blog
+	// Đường dẫn đến màn hình blog
 	public static final String USER_DISPLAY_BLOG = "user/blog/blog_index";
-	// Duong dan den man hinh blog detail
+	// Đường dẫn đến màn hình chi tiết blog
 	public static final String USER_DISPLAY_BLOG_DETAIL = "user/blog/blog_detail";
-	// Duong dan den man hinh login nguoi dung
+	// Đường dẫn đến màn hình đăng nhập người dùng
 	public static final String USER_DISPLAY_LOGIN = "user/security/login";
-	// Duong dan den man hinh register
+	// Đường dẫn đến màn hình đăng ký
 	public static final String USER_DISPLAY_REGISTER = "user/security/register";
-	// Duong dan den man hinh confirm code
+	// Đường dẫn đến màn hình xác nhận mã
 	public static final String USER_DISPLAY_CONFIRM_CODE = "user/security/confirm-code";
-	// Duong dan den man hinh success
+	// Đường dẫn đến màn hình thành công
 	public static final String USER_DISPLAY_ALERT_STATUS = "user/security/success";
-	// Duong dan den man hinh forget password
+	// Đường dẫn đến màn hình quên mật khẩu
 	public static final String USER_DISPLAY_FORGET_PASSWORD = "user/security/forget-password";
-	// Duong dan den man hinh reset password
+	// Đường dẫn đến màn hình đặt lại mật khẩu
 	public static final String USER_DISPLAY_RESET_PASSWORD = "user/security/reset-password";
-	// Duong dan den man hinh 404 page
+	// Đường dẫn đến màn hình 404
 	public static final String USER_DISPLAY_404_PAGE = "user/security/404page";
-	// Duong dan den man hinh danh sach san pham
+	// Đường dẫn đến màn hình danh sách sản phẩm theo danh mục
 	public static final String USER_DISPLAY_LIST_PRODUCT_BY_CATEGORY = "user/list/list_by_category";
-	// Duong dan den man hinh danh sach uu dai
+	// Đường dẫn đến màn hình danh sách sản phẩm theo ưu đãi
 	public static final String USER_DISPLAY_LIST_PRODUCT_BY_SALES = "user/list/list_by_sales";
-	// Duong dan den man hinh tim kiem
+	// Đường dẫn đến màn hình tìm kiếm
 	public static final String USER_DISPLAY_LIST_PRODUCT_BY_SEARCH = "user/list/list_by_search";
-	// Duong dan den man hinh chi tiet san pham
+	// Đường dẫn đến màn hình chi tiết sản phẩm
 	public static final String USER_DISPLAY_DETAIL_PRODUCT = "user/detail/product_detail";
-	// Duong dan den man hinh gio hang
+	// Đường dẫn đến màn hình giỏ hàng
 	public static final String USER_DISPLAY_SHOPPING_CART = "user/cart/shopping_cart";
-	// Duong dan den man hinh thanh toan
+	// Đường dẫn đến màn hình thanh toán
 	public static final String USER_DISPLAY_CHECKOUT = "user/checkout/checkout_form";
-	// Duong dan den man hinh thanh toan thanh cong
+	// Đường dẫn đến màn hình thanh toán thành công
 	public static final String USER_DISPLAY_CHECKOUT_SUCCESS = "user/checkout/success";
-	// Duong dan den man hinh tai khoan
+	// Đường dẫn đến màn hình tài khoản
 	public static final String USER_DISPLAY_ACCOUNT_PAGE = "user/account/account_index";
-	// Duong dan den man hinh thong tin tai khoan
+	// Đường dẫn đến màn hình thông tin tài khoản
 	public static final String USER_DISPLAY_ACCOUNT_INFORMATION = "user/account/account_information";
-	// Duong dan den man hinh thay doi mat khau
+	// Đường dẫn đến màn hình thay đổi mật khẩu
 	public static final String USER_DISPLAY_ACCOUNT_CHANGE_PASSWORD = "user/account/account_change_password";
-	// Duong dan den man hinh dia chi
+	// Đường dẫn đến màn hình địa chỉ
 	public static final String USER_DISPLAY_ACCOUNT_ADDRESS = "user/account/account_address";
-	// Duong dan den man hinh them dia chi
+	// Đường dẫn đến màn hình thêm địa chỉ
 	public static final String USER_DISPLAY_ACCOUNT_ADDRESS_ADD = "user/account/account_address_add";
-	// Duong dan den man hinh yeu thich
+	// Đường dẫn đến màn hình yêu thích
 	public static final String USER_DISPLAY_ACCOUNT_FAVORITE = "user/account/account_favorite";
-	// Duong dan den man hinh lien he
+	// Đường dẫn đến màn hình liên hệ
 	public static final String USER_DISPLAY_CONTACT = "user/contact/contact_form";
-	// Duong dan den man hinh lich su don hang
+	// Đường dẫn đến màn hình lịch sử đơn hàng
 	public static final String USER_DISPLAY_ACCOUNT_ORDER = "user/account/account_order";
-	// Duong dan den man hinh hoa don chi tiet
+	// Đường dẫn đến màn hình hóa đơn chi tiết
 	public static final String USER_DISPLAY_ACCOUNT_INVOICE = "user/account/account_invoice";
-	// Duong dan den man hinh tim kiem don hang
+	// Đường dẫn đến màn hình tìm kiếm đơn hàng
 	public static final String USER_DISPLAY_ACCOUNT_ORDER_SEARCH = "user/account/account_order_search";
-	// Duong dan den man hinh About US
+	// Đường dẫn đến màn hình Giới thiệu
 	public static final String USER_DISPLAY_IMFORMATION_ABOUT_US = "user/information/about_us";
-	// Duong dan den man hinh delivery
+	// Đường dẫn đến màn hình giao hàng
 	public static final String USER_DISPLAY_IMFORMATION_DELIVERY = "user/information/delivery";
-	// Duong dan den man hinh policy
+	// Đường dẫn đến màn hình chính sách
 	public static final String USER_DISPLAY_IMFORMATION_POLICY = "user/information/policy";
-	// Duong dan den man hinh term-condition
+	// Đường dẫn đến màn hình điều khoản
 	public static final String USER_DISPLAY_IMFORMATION_TERM_CONDITION = "user/information/term_condition";
 
-	/* List man hinh admin */
-	// Duong dan den man hinh trang chu quan tri
+	/* List màn hình quản trị */
+	// Đường dẫn đến màn hình trang chủ quản trị
 	public static final String USER_DISPLAY_ADMIN_INDEX = "admin/dashboard/index";
-	// Duong dan den man hinh trang quan ly danh sach nhan vien
+	// Đường dẫn đến màn hình quản lý danh sách nhân viên
 	public static final String USER_DISPLAY_ADMIN_EMPLOYEE_LIST = "admin/employees/list";
-	// Duong dan den man hinh trang quan ly thong tin nhan vien
+	// Đường dẫn đến màn hình quản lý thông tin nhân viên
 	public static final String USER_DISPLAY_ADMIN_EMPLOYEE_FORM = "admin/employees/form";
-	// Duong dan den man hinh trang quan ly danh sach nhan vien
+	// Đường dẫn đến màn hình quản lý danh sách danh mục
 	public static final String USER_DISPLAY_ADMIN_CATEGORY_LIST = "admin/categories/list";
-	// Duong dan den man hinh trang quan ly thong tin danh muc
+	// Đường dẫn đến màn hình quản lý thông tin danh mục
 	public static final String USER_DISPLAY_ADMIN_CATEGORY_FORM = "admin/categories/form";
-	// Duong dan den man hinh trang quan ly danh sach nhan vien
+	// Đường dẫn đến màn hình quản lý danh sách nhà sản xuất
 	public static final String USER_DISPLAY_ADMIN_MANUFACTURER_LIST = "admin/manufactures/list";
-	// Duong dan den man hinh trang quan ly thong tin danh muc
+	// Đường dẫn đến màn hình quản lý thông tin nhà sản xuất
 	public static final String USER_DISPLAY_ADMIN_MANUFACTURER_FORM = "admin/manufactures/form";
-	// Duong dan den man hinh trang quan ly thong tin menu bac 1
+	// Đường dẫn đến màn hình quản lý thông tin menu cấp 1
 	public static final String USER_DISPLAY_ADMIN_NAV_FORM = "admin/menu/form";
-	// Duong dan den man hinh trang quan ly danh sach menu bac 1
+	// Đường dẫn đến màn hình quản lý danh sách menu cấp 1
 	public static final String USER_DISPLAY_ADMIN_NAV_LIST = "admin/menu/list";
-	// Duong dan den man hinh trang quan ly thong tin menu bac 2
+	// Đường dẫn đến màn hình quản lý thông tin menu cấp 2
 	public static final String USER_DISPLAY_ADMIN_NAV2_FORM = "admin/menu2/form";
-	// Duong dan den man hinh trang quan ly danh sach menu bac 2
+	// Đường dẫn đến màn hình quản lý danh sách menu cấp 2
 	public static final String USER_DISPLAY_ADMIN_NAV2_LIST = "admin/menu2/list";
-	// Duong dan den man hinh trang quan ly thong tin cua hang
+	// Đường dẫn đến màn hình quản lý thông tin cửa hàng
 	public static final String USER_DISPLAY_ADMIN_SHOP_FORM = "admin/informationShop/form";
-	// Duong dan den man hinh trang quan ly danh sach thong tin cua hang
+	// Đường dẫn đến màn hình quản lý danh sách thông tin cửa hàng
 	public static final String USER_DISPLAY_ADMIN_SHOP_LIST = "admin/informationShop/list";
-	// Duong dan den man hinh trang quan ly danh sach nhan vien
+	// Đường dẫn đến màn hình quản lý danh sách sản phẩm
 	public static final String USER_DISPLAY_ADMIN_PRODUCT_LIST = "admin/products/list";
-	// Duong dan den man hinh trang quan ly thong tin nhan vien
+	// Đường dẫn đến màn hình quản lý thông tin sản phẩm
 	public static final String USER_DISPLAY_ADMIN_PRODUCT_FORM = "admin/products/form";
-	// Duong dan den man hinh trang tao thong so
+	// Đường dẫn đến màn hình tạo thông số sản phẩm
 	public static final String USER_DISPLAY_ADMIN_EXTEND_SPECIFICATION = "admin/extend/create-specification";
-	// Duong dan den man hinh trang chinh sua hinh anh
+	// Đường dẫn đến màn hình chỉnh sửa hình ảnh
 	public static final String USER_DISPLAY_ADMIN_EXTEND_CROP_IMAGE = "admin/extend/crop-image";
-	// Duong dan den man hinh trang quan ly danh sach ma giam gia
+	// Đường dẫn đến màn hình quản lý danh sách mã giảm giá
 	public static final String USER_DISPLAY_ADMIN_DISCOUNT_LIST = "admin/discount/list";
-	// Duong dan den man hinh trang quan ly danh sach nguoi dung nhan ma giam gia
+	// Đường dẫn đến màn hình quản lý danh sách người dùng nhận mã giảm giá
 	public static final String USER_DISPLAY_ADMIN_DISCOUNT_USER_LIST = "admin/discount/listUserDiscount";
-	// Duong dan den man hinh trang quan ly thong tin nhan vien
+	// Đường dẫn đến màn hình quản lý thông tin mã giảm giá
 	public static final String USER_DISPLAY_ADMIN_DISCOUNT_FORM = "admin/discount/form";
-	// Duong dan den man hinh trang quan ly binh luan
+	// Đường dẫn đến màn hình quản lý binh luận
 	public static final String USER_DISPLAY_ADMIN_COMMENT_PENDING = "admin/comment/list_pending";
-	// Duong dan den man hinh trang quan ly binh luan
+	// Đường dẫn đến màn hình quản lý binh luận
 	public static final String USER_DISPLAY_ADMIN_COMMENT_APPROVED = "admin/comment/list_approved";
-	// Duong dan den man hinh trang don hang dang cho xy ly
+	// Đường dẫn đến màn hình đơn hàng đang chờ xử lý
 	public static final String USER_DISPLAY_ADMIN_ORDER_PENDING = "admin/order/order_pending";
-	// Duong dan den man hinh trang don hang dang cho giao
+	// Đường dẫn đến màn hình đơn hàng đang chờ giao
 	public static final String USER_DISPLAY_ADMIN_ORDER_SHIPPING = "admin/order/order_shipping";
-	// Duong dan den man hinh trang don hang thanh cong
+	// Đường dẫn đến màn hình đơn hàng thành công
 	public static final String USER_DISPLAY_ADMIN_ORDER_SUCCESS = "admin/order/order_success";
-	// Duong dan den man hinh trang don hang bi huy
+	// Đường dẫn đến màn hình đơn hàng bị hủy
 	public static final String USER_DISPLAY_ADMIN_ORDER_CANCEL = "admin/order/order_cancel";
-	// Duong dan den man hinh trang quan li thong tin blog
+	// Đường dẫn đến màn hình quản lý thông tin blog
 	public static final String USER_DISPLAY_ADMIN_BLOG_FORM = "admin/blog/blog_form";
-	// Duong dan den man hinh trang quan li danh sach blog
+	// Đường dẫn đến màn hình quản lý danh sách blog
 	public static final String USER_DISPLAY_ADMIN_BLOG_LIST = "admin/blog/blog_list";
-	// Duong dan den man hinh trang thong ke san pham ban chay theo ngay
+	// Đường dẫn đến màn hình thống kê sản phẩm bán chạy theo ngày
 	public static final String USER_DISPLAY_ADMIN_STATISTICAL_PRODUCT_DAY = "admin/statisticalProduct/top_product";
-	// Duong dan den man hinh trang thong ke san pham ton kho
-		public static final String USER_DISPLAY_ADMIN_STATISTICAL_WAREHOUSE_PRODUCT = "admin/statisticalProduct/warehouse_product";
-	// Duong dan den man hinh trang quan ly danh gia
+	// Đường dẫn đến màn hình thống kê sản phẩm tồn kho
+	public static final String USER_DISPLAY_ADMIN_STATISTICAL_WAREHOUSE_PRODUCT = "admin/statisticalProduct/warehouse_product";
+	// Đường dẫn đến màn hình quản lý danh sách đánh giá
 	public static final String USER_DISPLAY_ADMIN_CONTACT_PENDING = "admin/contact/list_pending";
-	// Duong dan den man hinh trang quan ly danh gia
+	// Đường dẫn đến màn hình quản lý danh sách đánh giá
 	public static final String USER_DISPLAY_ADMIN_CONTACT_APPROVED = "admin/contact/list_approved";
-	// Duong dan den man hinh trang thong ke doanh thu
+	// Đường dẫn đến màn hình thống kê doanh thu
 	public static final String USER_DISPLAY_ADMIN_STATISTICAL_REVENUE = "admin/statisticalRevenue/list";
-	// Duong dan den man hinh trang thong ke don hang
+	// Đường dẫn đến màn hình thống kê đơn hàng
 	public static final String USER_DISPLAY_ADMIN_STATISTICAL_ORDER = "admin/statisticalOrder/list";
-	// Duong dan den man hinh trang quan ly thong tin nguoi dung
+	// Đường dẫn đến màn hình quản lý thông tin người dùng
 	public static final String USER_DISPLAY_ADMIN_USER_FORM = "admin/user/form";
-	// Duong dan den man hinh trang quan ly danh sach thong tin nguoi dung
+	// Đường dẫn đến màn hình quản lý danh sách thông tin người dùng
 	public static final String USER_DISPLAY_ADMIN_USER_LIST = "admin/user/list";
-	
 }

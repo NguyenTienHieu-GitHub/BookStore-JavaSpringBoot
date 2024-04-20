@@ -11,25 +11,25 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 /**
- * Class chua cac cau hinh cho he thong
- * 
- *
- *
+ * Class cấu hình cho các resources trong ứng dụng.
  */
 @Configuration
 public class ResourcesConfig {
+
 	/**
-	 * Cau hinh file validator.properties
-	 * 
-	 * @return thong tin ms
+	 * Phương thức tạo bean MessageSource để cung cấp các thông điệp (messages) cho ứng dụng.
+	 * Thông điệp được lấy từ các tập tin properties trong thư mục classpath:messages/validator.
+	 * @return MessageSource - Bean MessageSource đã được cấu hình.
 	 */
 	@Bean("messageSource")
 	public MessageSource getMessageSource() {
+		// Tạo một instance của ReloadableResourceBundleMessageSource
 		ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
-		// Truyen duong dan validator.properties
+		// Xác định đường dẫn của các tập tin properties chứa thông điệp
 		ms.setBasename("classpath:messages/validator");
-		// Cho phep hien thi tieng viet
+		// Xác định mã hóa mặc định cho các thông điệp
 		ms.setDefaultEncoding("UTF-8");
+		// Trả về bean MessageSource đã được cấu hình
 		return ms;
 	}
 }
