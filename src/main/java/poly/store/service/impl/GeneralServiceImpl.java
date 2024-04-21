@@ -32,30 +32,30 @@ public class GeneralServiceImpl implements GeneralService {
 	@Autowired
 	EmployeeDao employeeDao;
 
+	// Phương thức tạo mới một nhân viên và tài khoản người dùng
 	@Override
 	public EmployeeForm createEmployee(EmployeeForm employeeForm) {
-		// Them user
+		// Tạo mới một tài khoản người dùng
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		User user = new User();
 		user.setEmail(employeeForm.getEmail());
-		user.setPassword("1234567");
+		user.setPassword("1234567"); // Mật khẩu mặc định
 		user.setFullname(employeeForm.getFullname());
 		user.setCreateday(timestamp.toString());
 		userDao.save(user);
 
-		// Tim thong tin role theo roleId
+		// Tìm thông tin vai trò dựa trên roleId
 		Role role = roleDao.findById(employeeForm.getRole()).get();
 
-		// Them moi mot user co vai tro la ROLE_USER
+		// Tạo mới một bản ghi UserRole
 		UserRole userRole = new UserRole();
 		userRole.setUser(user);
 		userRole.setRole(role);
 		userRoleDao.save(userRole);
 
-		// Them moi mot employee
+		// Tạo mới một bản ghi Employee
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-
 		User temp = userDao.findUserByEmail(username);
 
 		Employee employee = new Employee();
@@ -72,6 +72,7 @@ public class GeneralServiceImpl implements GeneralService {
 		return employeeForm;
 	}
 
+	// Phương thức lấy thông tin một nhân viên dựa trên id
 	@Override
 	public EmployeeForm getOneUserById(Integer id) {
 		User user = userDao.findById(id).get();
@@ -94,27 +95,28 @@ public class GeneralServiceImpl implements GeneralService {
 		return employeeForm;
 	}
 
+	// Phương thức cập nhật thông tin một nhân viên
 	@Override
 	public EmployeeForm updateEmployee(EmployeeForm employeeForm) {
-		// Cap nhat user
+		// Cập nhật thông tin tài khoản người dùng
 		User user = userDao.findById(employeeForm.getId()).get();
 		user.setEmail(employeeForm.getEmail());
 		user.setFullname(employeeForm.getFullname());
 		userDao.save(user);
 
-		// Cap nhat quyen user
+		// Cập nhật quyền người dùng
 		UserRole userRole = roleDao.getRoleByUserId(employeeForm.getId());
 		Role role = roleDao.findById(employeeForm.getRole()).get();
 		userRole.setUser(user);
 		userRole.setRole(role);
 		userRoleDao.save(userRole);
-		
-		// Cap nhat employee
+
+		// Cập nhật thông tin nhân viên
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
 		User temp = userDao.findUserByEmail(username);
-		
+
 		Employee employee = employeeDao.getEmployeeByUserId(employeeForm.getId());
 		employee.setDepartment(employeeForm.getDepartment());
 		employee.setPosition(employeeForm.getPosition());
@@ -125,8 +127,7 @@ public class GeneralServiceImpl implements GeneralService {
 		employee.setUser(user);
 		employee.setPersonupdate(temp.getId());
 		employeeDao.save(employee);
-		
+
 		return employeeForm;
 	}
-
 }

@@ -1,8 +1,4 @@
-/**
- * @(#)User.java.
- *
- * Version 1.00.
- */
+
 package poly.store.entity;
 
 import java.io.Serializable;
@@ -22,13 +18,37 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
- * Class chua thong tin User
- * 
+ * Lớp `User` đại diện cho người dùng trong hệ thống.
  *
+ * Thuộc tính:
+ * - id: Định danh duy nhất của người dùng.
+ * - email: Địa chỉ email của người dùng.
+ * - password: Mật khẩu của người dùng.
+ * - Fullname: Họ và tên của người dùng.
+ * - sex: Giới tính của người dùng.
+ * - birthday: Ngày sinh của người dùng.
+ * - subscribe: Trạng thái đăng ký nhận thông báo của người dùng.
+ * - Createday: Ngày tạo tài khoản.
+ * - Deleteday: Ngày xóa tài khoản.
+ * - Persondelete: Người thực hiện việc xóa tài khoản.
+ * - listUserRole: Danh sách các mối quan hệ giữa người dùng và vai trò.
+ * - listEmployee: Danh sách các nhân viên tương ứng với người dùng (nếu có).
+ * - listAddress: Danh sách các địa chỉ của người dùng.
+ * - listFavorite: Danh sách các sản phẩm được người dùng yêu thích.
  *
+ * Các annotations:
+ * - @Data: Tạo các phương thức getter, setter, equals, hashCode và toString tự động.
+ * - @NoArgsConstructor: Tạo constructor mặc định không có tham số.
+ * - @AllArgsConstructor: Tạo constructor có tham số cho tất cả các thuộc tính.
+ * - @Entity: Đánh dấu lớp này là một Entity, tương ứng với một bảng trong cơ sở dữ liệu.
+ * - @Table: Xác định tên của bảng trong cơ sở dữ liệu tương ứng với Entity này.
+ * - @Id: Đánh dấu thuộc tính này là khóa chính của bảng.
+ * - @GeneratedValue: Xác định cách sinh giá trị cho thuộc tính được đánh dấu là khóa chính.
+ * - @OneToMany: Xác định mối quan hệ một-nhiều với Entity khác, trong trường hợp này là `UserRole`, `Employee`, `Address`, và `Favorite`.
+ * - @JsonIgnore: Chỉ định rằng thuộc tính này không nên được serialize/deserialize khi sử dụng JSON.
  */
+
 @SuppressWarnings("serial")
 @Data
 @NoArgsConstructor
@@ -36,54 +56,40 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Users")
 public class User implements Serializable {
-	// Thong tin user id
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	// Thong tin email
 	private String email;
 
-	// Thong tin password
 	private String password;
 
-	// Thong tin fullname
 	private String Fullname;
 
-	// Thong tin gioi tinh
 	private int sex;
 
-	// Thong tin ngay sinh nhat
 	private String birthday;
 
-	// Thong tin dang ky nhan ban tin
 	private int subscribe;
 
-	// Thong tin ngay tao
 	private String Createday;
 
-	// Thong tin ngay xoa
 	private String Deleteday;
 
-	// Thong tin nguoi xoa
 	private int Persondelete;
 
-	// Danh sach User Role
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	List<UserRole> listUserRole;
 
-	// Danh sach Employee
 	// @JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	List<Employee> listEmployee;
 	
-	// Danh sach dia chi
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	List<Address> listAddress;
 
-	// Danh sach yeu thich
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	List<Favorite> listFavorite;

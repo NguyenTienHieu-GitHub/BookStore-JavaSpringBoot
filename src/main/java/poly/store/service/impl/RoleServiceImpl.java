@@ -1,8 +1,3 @@
-/**
- * @(#)RoleServiceImpl.java.
- *
- * Version 1.00.
- */
 package poly.store.service.impl;
 
 import java.util.List;
@@ -15,34 +10,30 @@ import poly.store.entity.Role;
 import poly.store.service.RoleService;
 
 /**
- * Class trien khai theo interface RoleService, Thao tac voi Class RoleDao de
- * thuc hien cac tac vu tuong ung
- * 
- *
- *
+ * Implementasi của giao diện RoleService.
  */
 @Service
 public class RoleServiceImpl implements RoleService {
-	// Thong tin role dao
+
 	@Autowired
 	RoleDao roleDao;
 
 	/**
-	 * Tim kiem role theo id cua role
-	 * 
-	 * @param thong tin id cua role
-	 * @return Role tim duoc
+	 * Lấy thông tin vai trò dựa trên ID.
+	 *
+	 * @param roleId ID của vai trò cần lấy thông tin.
+	 * @return Đối tượng vai trò tương ứng với ID cho trước.
 	 */
 	@Override
 	public Role findRoleById(int roleId) {
 		return roleDao.findById(roleId).get();
 	}
-	
+
 	/**
-	 * Tim ten vai tro dua vao user id
-	 * 
-	 * @param thong tin user id
-	 * @return danh sach ten vai tro tim duoc
+	 * Lấy danh sách tên các vai trò cho một người dùng dựa trên ID của người dùng.
+	 *
+	 * @param userId ID của người dùng để lấy danh sách tên vai trò.
+	 * @return Danh sách tên các vai trò liên kết với người dùng.
 	 */
 	@Override
 	public List<String> getRoleNames(int userId) {

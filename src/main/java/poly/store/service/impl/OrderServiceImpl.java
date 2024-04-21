@@ -28,32 +28,39 @@ import poly.store.service.OrderService;
 
 @Service
 public class OrderServiceImpl implements OrderService{
+	// Inject các DAO cần thiết
 	@Autowired
 	OrderDao orderDao;
 
 	@Autowired
 	ProductDao productDao;
-	
+
 	@Autowired
 	DiscountDao discountDao;
 
+	// Lấy danh sách đơn hàng theo tên
 	@Override
 	public List<Order> getOrderByName(String code) {
 		return orderDao.getOrderByName(code);
 	}
 
+	// Lưu một đơn hàng
 	@Override
 	public void save(Order order) {
 		orderDao.save(order);
 	}
 
+	// Lấy danh sách lịch sử đơn hàng của người dùng
 	@Override
 	public List<OrderModel> listOrderHistory() {
+		// Lấy thông tin người dùng hiện tại từ SecurityContextHolder
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
 
+		// Lấy danh sách đơn hàng lịch sử của người dùng
 		List<OrderModel> list = orderDao.listOrderHistory(username);
 
+		// Định dạng lại ngày thành định dạng dd/MM/yyyy
 		for (OrderModel order : list) {
 			String[] date = order.getDate().split("-");
 			String result = date[2] + "/" + date[1] + "/" + date[0];
@@ -63,13 +70,17 @@ public class OrderServiceImpl implements OrderService{
 		return list;
 	}
 
+	// Lấy danh sách đơn hàng theo mã và tên người dùng
 	@Override
 	public List<Order> listOrderByCodeAndUsername(String id) {
+		// Lấy thông tin người dùng hiện tại từ SecurityContextHolder
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
 
+		// Lấy danh sách đơn hàng theo mã và tên người dùng
 		List<Order> list = orderDao.listOrderByCodeAndUsername(id, username);
 
+		// Định dạng lại ngày thành định dạng dd/MM/yyyy
 		for (Order order : list) {
 			String[] date = order.getDate().split("-");
 			String result = date[2] + "/" + date[1] + "/" + date[0];
@@ -79,10 +90,13 @@ public class OrderServiceImpl implements OrderService{
 		return list;
 	}
 
+	// Lấy danh sách đơn hàng nhóm theo mã đơn hàng
 	@Override
 	public List<OrderModel> listOrderGroupByCode() {
+		// Lấy danh sách đơn hàng nhóm theo mã đơn hàng đang chờ xác nhận
 		List<OrderModel> listOrder = orderDao.listOrderGroupByCodePending();
 
+		// Lấy thông tin giảm giá của đơn hàng
 		for (OrderModel list : listOrder) {
 			Order order = orderDao.getOrderByName(list.getId()).get(0);
 			if (order != null) {
@@ -93,11 +107,13 @@ public class OrderServiceImpl implements OrderService{
 		return listOrder;
 	}
 
+	// Lấy chi tiết đơn hàng theo mã đơn hàng
 	@Override
 	public DetailOrder getDetailOrderByCode(String id) {
 		DetailOrder detailOrder = new DetailOrder();
 		List<Order> listOrder = orderDao.getOrderByName(id);
 
+		// Thiết lập thông tin chi tiết đơn hàng
 		detailOrder.setId(listOrder.get(0).getCode());
 		detailOrder.setAddress(listOrder.get(0).getAddress().getDetail());
 		detailOrder.setComment(listOrder.get(0).getComment());
@@ -146,6 +162,7 @@ public class OrderServiceImpl implements OrderService{
 		return detailOrder;
 	}
 
+	// Xác nhận đơn hàng
 	@Override
 	public void approveOrder(String id) {
 		List<Order> listOrder = orderDao.getOrderByName(id);
@@ -155,6 +172,7 @@ public class OrderServiceImpl implements OrderService{
 		}
 	}
 
+	// Hủy đơn hàng
 	@Override
 	public void cancelOrder(String id) {
 		List<Order> listOrder = orderDao.getOrderByName(id);
@@ -165,15 +183,16 @@ public class OrderServiceImpl implements OrderService{
 			orderDao.save(list);
 			productDao.save(product);
 		}
-		
-		Discount discount = listOrder.get(0).getDiscount();		
+
+		Discount discount = listOrder.get(0).getDiscount();
 		if(discount != null) {
 			discount.setQuality(discount.getQuality() + 1);
 			discountDao.save(discount);
 		}
-		
+
 	}
 
+	// Lấy danh sách đơn hàng nhóm theo mã đơn hàng đang giao hàng
 	@Override
 	public List<OrderModel> listOrderGroupByCodeShipping() {
 		List<OrderModel> listOrder = orderDao.listOrderGroupByCodeShipping();
@@ -188,6 +207,7 @@ public class OrderServiceImpl implements OrderService{
 		return listOrder;
 	}
 
+	// Đánh dấu đơn hàng đã giao
 	@Override
 	public void shippedOrder(String id) {
 		List<Order> listOrder = orderDao.getOrderByName(id);
@@ -197,6 +217,7 @@ public class OrderServiceImpl implements OrderService{
 		}
 	}
 
+	// Lấy danh sách đơn hàng nhóm theo mã đơn hàng đã hoàn thành
 	@Override
 	public List<OrderModel> listOrderGroupByCodeSuccess() {
 		List<OrderModel> listOrder = orderDao.listOrderGroupByCodeSuccess();
@@ -211,6 +232,7 @@ public class OrderServiceImpl implements OrderService{
 		return listOrder;
 	}
 
+	// Lấy danh sách đơn hàng nhóm theo mã đơn hàng đã hủy
 	@Override
 	public List<OrderModel> listOrderGroupByCodeCancel() {
 		List<OrderModel> listOrder = orderDao.listOrderGroupByCodeCancel();
@@ -225,6 +247,7 @@ public class OrderServiceImpl implements OrderService{
 		return listOrder;
 	}
 
+	// Xóa đơn hàng
 	@Override
 	public void deleteOrder(String id) {
 		List<Order> listOrder = orderDao.getOrderByName(id);
@@ -233,27 +256,32 @@ public class OrderServiceImpl implements OrderService{
 		}
 	}
 
+	// Lấy danh sách thống kê sản phẩm theo ngày
 	@Override
 	public List<StatisticalProductDay> listStatisticalProductDay() {
 		return orderDao.listStatisticalProductDay();
 	}
 
+	// Lấy danh sách thống kê doanh thu theo ngày
 	@Override
 	public List<StatisticalRevenue> listStatisticalRevenue(int month, int year) {
+		// Tạo đối tượng Calendar để xác định số ngày trong tháng
 		Calendar cal = Calendar.getInstance();
-
 		cal.set(Calendar.MONTH, month - 1);
-
 		int maxDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
+		// Khởi tạo danh sách thống kê doanh thu
 		List<StatisticalRevenue> listRevenue = new ArrayList<StatisticalRevenue>();
 
+		// Lặp qua từng ngày trong tháng để tính doanh thu
 		for (int i = 1; i <= maxDay; i++) {
 			long sum = 0;
 
+			// Lấy danh sách đơn hàng của mỗi ngày
 			List<OrderModel> listOrder = new ArrayList<OrderModel>();
 			listOrder = orderDao.listStatisticalRevenueDay(i, month, year);
 
+			// Tính tổng doanh thu từ danh sách đơn hàng của mỗi ngày
 			if (!listOrder.isEmpty()) {
 				for (OrderModel order : listOrder) {
 					Discount discount = order.getDiscount();
@@ -261,13 +289,14 @@ public class OrderServiceImpl implements OrderService{
 					if (discount != null) {
 						sum = sum - discount.getPrice();
 					}
-					sum = sum + 50000;
+					sum = sum + 50000; // Cộng thêm phí vận chuyển
 				}
-
 			}
 
+			// Chuyển đơn vị tiền từ đồng sang triệu đồng
 			double total = (double) sum / 1000000;
 
+			// Tạo đối tượng StatisticalRevenue để lưu thông tin thống kê
 			StatisticalRevenue statistical = new StatisticalRevenue();
 			statistical.setPrice(total);
 			statistical.setDate(i);
@@ -277,6 +306,7 @@ public class OrderServiceImpl implements OrderService{
 		return listRevenue;
 	}
 
+	// Lấy danh sách thống kê doanh thu theo tháng
 	@Override
 	public List<StatisticalRevenue> listStatisticalRevenueByMonth(int year) {
 		List<StatisticalRevenue> listRevenue = new ArrayList<StatisticalRevenue>();
@@ -294,7 +324,6 @@ public class OrderServiceImpl implements OrderService{
 					}
 					sum = sum + 50000;
 				}
-
 			}
 
 			double total = (double) sum / 1000000;
@@ -303,12 +332,12 @@ public class OrderServiceImpl implements OrderService{
 			statistical.setPrice(total);
 			statistical.setDate(i);
 			listRevenue.add(statistical);
-
 		}
 
 		return listRevenue;
 	}
 
+	// Lấy danh sách thống kê doanh thu theo năm
 	@Override
 	public List<StatisticalRevenue> listStatisticalRevenueByYear(int year) {
 		int minYear = year - 10;
@@ -327,7 +356,6 @@ public class OrderServiceImpl implements OrderService{
 					}
 					sum = sum + 50000;
 				}
-
 			}
 
 			double total = (double) sum / 1000000;
@@ -336,13 +364,13 @@ public class OrderServiceImpl implements OrderService{
 			statistical.setPrice(total);
 			statistical.setDate(minYear + i);
 			listRevenue.add(statistical);
-
 		}
 
 		return listRevenue;
 
 	}
 
+	// Lấy tổng số đơn hàng theo ngày trong tháng
 	@Override
 	public StatisticalTotalOrder getStatisticalTotalOrderOnDay(int day, int month, int year) {
 		List<StatisticalOrder> orderSuccess = orderDao.getMaxOrderSuccessOnDay(day, month, year);
@@ -360,6 +388,7 @@ public class OrderServiceImpl implements OrderService{
 		return totalOrder;
 	}
 
+	// Lấy tổng số đơn hàng theo tháng
 	@Override
 	public StatisticalTotalOrder getStatisticalTotalOrderOnMonth(int month, int year) {
 		List<StatisticalOrder> orderSuccess = orderDao.getMaxOrderSuccessOnMonth(month, year);
@@ -377,6 +406,7 @@ public class OrderServiceImpl implements OrderService{
 		return totalOrder;
 	}
 
+	// Lấy tổng số đơn hàng theo năm
 	@Override
 	public StatisticalTotalOrder getStatisticalTotalOrderOnYear(int year) {
 		List<StatisticalOrder> orderSuccess = orderDao.getMaxOrderSuccessOnYear(year);
@@ -394,6 +424,7 @@ public class OrderServiceImpl implements OrderService{
 		return totalOrder;
 	}
 
+	// Lấy danh sách năm có đơn hàng
 	@Override
 	public List<Integer> getListYearOrder() {
 		int maxYear = orderDao.getMaxYearOrder();
@@ -408,6 +439,7 @@ public class OrderServiceImpl implements OrderService{
 		return listYear;
 	}
 
+	// Lấy thông tin tổng số đơn hàng theo tuỳ chọn (ngày, tháng, năm)
 	@Override
 	public StatisticalTotalOrder getStatisticalTotalOrderOnOption(int day, int month, int year) {
 		StatisticalTotalOrder totalOrder = new StatisticalTotalOrder();
@@ -423,11 +455,13 @@ public class OrderServiceImpl implements OrderService{
 		return totalOrder;
 	}
 
+	// Lấy danh sách sản phẩm bán chạy nhất
 	@Override
 	public List<BestSellerModel> getListBestSellerProduct(Pageable topFour) {
 		return orderDao.getListBestSellerProduct(topFour);
 	}
 
+	// Lấy danh sách sản phẩm trong kho
 	@Override
 	public List<Product> listStatisticalProductWarehouse() {
 		return productDao.listStatisticalProductWarehouse();

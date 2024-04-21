@@ -1,8 +1,3 @@
-/**
- * @(#)EmployeeModel.java.
- *
- * Version 1.00.
- */
 package poly.store.model;
 
 import javax.persistence.Entity;
@@ -11,39 +6,39 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
- * Class thong tin truy van cua bang Employee
- * 
+ * Đây là một lớp model để đại diện cho thông tin của một nhân viên trong hệ thống.
  *
+ * Các trường dữ liệu trong lớp này bao gồm:
+ * - Fullname: Họ và tên của nhân viên.
+ * - department: Bộ phận hoặc phòng ban mà nhân viên đó thuộc về.
+ * - phone: Số điện thoại của nhân viên.
+ * - position: Chức vụ của nhân viên trong công ty.
+ * - birthday: Ngày sinh của nhân viên.
+ * - Startday: Ngày bắt đầu làm việc của nhân viên tại công ty.
+ * - salary: Mức lương của nhân viên.
  *
+ * Lớp này được sử dụng để truyền thông tin về nhân viên giữa các thành phần khác nhau trong ứng dụng, như giao diện và lớp xử lý dữ liệu.
  */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
 @Entity
 public class EmployeeModel {
-	// Thong tin ho va ten
 	@Id
 	private String Fullname;
 	
-	// Thong tin phong ban
 	private String department;
 
-	// Thong tin so dien thoai
 	private String phone;
 	
-	// Thong tin chuc vu
 	private String position;
 	
-	// Thong tin ngay sinh
 	private String birthday;
 	
-	// Thong tin ngay tham gia
 	private String Startday;
 	
-	// Thong tin luong
 	private int salary;
-	
 }

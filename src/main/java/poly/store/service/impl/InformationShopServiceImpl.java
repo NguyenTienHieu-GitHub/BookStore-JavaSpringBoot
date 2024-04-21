@@ -19,19 +19,21 @@ import poly.store.service.InformationShopService;
 public class InformationShopServiceImpl implements InformationShopService{
 	@Autowired
 	UserDao userDao;
-	
+
 	@Autowired
 	InformationShopDao informationDao;
-	
+
+	// Phương thức tạo mới thông tin cửa hàng
 	@Override
 	public ShopModel createInformationShop(ShopModel shopModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-		
+
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		User temp = userDao.findUserByEmail(username);
-		
+
 		InformationShop informationShop = new InformationShop();
+		// Set thông tin cho cửa hàng
 		informationShop.setName(shopModel.getName());
 		informationShop.setTimeopen(shopModel.getTime());
 		informationShop.setLogo(shopModel.getLogo());
@@ -46,25 +48,28 @@ public class InformationShopServiceImpl implements InformationShopService{
 		return shopModel;
 	}
 
+	// Phương thức lấy danh sách thông tin tất cả cửa hàng
 	@Override
 	public List<InformationShop> findAll() {
 		return informationDao.getListInformationShop();
 	}
 
+	// Phương thức xóa thông tin cửa hàng dựa trên id
 	@Override
 	public void delete(Integer id) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-		
+
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		User temp = userDao.findUserByEmail(username);
-		
+
 		InformationShop informationShop = informationDao.findById(id).get();
 		informationShop.setDeleteday(timestamp.toString());
 		informationShop.setPersondelete(temp.getId());
 		informationDao.save(informationShop);
 	}
 
+	// Phương thức cập nhật trạng thái active của cửa hàng
 	@Override
 	public ShopModel updateActive(ShopModel shopModel) {
 		List<InformationShop> list = informationDao.findAll();
@@ -73,14 +78,15 @@ public class InformationShopServiceImpl implements InformationShopService{
 				infor.setActive(false);
 			}
 			else {
-				infor.setActive(true);			
+				infor.setActive(true);
 			}
 			informationDao.save(infor);
 		}
-	
+
 		return shopModel;
 	}
 
+	// Phương thức lấy thông tin của một cửa hàng dựa trên id
 	@Override
 	public ShopModel getOneShopById(Integer id) {
 		InformationShop informationShop = informationDao.findById(id).get();
@@ -96,15 +102,17 @@ public class InformationShopServiceImpl implements InformationShopService{
 		return shopModel;
 	}
 
+	// Phương thức cập nhật thông tin của cửa hàng
 	@Override
 	public ShopModel updateInformation(ShopModel shopModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
-		
+
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		User temp = userDao.findUserByEmail(username);
-		
+
 		InformationShop informationShop = informationDao.findById(shopModel.getId()).get();
+		// Cập nhật thông tin cho cửa hàng
 		informationShop.setAddress(shopModel.getAddress());
 		informationShop.setEmail(shopModel.getEmail());
 		informationShop.setFax(shopModel.getFax());
@@ -119,9 +127,11 @@ public class InformationShopServiceImpl implements InformationShopService{
 		return shopModel;
 	}
 
+	// Phương thức lấy thông tin của một cửa hàng
 	@Override
-	public InformationShop getOneInformationShop() {	
+	public InformationShop getOneInformationShop() {
 		InformationShop informationShop = informationDao.getOneInformationShop();
+		// Format số điện thoại và fax
 		String phone = informationShop.getPhone().substring(0, 3) + "-" + informationShop.getPhone().substring(3, 6) + "-" + informationShop.getPhone().substring(6);
 		String fax = "+84 " + informationShop.getFax().substring(1, 4) + " " + informationShop.getFax().substring(4, 7) + " " + informationShop.getFax().substring(7);
 		informationShop.setPhone(phone);

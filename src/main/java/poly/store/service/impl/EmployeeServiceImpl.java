@@ -1,8 +1,3 @@
-/**
- * @(#)RoleServiceImpl.java.
- *
- * Version 1.00.
- */
 package poly.store.service.impl;
 
 import java.util.List;
@@ -15,27 +10,22 @@ import poly.store.entity.Employee;
 import poly.store.model.EmployeeModel;
 import poly.store.service.EmployeeService;
 
-/**
- * Class trien khai theo interface EmployeeService, Thao tac voi Class EmployeeDao de
- * thuc hien cac tac vu tuong ung
- * 
- *
- *
- */
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	EmployeeDao employeeDao;
-	
+
+	// Phương thức lấy danh sách tất cả nhân viên
 	@Override
 	public List<EmployeeModel> getListEmployee() {
-		// TODO Auto-generated method stub
+		// Gọi phương thức getListEmployee() từ đối tượng employeeDao để lấy danh sách nhân viên
 		return employeeDao.getListEmployee();
 	}
 
+	// Phương thức lưu thông tin của một nhân viên vào cơ sở dữ liệu
 	@Override
 	public void save(Employee employee) {
+		// Gọi phương thức save() từ đối tượng employeeDao để lưu thông tin nhân viên
 		employeeDao.save(employee);
 	}
-
 }

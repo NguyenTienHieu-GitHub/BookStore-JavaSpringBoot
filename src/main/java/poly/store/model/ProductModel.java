@@ -1,20 +1,36 @@
-/**
- * @(#)CategoryModel.java.
- *
- * Version 1.00.
- */
 package poly.store.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
- * Class thong tin truy van cua bang Products
- * 
+ * Lớp ProductModel là một model được sử dụng để đại diện cho thông tin của một sản phẩm trong hệ thống.
  *
+ * Các trường dữ liệu trong lớp này bao gồm:
+ * - id: Mã số định danh của sản phẩm.
+ * - code: Mã sản phẩm.
+ * - name: Tên của sản phẩm.
+ * - price: Giá của sản phẩm.
+ * - point: Điểm tích lũy cho sản phẩm.
+ * - quality: Số lượng tồn kho của sản phẩm.
+ * - description: Mô tả về sản phẩm.
+ * - specification: Thông số kỹ thuật của sản phẩm.
+ * - image1: Đường dẫn đến hình ảnh chính của sản phẩm.
+ * - image2: Đường dẫn đến hình ảnh phụ của sản phẩm.
+ * - image3: Đường dẫn đến hình ảnh phụ của sản phẩm.
+ * - image4: Đường dẫn đến hình ảnh phụ của sản phẩm.
+ * - image5: Đường dẫn đến hình ảnh phụ của sản phẩm.
+ * - active: Trạng thái hoạt động của sản phẩm.
+ * - manuId: Mã số định danh của nhà sản xuất.
+ * - cateId: Mã số định danh của danh mục sản phẩm.
+ * - nameSearch: Tên dùng để tìm kiếm sản phẩm.
+ * - color: Màu sắc của sản phẩm.
+ * - memory: Dung lượng bộ nhớ của sản phẩm (nếu có).
+ * - sales: Số lượng sản phẩm đã bán.
  *
+ * Lớp này được sử dụng để truyền thông tin về các sản phẩm giữa các thành phần khác nhau trong ứng dụng.
  */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

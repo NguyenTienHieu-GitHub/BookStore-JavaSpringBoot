@@ -8,14 +8,22 @@ package poly.store.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
- * Class lam viec voi form register.html
- * 
+ * Lớp UserRegister là một model được sử dụng để lưu trữ thông tin đăng ký của người dùng.
  *
+ * Trường dữ liệu trong lớp này bao gồm:
+ * - email: Địa chỉ email của người dùng.
+ * - fullName: Họ và tên của người dùng.
+ * - password: Mật khẩu của người dùng.
+ * - confirmPassword: Xác nhận mật khẩu của người dùng.
+ * - code: Mã xác nhận được gửi đến email của người dùng để xác thực đăng ký.
+ * - confirmCode: Mã xác nhận được nhập bởi người dùng để hoàn thành quá trình đăng ký.
+ * - subscribe: Thông báo cho người dùng có đăng ký nhận thông báo hay không.
+ * - confirmTerm: Xác nhận điều khoản sử dụng từ phía người dùng.
  *
- * 
+ * Lớp này được sử dụng để truyền thông tin đăng ký từ giao diện người dùng đến backend để xử lý quá trình đăng ký người dùng mới.
  */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

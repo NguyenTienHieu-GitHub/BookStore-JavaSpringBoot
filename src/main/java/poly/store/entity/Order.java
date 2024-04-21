@@ -13,6 +13,32 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+/**
+ * Lớp `Order` đại diện cho một đơn hàng trong hệ thống.
+ *
+ * Thuộc tính:
+ * - id: Định danh duy nhất của đơn hàng.
+ * - code: Mã đơn hàng.
+ * - address: Địa chỉ giao hàng của đơn hàng.
+ * - product: Sản phẩm được đặt hàng.
+ * - discount: Mã giảm giá được áp dụng cho đơn hàng.
+ * - quality: Số lượng sản phẩm được đặt hàng.
+ * - date: Ngày đặt hàng.
+ * - method: Phương thức thanh toán.
+ * - status: Trạng thái của đơn hàng.
+ * - comment: Ghi chú cho đơn hàng.
+ *
+ * Các annotations:
+ * - @Entity: Đánh dấu lớp này là một entity trong cơ sở dữ liệu.
+ * - @Table(name = "Orders"): Xác định tên bảng tương ứng trong cơ sở dữ liệu.
+ * - @Data: Tạo các phương thức getter, setter, equals, hashCode và toString tự động.
+ * - @NoArgsConstructor: Tạo constructor mặc định không có tham số.
+ * - @AllArgsConstructor: Tạo constructor có tham số cho tất cả các thuộc tính.
+ * - @Id: Xác định thuộc tính id là khóa chính của entity.
+ * - @GeneratedValue(strategy = GenerationType.IDENTITY): Xác định cách sinh giá trị cho id là tự động tăng.
+ * - @ManyToOne: Xác định mối quan hệ nhiều-đến-một với các entity khác thông qua trường được chú thích.
+ * - @JoinColumn(name = "Address_Id"): Xác định tên cột tham chiếu đến khóa chính của entity Address trong bảng Orders.
+ */
 
 @SuppressWarnings("serial")
 @Data
@@ -21,40 +47,31 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Orders")
 public class Order implements Serializable{
-	// Thong tin order id
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String code;
 
-	// Thong tin dia chi nguoi dung
 	@ManyToOne
 	@JoinColumn(name = "Address_Id")
 	Address address;
 
-	// Thong tin san pham
 	@ManyToOne
 	@JoinColumn(name = "Product_Id")
 	Product product;
 	
-	// Thong tin ma giam gia
 	@ManyToOne
 	@JoinColumn(name = "Discount_Id")
 	Discount discount;
 	
-	// Thong tin so luong
 	private int quality;
 	
-	// Thong tin ngay mua
 	private String date;
 	
-	// Thong tin phuong thuc van chuyen
 	private String method;
 	
-	// Thong tin trang thai van chuyen
 	private String status;
 	
-	// Thong tin ghi chu
 	private String comment;
 }

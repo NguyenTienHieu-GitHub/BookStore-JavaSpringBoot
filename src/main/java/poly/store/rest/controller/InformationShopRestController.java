@@ -17,40 +17,46 @@ import poly.store.entity.InformationShop;
 import poly.store.model.ShopModel;
 import poly.store.service.InformationShopService;
 
-@CrossOrigin("*")
-@RestController
-@RequestMapping("/rest/shop")
+@CrossOrigin("*") // Cho phép truy cập từ các domain khác
+@RestController // Đánh dấu đây là một REST Controller
+@RequestMapping("/rest/shop") // Định nghĩa URL cơ sở cho tất cả các request trong controller này
 public class InformationShopRestController {
 	@Autowired
-	InformationShopService informationShopService;
-	
-	@PostMapping("/form")
-	public ShopModel create(@RequestBody ShopModel shopModel) {
-		return informationShopService.createInformationShop(shopModel);
+	InformationShopService informationShopService; // Sử dụng autowiring để inject một đối tượng của InformationShopService vào controller
+
+	// Xử lý request POST để tạo một cửa hàng mới
+	@PostMapping("/form") // Định nghĩa URL endpoint cho việc tạo một cửa hàng mới
+	public ShopModel create(@RequestBody ShopModel shopModel) { // Sử dụng dữ liệu gửi đến từ request body để tạo một cửa hàng mới
+		return informationShopService.createInformationShop(shopModel); // Gọi phương thức createInformationShop trong InformationShopService để tạo một cửa hàng mới và trả về kết quả
 	}
-	
-	@GetMapping()
-	public List<InformationShop> getAll(){
-		return informationShopService.findAll();
+
+	// Xử lý request GET để lấy danh sách tất cả các cửa hàng
+	@GetMapping() // Định nghĩa URL endpoint cho việc lấy danh sách tất cả các cửa hàng
+	public List<InformationShop> getAll(){ // Trả về danh sách tất cả các cửa hàng
+		return informationShopService.findAll(); // Gọi phương thức findAll trong InformationShopService để lấy danh sách tất cả các cửa hàng và trả về kết quả
 	}
-	
-	@DeleteMapping("{id}")
-	public void delete(@PathVariable("id") Integer id) {
-		informationShopService.delete(id);
+
+	// Xử lý request DELETE để xóa một cửa hàng dựa trên id
+	@DeleteMapping("{id}") // Định nghĩa URL endpoint cho việc xóa một cửa hàng dựa trên id
+	public void delete(@PathVariable("id") Integer id) { // Lấy id cửa hàng từ đường dẫn và xóa cửa hàng có id tương ứng
+		informationShopService.delete(id); // Gọi phương thức delete trong InformationShopService để xóa một cửa hàng
 	}
-	
-	@PutMapping("/form/active/{id}")
-	public ShopModel update(@PathVariable("id") Integer id, @RequestBody ShopModel shopModel) {
-		return informationShopService.updateActive(shopModel);
+
+	// Xử lý request PUT để cập nhật trạng thái hoạt động của một cửa hàng dựa trên id
+	@PutMapping("/form/active/{id}") // Định nghĩa URL endpoint cho việc cập nhật trạng thái hoạt động của một cửa hàng dựa trên id
+	public ShopModel update(@PathVariable("id") Integer id, @RequestBody ShopModel shopModel) { // Lấy id cửa hàng từ đường dẫn và sử dụng dữ liệu gửi đến từ request body để cập nhật trạng thái hoạt động của cửa hàng
+		return informationShopService.updateActive(shopModel); // Gọi phương thức updateActive trong InformationShopService để cập nhật trạng thái hoạt động của một cửa hàng và trả về kết quả
 	}
-	
-	@GetMapping("/form/{id}")
-	public ShopModel getOneShopById(@PathVariable("id") Integer id) {
-		return informationShopService.getOneShopById(id);
+
+	// Xử lý request GET để lấy thông tin của một cửa hàng dựa trên id
+	@GetMapping("/form/{id}") // Định nghĩa URL endpoint cho việc lấy thông tin của một cửa hàng dựa trên id
+	public ShopModel getOneShopById(@PathVariable("id") Integer id) { // Lấy id cửa hàng từ đường dẫn và trả về thông tin của cửa hàng
+		return informationShopService.getOneShopById(id); // Gọi phương thức getOneShopById trong InformationShopService để lấy thông tin của một cửa hàng và trả về kết quả
 	}
-	
-	@PutMapping("/form/{id}")
-	public ShopModel updateInformation(@PathVariable("id") Integer id, @RequestBody ShopModel shopModel) {
-		return informationShopService.updateInformation(shopModel);
+
+	// Xử lý request PUT để cập nhật thông tin của một cửa hàng dựa trên id
+	@PutMapping("/form/{id}") // Định nghĩa URL endpoint cho việc cập nhật thông tin của một cửa hàng dựa trên id
+	public ShopModel updateInformation(@PathVariable("id") Integer id, @RequestBody ShopModel shopModel) { // Lấy id cửa hàng từ đường dẫn và sử dụng dữ liệu gửi đến từ request body để cập nhật thông tin của cửa hàng
+		return informationShopService.updateInformation(shopModel); // Gọi phương thức updateInformation trong InformationShopService để cập nhật thông tin của một cửa hàng và trả về kết quả
 	}
 }

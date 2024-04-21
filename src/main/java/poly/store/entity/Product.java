@@ -19,13 +19,48 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
- * Class chua thong tin User
- * 
+ * Lớp `Product` đại diện cho một sản phẩm trong hệ thống.
  *
+ * Thuộc tính:
+ * - id: Định danh duy nhất của sản phẩm.
+ * - code: Mã sản phẩm.
+ * - name: Tên sản phẩm.
+ * - price: Giá sản phẩm.
+ * - quality: Số lượng sản phẩm trong kho.
+ * - views: Số lượt xem của sản phẩm.
+ * - description: Mô tả sản phẩm.
+ * - specification: Thông số kỹ thuật của sản phẩm.
+ * - image1, image2, image3, image4, image5: Đường dẫn đến hình ảnh của sản phẩm.
+ * - active: Trạng thái hoạt động của sản phẩm.
+ * - sales: Số lượng sản phẩm đã bán.
+ * - Namesearch: Tên tìm kiếm của sản phẩm.
+ * - Createday: Ngày tạo sản phẩm.
+ * - Personcreate: Người tạo sản phẩm.
+ * - Deleteday: Ngày xóa sản phẩm.
+ * - Persondelete: Người xóa sản phẩm.
+ * - Updateday: Ngày cập nhật sản phẩm.
+ * - Personupdate: Người cập nhật sản phẩm.
+ * - manufacturer: Nhà sản xuất của sản phẩm.
+ * - category: Danh mục của sản phẩm.
+ * - listOrder: Danh sách các đơn hàng chứa sản phẩm này.
+ * - listFavorite: Danh sách các sản phẩm được yêu thích bởi người dùng.
+ * - listComment: Danh sách các bình luận của người dùng về sản phẩm.
  *
+ * Các annotations:
+ * - @Entity: Đánh dấu lớp này là một entity trong cơ sở dữ liệu.
+ * - @Table(name = "Products"): Xác định tên bảng tương ứng trong cơ sở dữ liệu.
+ * - @Data: Tạo các phương thức getter, setter, equals, hashCode và toString tự động.
+ * - @NoArgsConstructor: Tạo constructor mặc định không có tham số.
+ * - @AllArgsConstructor: Tạo constructor có tham số cho tất cả các thuộc tính.
+ * - @Id: Xác định thuộc tính id là khóa chính của entity.
+ * - @GeneratedValue(strategy = GenerationType.IDENTITY): Xác định cách sinh giá trị cho id là tự động tăng.
+ * - @ManyToOne: Xác định mối quan hệ nhiều-đến-một với các entity khác thông qua trường được chú thích.
+ * - @JoinColumn(name = "Manu_Id"): Xác định tên cột tham chiếu đến khóa chính của entity Manufacturer trong bảng Products.
+ * - @JsonIgnore: Ngăn cản việc serialization các trường được chú thích khi chuyển đổi thành JSON.
+ * - @OneToMany: Xác định mối quan hệ một-đến-nhiều với các entity khác thông qua trường được chú thích.
  */
+
 @SuppressWarnings("serial")
 @Data
 @NoArgsConstructor
@@ -33,80 +68,56 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Products")
 public class Product implements Serializable{
-	// Thong tin id san pham
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	// Thong tin ma san pham
 	private String code;
 
-	// Thong tin ten san pham
 	private String name;
 
-	// Thong tin gia san pham
 	private int price;
 
-	// Thong tin so luong san pham
 	private int quality;
 
-	// Thong tin so luot xem
 	private int views;
 
-	// Mo ta san pham
 	private String description;
 
-	// Thong tin cac thong so
 	private String specification;
 
-	// Thong tin hinh anh 1
 	private String image1;
 
-	// Thong tin hinh anh 2
 	private String image2;
 
-	// Thong tin hinh anh 3
 	private String image3;
 
-	// Thong tin hinh anh 4
 	private String image4;
 
-	// Thong tin hinh anh 5
 	private String image5;
 
-	// Hien thi san pham hay khong
 	private boolean active;
 	
-	// Thong tin gia khuyen mai
 	private int sales;
 	
-	// Hien thi ten dung de tim kiem
 	private String Namesearch;
 	
-	// Thong tin ngay tao
 	private String Createday;
 
-	// Thong tin ma nguoi tao
 	private int Personcreate;
 
-	// Thong tin ngay xoa
 	private String Deleteday;
 
-	// Thong tin nguoi xoa
 	private int Persondelete;
 
-	// Thong tin ngay cap nhat
 	private String Updateday;
 
-	// Thong tin ma nguoi cap nhat
 	private int Personupdate;
 
-	// Thong tin nha san xuat
 	@ManyToOne
 	@JoinColumn(name = "Manu_Id")
 	Manufacturer manufacturer;
 
-	// Thong tin danh muc
 	@ManyToOne
 	@JoinColumn(name = "Cate_Id")
 	Category category;

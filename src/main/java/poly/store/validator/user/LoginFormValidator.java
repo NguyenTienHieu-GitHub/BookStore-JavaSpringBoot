@@ -1,8 +1,3 @@
-/**
- * @(#)LoginFormValidator.java.
- *
- * Version 1.00.
- */
 package poly.store.validator.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,68 +10,37 @@ import poly.store.entity.User;
 import poly.store.model.UserLogin;
 import poly.store.service.UserService;
 
-/**
- * Class bat loi form login.html
- * 
- *
- * @version 1.00
- */
 @Component
 public class LoginFormValidator implements Validator {
-	
-	// Class cung cap cac ham lam viec voi bang User trong database
-	@Autowired	
+
+	@Autowired
 	UserService userService;
 
-	/**
-	 * Lien ket class UserLogin voi class bat loi
-	 * 
-	 * @param clazz
-	 * @return Ket qua co dung hay khong
-	 */
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return clazz == UserLogin.class;
+		return clazz == UserLogin.class; // Xác định lớp mà validator này hỗ trợ, trong trường hợp này là UserLogin
 	}
 
-	/**
-	 * Kiem tra form co thoa dieu kien
-	 * 
-	 * @param target
-	 * @param errors
-	 */
 	@Override
 	public void validate(Object target, Errors errors) {
-		// Lien ket Object voi UserLogin class
-		UserLogin userLogin = (UserLogin) target;
-		
-		// Bat loi neu nguoi dung khong nhap username
+		UserLogin userLogin = (UserLogin) target; // Ép kiểu target sang UserLogin để có thể sử dụng
+
+		// Kiểm tra nếu username hoặc password trống thì thêm lỗi vào errors
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotBlank.userLogin.username");
-		
-		// Bat loi neu nguoi dung khong nhap mat khau
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotBlank.userLogin.password");
 
-		// Xu ly cac truong hop khong nhap dung thong tin nhu trong database
-		if (!errors.hasFieldErrors()) {
-			// Tim user bang username
-			User user = userService.findUserByEmail(userLogin.getUsername());
-			
-			// Xu ly truong hop khong tim thay user nao
-			if (user == null) {
-				// Thong bao sai thong tin username
-				errors.rejectValue("username", "NotExist.userLogin.username");
-				
-				// Thong bao sai thong password
-				errors.rejectValue("password", "NotExist.userLogin.password");
-			} else {
-				// Neu username nguoi dung nhap chinh xac
-				// Kiem tra password nguoi dung co khop voi password trong database
-				if (userLogin.getPassword().equals(user.getPassword()) == false) {
-					// Thong bao sai thong tin password
-					errors.rejectValue("password", "NotExist.userLogin.password");
+		if (!errors.hasFieldErrors()) { // Nếu không có lỗi từ các kiểm tra trên
+			User user = userService.findUserByEmail(userLogin.getUsername()); // Tìm người dùng dựa trên username nhập vào
+
+			if (user == null) { // Nếu không tìm thấy người dùng
+				errors.rejectValue("username", "NotExist.userLogin.username"); // Thêm lỗi vào errors cho username
+
+				errors.rejectValue("password", "NotExist.userLogin.password"); // Thêm lỗi vào errors cho password
+			} else { // Nếu tìm thấy người dùng
+				if (!userLogin.getPassword().equals(user.getPassword())) { // So sánh password nhập vào với password trong database
+					errors.rejectValue("password", "NotExist.userLogin.password"); // Nếu không khớp, thêm lỗi vào errors cho password
 				}
 			}
 		}
 	}
-
 }

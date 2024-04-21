@@ -12,8 +12,19 @@ import poly.store.service.CategoryService;
 import poly.store.service.InformationShopService;
 import poly.store.service.SessionService;
 import poly.store.service.ShoppingCartService;
-
-
+/**
+ * Lớp `GlobalInterceptor` là một interceptor trong Spring MVC được sử dụng để xử lý logic chung trước hoặc sau khi một request được xử lý bởi một controller.
+ *
+ * Các dependencies:
+ * - categoryService: Service để thực hiện các thao tác liên quan đến danh mục sản phẩm.
+ * - informationService: Service để thực hiện các thao tác liên quan đến thông tin cửa hàng.
+ * - sessionService: Service để thực hiện các thao tác liên quan đến session của người dùng.
+ * - cartService: Service để thực hiện các thao tác liên quan đến giỏ hàng.
+ *
+ * Phương thức `postHandle` được gọi sau khi một request được xử lý bởi một controller và trước khi trả về một response cho client.
+ * Trong phương thức này, các danh mục sản phẩm và thông tin cửa hàng được lấy từ các service và đặt vào các thuộc tính của request để sử dụng trong các view.
+ * Ngoài ra, service `cartService` được lưu vào session dưới tên `sessionProduct` để duy trì trạng thái của giỏ hàng giữa các request.
+ */
 @Component
 public class GlobalInterceptor implements HandlerInterceptor {
 	@Autowired

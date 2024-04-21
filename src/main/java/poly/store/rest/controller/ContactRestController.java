@@ -21,39 +21,47 @@ import poly.store.service.ContactService;
 @RestController
 @RequestMapping("/rest/contact")
 public class ContactRestController {
+
 	@Autowired
 	ContactService contactService;
-	
+
+	// API để lấy danh sách tất cả các liên hệ
 	@GetMapping
 	public List<Contact> getAll(){
 		return contactService.getListContactChecked();
 	}
-	
+
+	// API để tạo mới một liên hệ
 	@PostMapping("/form")
 	public ContactModel create(@RequestBody ContactModel contactModel) {
 		return contactService.createContact(contactModel);
 	}
-	
+
+	// API để lấy danh sách các liên hệ chưa được duyệt
 	@GetMapping("/pending")
 	public List<Contact> getListContactPending(){
 		return contactService.getListContactPending();
 	}
-	
+
+	// API để lấy thông tin của một liên hệ dựa trên id liên hệ
 	@GetMapping("/pending/{id}")
 	public Contact getContactByContactId(@PathVariable("id") Integer id) {
 		return contactService.getContactByContactId(id);
 	}
-	
+
+	// API để duyệt một liên hệ dựa trên id liên hệ
 	@PutMapping("/form/approve/{id}")
 	public void approve(@PathVariable("id") Integer id) {
 		contactService.approveContact(id);
 	}
-	
+
+	// API để xóa một liên hệ dựa trên id liên hệ
 	@DeleteMapping("/form/delete/{id}")
 	public void delete(@PathVariable("id") Integer id) {
 		contactService.delete(id);
 	}
-	
+
+	// API để lấy danh sách các liên hệ đã được duyệt
 	@GetMapping("/approved")
 	public List<Contact> getListContactChecked(){
 		return contactService.getListContactChecked();

@@ -1,36 +1,14 @@
-/**
- * @(#)RoleService.java.
- *
- * Version 1.00.
- */
 package poly.store.service;
 
 import java.util.List;
-
 import poly.store.entity.Role;
 
-/**
- * Class cung cap cac dich vu thao tac voi table Roles trong database
- * 
- *
- *
- */
 public interface RoleService {
-	
-	/**
-	 * Tim role bang role id
-	 * 
-	 * @param thong tin id cua role
-	 * @return Role tim duoc
-	 */
+
+	// Tìm kiếm và trả về đối tượng Role dựa trên ID của vai trò.
 	Role findRoleById(int roleId);
-	
-	/**
-	 * Tim ten vai tro dua vao user id
-	 * 
-	 * @param thong tin user id
-	 * @return danh sach ten vai tro tim duoc
-	 */
+
+	// Lấy danh sách tên các vai trò mà người dùng có ID tương ứng là userId đang sở hữu.
 	List<String> getRoleNames(int userId);
 
 }

@@ -1,8 +1,3 @@
-/**
- * @(#)CommentRestController.java 2021/11/08.
- *
- * Version 1.00.
- */
 package poly.store.rest.controller;
 
 import java.util.List;
@@ -22,49 +17,51 @@ import poly.store.entity.Comment;
 import poly.store.model.CommentModel;
 import poly.store.service.CommentService;
 
-/**
- * Class cung cap cac dich vu rest api cho bang comment
- * 
- *
- * @version 1.00
- */
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/comment")
 public class CommentRestController {
+
 	@Autowired
 	CommentService commentService;
-	
+
+	// API để lấy danh sách các comment của một sản phẩm dựa trên id sản phẩm
 	@GetMapping("/form/product/{id}")
 	public List<Comment> getListCommentByProductId(@PathVariable("id") Integer id) {
 		return commentService.getListCommentByProductId(id);
 	}
-	
+
+	// API để tạo mới một comment
 	@PostMapping("/form")
 	public CommentModel create(@RequestBody CommentModel commentModel) {
 		return commentService.createComment(commentModel);
 	}
-	
+
+	// API để lấy danh sách các comment chưa được duyệt
 	@GetMapping("/pending")
 	public List<Comment> getListCommentPending(){
 		return commentService.getListCommentPending();
 	}
-	
+
+	// API để lấy thông tin của một comment dựa trên id comment
 	@GetMapping("/pending/{id}")
 	public Comment getCommentByCommentId(@PathVariable("id") Integer id) {
 		return commentService.getCommentByCommentId(id);
 	}
-	
+
+	// API để duyệt một comment dựa trên id comment
 	@PutMapping("/form/approve/{id}")
 	public void approve(@PathVariable("id") Integer id) {
 		commentService.approveComment(id);
 	}
-	
+
+	// API để xóa một comment dựa trên id comment
 	@DeleteMapping("/form/delete/{id}")
 	public void delete(@PathVariable("id") Integer id) {
 		commentService.delete(id);
 	}
-	
+
+	// API để lấy danh sách các comment đã được duyệt
 	@GetMapping("/approved")
 	public List<Comment> getListCommentChecked(){
 		return commentService.getListCommentChecked();

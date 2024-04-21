@@ -1,7 +1,5 @@
 /**
- * @(#)CategoryRestController.java.
- *
- * Version 1.00.
+ * RESTful controller để xử lý các yêu cầu liên quan đến thực thể Category.
  */
 package poly.store.rest.controller;
 
@@ -22,39 +20,39 @@ import poly.store.entity.Category;
 import poly.store.model.CategoryModel;
 import poly.store.service.CategoryService;
 
-/**
- * Class cung cap cac dich vu rest api cho bang employee
- * 
- *
- *
- */
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/categories")
 public class CategoryRestController {
+
 	@Autowired
 	CategoryService categoryService;
-	
+
+	// API để tạo mới một category
 	@PostMapping("/form")
 	public CategoryModel create(@RequestBody CategoryModel categoryModel) {
 		return categoryService.createCategory(categoryModel);
 	}
-	
+
+	// API để lấy tất cả các category
 	@GetMapping()
 	public List<Category> getAll(){
 		return categoryService.findAll();
 	}
-	
+
+	// API để lấy một category dựa trên id
 	@GetMapping("/form/{id}")
 	public CategoryModel getOneUserById(@PathVariable("id") Integer id) {
 		return categoryService.getOneCategoryById(id);
 	}
-	
+
+	// API để xóa một category dựa trên id
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Integer id) {
 		categoryService.delete(id);
 	}
-	
+
+	// API để cập nhật thông tin một category
 	@PutMapping("/form/{id}")
 	public CategoryModel update(@PathVariable("id") Integer id, @RequestBody CategoryModel categoryModel) {
 		return categoryService.updateCategory(categoryModel);

@@ -1,8 +1,3 @@
-/**
- * @(#)UserRoleServiceImpl.java.
- *
- * Version 1.00.
- */
 package poly.store.service.impl;
 
 import java.sql.Timestamp;
@@ -21,29 +16,22 @@ import poly.store.entity.User;
 import poly.store.entity.UserRole;
 import poly.store.service.UserRoleService;
 
-/**
- * Class trien khai theo interface UserRoleService, Thao tac voi Class
- * UserRoleDao de thuc hien cac tac vu tuong ung
- * 
- *
- *
- */
 @Service
 public class UserRoleServiceImpl implements UserRoleService {
-	// Thong tin user role dao
-	@Autowired
-	UserRoleDao userRoleDao;
 
 	@Autowired
-	UserDao userDao;
+	UserRoleDao userRoleDao; // DAO layer để tương tác với dữ liệu của bảng UserRole
 
 	@Autowired
-	EmployeeDao employeeDao;
+	UserDao userDao; // DAO layer để tương tác với dữ liệu của bảng User
+
+	@Autowired
+	EmployeeDao employeeDao; // DAO layer để tương tác với dữ liệu của bảng Employee
 
 	/**
-	 * Luu user role vao database
-	 * 
-	 * @param thong tin user role
+	 * Lưu thông tin UserRole vào cơ sở dữ liệu.
+	 *
+	 * @param userRole Đối tượng UserRole cần lưu.
 	 */
 	@Override
 	public void save(UserRole userRole) {
@@ -51,9 +39,9 @@ public class UserRoleServiceImpl implements UserRoleService {
 	}
 
 	/**
-	 * Tim kiem tat ca entity trong user role
-	 * 
-	 * @param thong tin user role
+	 * Lấy danh sách tất cả các UserRole từ cơ sở dữ liệu.
+	 *
+	 * @return List<UserRole> Danh sách các UserRole.
 	 */
 	@Override
 	public List<UserRole> findAll() {
@@ -61,36 +49,44 @@ public class UserRoleServiceImpl implements UserRoleService {
 	}
 
 	/**
-	 * Tim kiem tat cac entity trong user role co role la admin hoac director
+	 * Lấy danh sách tất cả các UserRole có quyền admin hoặc giám đốc từ cơ sở dữ liệu.
+	 *
+	 * @return List<UserRole> Danh sách các UserRole có quyền admin hoặc giám đốc.
 	 */
 	@Override
 	public List<UserRole> findAllAdminOrDirector() {
 		return userRoleDao.findAllAdminOrDirector();
 	}
 
+	/**
+	 * Xóa UserRole từ cơ sở dữ liệu theo ID.
+	 *
+	 * @param id ID của UserRole cần xóa.
+	 */
 	@Override
 	public void delete(Integer id) {
-		// Xoa user
+		// Lấy thông tin người dùng đang đăng nhập
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails)principal).getUsername();
-		User temp = userDao.findUserByEmail(username);
+		User temp = userDao.findUserByEmail(username); // Tìm thông tin người dùng dựa trên email
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		User user = userDao.findById(id).get();
-		
+		User user = userDao.findById(id).get(); // Tìm người dùng cần xóa dựa trên ID
+
+		// Kiểm tra nếu người dùng đang đăng nhập không phải là người dùng cần xóa
 		if(!temp.getEmail().equals(user.getEmail())) {
-			user.setDeleteday(timestamp.toString());
-			user.setPersondelete(temp.getId());
-			userDao.save(user);
-			
-			// Xoa employee
+			user.setDeleteday(timestamp.toString()); // Đặt thời gian xóa cho người dùng
+			user.setPersondelete(temp.getId()); // Đặt ID của người xóa
+			userDao.save(user); // Lưu thay đổi vào cơ sở dữ liệu
+
+			// Xóa các thông tin liên quan đến Employee nếu có
 			List<Employee> listEmployee = user.getListEmployee();
 			for(Employee e: listEmployee) {
-				e.setDeleteday(timestamp.toString());
-				e.setPersondelete(temp.getId());
-				employeeDao.save(e);
+				e.setDeleteday(timestamp.toString()); // Đặt thời gian xóa cho Employee
+				e.setPersondelete(temp.getId()); // Đặt ID của người xóa
+				employeeDao.save(e); // Lưu thay đổi vào cơ sở dữ liệu
 			}
-		}	
-		
+		}
+		// Nếu người dùng đang đăng nhập là người dùng cần xóa, ném ra một ngoại lệ
 		else {
 			throw new RuntimeException();
 		}

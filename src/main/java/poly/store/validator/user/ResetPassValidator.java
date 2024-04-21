@@ -1,7 +1,5 @@
 /**
- * @(#)ResetPassValidator.java.
- *
- * Version 1.00.
+ * Validator để kiểm tra tính hợp lệ của dữ liệu nhập vào khi người dùng thực hiện reset mật khẩu.
  */
 package poly.store.validator.user;
 
@@ -12,46 +10,30 @@ import org.springframework.validation.Validator;
 
 import poly.store.model.ResetPassword;
 
-/**
- * Class bat loi form reset-password.html
- * 
- *
- *
- */
 @Component
 public class ResetPassValidator implements Validator {
 
-	/**
-	 * Lien ket class UserRegister voi class bat loi
-	 * 
-	 * @param clazz
-	 * @return Ket qua co dung hay khong
-	 */
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return clazz == ResetPassword.class;
+		return clazz == ResetPassword.class; // Xác định lớp mà validator này hỗ trợ, trong trường hợp này là ResetPassword
 	}
 
-	/**
-	 * Kiem tra form co thoa dieu kien
-	 * 
-	 * @param target
-	 * @param errors
-	 */
 	@Override
 	public void validate(Object target, Errors errors) {
-		// Lien ket Object voi UserRegister class
-		ResetPassword userRegister = (ResetPassword) target;
-		
+		ResetPassword userRegister = (ResetPassword) target; // Ép kiểu target sang ResetPassword để có thể sử dụng
+
+		// Kiểm tra các trường password và confirmPassword có trống không
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotBlank.userRegister.password");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "NotBlank.userRegister.confirmPassword");
-		
+
+		// Kiểm tra xác nhận mật khẩu
 		if(!errors.hasFieldErrors()) {
-			if(userRegister.getConfirmPassword().equals(userRegister.getPassword()) == false) {
+			if(!userRegister.getConfirmPassword().equals(userRegister.getPassword())) {
 				errors.rejectValue("confirmPassword", "NotDuplicate.userRegister.confirmPassword");
 			}
 		}
-		
+
+		// Kiểm tra độ dài của mật khẩu
 		if(!errors.hasFieldErrors("password")) {
 			if(userRegister.getPassword().length() < 7) {
 				errors.rejectValue("password", "Min.userRegister.password");

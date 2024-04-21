@@ -1,8 +1,3 @@
-/**
- * @(#)Category.java.
- *
- * Version 1.00.
- */
 package poly.store.entity;
 
 import java.io.Serializable;
@@ -16,12 +11,35 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
- * Class chua thong tin cua hang
- * 
- * @author tuan-pm
- * @version 1.00
+ * Lớp `InformationShop` đại diện cho thông tin về cửa hàng.
+ *
+ * Thuộc tính:
+ * - id: Định danh duy nhất của cửa hàng.
+ * - name: Tên của cửa hàng.
+ * - active: Trạng thái hoạt động của cửa hàng.
+ * - Timeopen: Thời gian mở cửa của cửa hàng.
+ * - logo: Đường dẫn đến logo của cửa hàng.
+ * - phone: Số điện thoại của cửa hàng.
+ * - fax: Số fax của cửa hàng.
+ * - email: Địa chỉ email của cửa hàng.
+ * - Logofooter: Đường dẫn đến logo chân trang của cửa hàng.
+ * - address: Địa chỉ của cửa hàng.
+ * - Createday: Ngày tạo thông tin về cửa hàng.
+ * - Personcreate: Người tạo thông tin về cửa hàng.
+ * - Deleteday: Ngày xóa thông tin về cửa hàng.
+ * - Persondelete: Người xóa thông tin về cửa hàng.
+ * - Updateday: Ngày cập nhật thông tin về cửa hàng.
+ * - Personupdate: Người cập nhật thông tin về cửa hàng.
+ *
+ * Các annotations:
+ * - @Entity: Đánh dấu lớp này là một entity trong cơ sở dữ liệu.
+ * - @Table(name = "Informationshop"): Xác định tên bảng tương ứng trong cơ sở dữ liệu.
+ * - @Data: Tạo các phương thức getter, setter, equals, hashCode và toString tự động.
+ * - @NoArgsConstructor: Tạo constructor mặc định không có tham số.
+ * - @AllArgsConstructor: Tạo constructor có tham số cho tất cả các thuộc tính.
+ * - @Id: Xác định thuộc tính id là khóa chính của entity.
+ * - @GeneratedValue(strategy = GenerationType.IDENTITY): Xác định cách sinh giá trị cho id là tự động tăng.
  */
 @SuppressWarnings("serial")
 @Data
@@ -30,53 +48,37 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Informationshop")
 public class InformationShop implements Serializable {
-	// Thong tin category id
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	// Thong tin ten shop
 	private String name;
 	
-	// Thong tin trang thai kich hoat
 	private boolean active;
 	
-	// Thong tin thoi gian mo cua
 	private String Timeopen;
 
-	// Thong tin logo
 	private String logo;
 
-	// Thong tin so dien thoai
 	private String phone;
 
-	// Thong tin tax
 	private String fax;
 
-	// Thong tin email
 	private String email;
 
-	// Thong tin logo footer
 	private String Logofooter;
 
-	// Thong tin dia chi shop
 	private String address;
 
-	// Thong tin ngay tao
 	private String Createday;
 
-	// Thong tin ma nguoi tao
 	private int Personcreate;
 
-	// Thong tin ngay xoa
 	private String Deleteday;
 
-	// Thong tin nguoi xoa
 	private int Persondelete;
 
-	// Thong tin ngay cap nhat
 	private String Updateday;
 
-	// Thong tin ma nguoi cap nhat
 	private int Personupdate;
 }

@@ -1,8 +1,4 @@
-/**
- * @(#)Category.java.
- *
- * Version 1.00.
- */
+
 package poly.store.entity;
 
 import java.io.Serializable;
@@ -20,12 +16,35 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 /**
- * Class chua thong tin Category
- * 
- * @author tuan-pm
- * @version 1.00
+ * Lớp `Category` đại diện cho thông tin về danh mục sản phẩm.
+ *
+ * Thuộc tính:
+ * - id: Định danh duy nhất của danh mục.
+ * - name: Tên của danh mục.
+ * - logo: Đường dẫn đến hình ảnh logo của danh mục.
+ * - banner: Đường dẫn đến banner của danh mục.
+ * - description: Mô tả về danh mục.
+ * - Createday: Ngày tạo danh mục.
+ * - Personcreate: Người tạo danh mục.
+ * - Deleteday: Ngày danh mục bị xóa.
+ * - Persondelete: Người xóa danh mục.
+ * - Updateday: Ngày cập nhật danh mục.
+ * - Personupdate: Người cập nhật danh mục.
+ * - Namesearch: Tên tìm kiếm của danh mục.
+ * - listMenuOne: Danh sách các menu một của danh mục.
+ * - listProduct: Danh sách các sản phẩm thuộc danh mục.
+ *
+ * Các annotations:
+ * - @Entity: Đánh dấu lớp này là một entity trong cơ sở dữ liệu.
+ * - @Table(name = "Categories"): Xác định tên bảng tương ứng trong cơ sở dữ liệu.
+ * - @Data: Tạo các phương thức getter, setter, equals, hashCode và toString tự động.
+ * - @NoArgsConstructor: Tạo constructor mặc định không có tham số.
+ * - @AllArgsConstructor: Tạo constructor có tham số cho tất cả các thuộc tính.
+ * - @Id: Xác định thuộc tính id là khóa chính của entity.
+ * - @GeneratedValue(strategy = GenerationType.IDENTITY): Xác định cách sinh giá trị cho id là tự động tăng.
+ * - @JsonIgnore: Ngăn không cho trường listMenuOne và listProduct được trả về khi chuyển đối tượng Category thành JSON.
+ * - @OneToMany(mappedBy = "category"): Xác định mối quan hệ một-đến-nhiều với entity MenuOne và Product thông qua trường category.
  */
 @SuppressWarnings("serial")
 @Data
@@ -34,50 +53,36 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Categories")
 public class Category implements Serializable {
-	// Thong tin category id
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	// Thong tin ten category
 	private String name;
 
-	// Thong tin hinh dai dien
 	private String logo;
 
-	// Thong tin banner
 	private String banner;
 
-	// Thong tin mo ta
 	private String description;
 
-	// Thong tin ngay tao
 	private String Createday;
 
-	// Thong tin ma nguoi tao
 	private int Personcreate;
 
-	// Thong tin ngay xoa
 	private String Deleteday;
 
-	// Thong tin nguoi xoa
 	private int Persondelete;
 
-	// Thong tin ngay cap nhat
 	private String Updateday;
 
-	// Thong tin ma nguoi cap nhat
 	private int Personupdate;
-	
-	// Thong tin ten danh muc dung de search
+
 	private String Namesearch;
 
-	// Danh sach User Role
 	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	List<MenuOne> listMenuOne;
 
-	// Danh sach san pham
 	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	List<Product> listProduct;

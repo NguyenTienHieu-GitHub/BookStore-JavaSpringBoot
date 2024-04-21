@@ -1,8 +1,3 @@
-/**
- * @(#)UserServiceImpl.java.
- *
- * Version 1.00.
- */
 package poly.store.service.impl;
 
 import java.sql.Timestamp;
@@ -38,13 +33,6 @@ import poly.store.model.ShowProduct;
 import poly.store.service.CommentService;
 import poly.store.service.ProductService;
 
-/**
- * Class trien khai theo interface UserService, Thao tac voi Class UserDao de
- * thuc hien cac tac vu tuong ung
- * 
- *
- *
- */
 @Service
 public class ProductServiceImp implements ProductService {
 	@Autowired
@@ -65,6 +53,7 @@ public class ProductServiceImp implements ProductService {
 	@PersistenceContext
 	private EntityManager em;
 
+	// Tạo mới sản phẩm
 	@Override
 	public ProductModel createProduct(ProductModel productModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -73,6 +62,7 @@ public class ProductServiceImp implements ProductService {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		User temp = userDao.findUserByEmail(username);
 
+		// Tạo mới đối tượng Product từ thông tin trong productModel
 		Product product = new Product();
 		product.setCode(productModel.getCode());
 		product.setName(productModel.getName());
@@ -91,22 +81,28 @@ public class ProductServiceImp implements ProductService {
 		product.setPersoncreate(temp.getId());
 		product.setSales(productModel.getSales());
 
+		// Lấy nhà sản xuất và danh mục tương ứng từ ID được cung cấp trong productModel
 		Manufacturer manufacturer = manufacturerDao.findById(productModel.getManuId()).get();
 		Category category = categoryDao.findById(productModel.getCateId()).get();
 
+		// Thiết lập nhà sản xuất và danh mục cho sản phẩm
 		product.setCategory(category);
 		product.setManufacturer(manufacturer);
 
+		// Lưu sản phẩm mới vào cơ sở dữ liệu
 		productDao.save(product);
 
+		// Trả về productModel sau khi đã tạo mới sản phẩm thành công
 		return productModel;
 	}
 
+	// Lấy danh sách tất cả sản phẩm
 	@Override
 	public List<Product> findAll() {
 		return productDao.getListProduct();
 	}
 
+	// Xóa sản phẩm dựa trên ID
 	@Override
 	public void delete(Integer id) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -120,6 +116,7 @@ public class ProductServiceImp implements ProductService {
 		productDao.save(product);
 	}
 
+	// Cập nhật thông tin sản phẩm
 	@Override
 	public ProductModel updateProduct(ProductModel productModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -157,6 +154,7 @@ public class ProductServiceImp implements ProductService {
 		return productModel;
 	}
 
+	// Lấy thông tin sản phẩm dựa trên ID
 	@Override
 	public ProductModel getOneProductById(Integer id) {
 		Product product = productDao.findById(id).get();
@@ -181,42 +179,48 @@ public class ProductServiceImp implements ProductService {
 		return productModel;
 	}
 
+	// Lấy danh sách sản phẩm mới nhất
 	@Override
 	public List<Product> getListLatestProduct() {
 		return productDao.getListLatestProduct();
 	}
 
+	// Lấy danh sách sản phẩm được xem nhiều nhất
 	@Override
 	public List<Product> getListViewsProduct() {
 		return productDao.getListViewsProduct();
 	}
 
+	// Lấy danh sách sản phẩm dựa trên tên tìm kiếm
 	@Override
 	public Page<Product> getListProductByNameSearch(String nameSearch, Pageable pageable) {
 		return productDao.getListProductByNameSearch(nameSearch, pageable);
 	}
 
+	// Lấy danh sách sản phẩm demo
 	@Override
 	public List<Product> getDemo(String nameSearch) {
-		// TODO Auto-generated method stub
 		return productDao.getListDemo(nameSearch);
 	}
 
+	// Lấy danh sách sản phẩm dựa trên giá
 	@Override
 	public Page<Product> getListProductByPrice(String nameSearch, int minPrice, int maxPrice, Pageable pageable) {
-		// TODO Auto-generated method stub
 		return productDao.getListProductByPrice(nameSearch, minPrice, maxPrice, pageable);
 	}
 
+	// Lấy danh sách sản phẩm dựa trên bộ lọc
 	@Override
 	public Page<ShowProduct> getListProductByFilter(String nameSearch, String price, String manu, String sort,
-			Pageable pageable, String status, String name, String category) {
+													Pageable pageable, String status, String name, String category) {
+		// Tạo criteria builder để tạo các query dựa trên tiêu chí
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Product> cq = cb.createQuery(Product.class);
 		Root<Product> from = cq.from(Product.class);
 
 		Predicate preStatus;
 
+		// Xác định tiêu chí dựa trên status
 		if (status.equals("danh-sach")) {
 			preStatus = cb.like(from.get("category").get("Namesearch"), "%" + nameSearch + "%");
 		} else if (status.equals("tim-kiem")) {
@@ -234,13 +238,13 @@ public class ProductServiceImp implements ProductService {
 		}
 
 		Predicate preActive = cb.equal(from.get("active"), 1);
-		// Predicate preActive = cb.equal(from.get("active"), 1);
 		Predicate preDeleteDay = cb.isNull(from.get("Deleteday"));
 
 		int check = 0;
 		Predicate prePrice = null;
 		Predicate preManu = null;
 
+		// Xác định tiêu chí dựa trên giá
 		if (price != null) {
 			int min = 0;
 			int max = 999999999;
@@ -262,6 +266,7 @@ public class ProductServiceImp implements ProductService {
 			prePrice = cb.between(from.get("price"), min, max);
 		}
 
+		// Xác định tiêu chí dựa trên nhà sản xuất
 		if (manu != null) {
 			preManu = cb.equal(from.get("manufacturer").get("id"), Integer.parseInt(manu));
 			if (check == 1) {
@@ -271,6 +276,7 @@ public class ProductServiceImp implements ProductService {
 			}
 		}
 
+		// Xây dựng câu lệnh query dựa trên các tiêu chí đã xác định
 		if (check == 1) {
 			cq.where(prePrice, preActive, preDeleteDay, preStatus);
 		} else if (check == 2) {
@@ -281,6 +287,7 @@ public class ProductServiceImp implements ProductService {
 			cq.where(preActive, preDeleteDay, preStatus);
 		}
 
+		// Xác định cách sắp xếp kết quả
 		if (sort != null) {
 			if (sort.equals("0")) {
 				cq.orderBy(cb.desc(from.get("Createday")));
@@ -301,10 +308,13 @@ public class ProductServiceImp implements ProductService {
 			cq.orderBy(cb.desc(from.get("Createday")));
 		}
 
+		// Tạo và thực thi truy vấn
 		TypedQuery<Product> q = em.createQuery(cq);
 
+		// Lấy danh sách kết quả
 		List<Product> countAllItems = q.getResultList();
 
+		// Thiết lập phân trang
 		q.setFirstResult(Math.toIntExact(pageable.getOffset()));
 		q.setMaxResults(pageable.getPageSize());
 
@@ -312,6 +322,8 @@ public class ProductServiceImp implements ProductService {
 
 		List<ShowProduct> listProduct = new ArrayList<ShowProduct>();
 
+		// Đối với mỗi sản phẩm trong danh sách kết quả, lấy số lượng sao của bình luận
+		// và thêm vào danh sách đối tượng ShowProduct
 		for (Product product : getAllItems) {
 			ShowProduct showProduct = new ShowProduct();
 			int totalStar = commentService.getAllStarCommentByProductNameSearch(product.getNamesearch());
@@ -320,21 +332,26 @@ public class ProductServiceImp implements ProductService {
 			listProduct.add(showProduct);
 		}
 
+		// Tạo trang mới dựa trên danh sách sản phẩm đã được thêm thông tin về số lượng
+		// sao
 		Page<ShowProduct> page = new PageImpl<ShowProduct>(listProduct, pageable, countAllItems.size());
 
 		return page;
 	}
 
+	// Lấy thông tin sản phẩm dựa trên tên tìm kiếm
 	@Override
 	public Product getProductByNameSearch(String nameSearch) {
 		return productDao.getProductByNameSearch(nameSearch);
 	}
 
+	// Lấy danh sách sản phẩm liên quan dựa trên ID của sản phẩm
 	@Override
 	public List<Product> getListProductRelated(int id) {
 		return productDao.getListProductRelated(id);
 	}
 
+	// Cập nhật lượt xem của sản phẩm
 	@Override
 	public void updateView(String nameSearch) {
 		Product product = productDao.getProductByNameSearch(nameSearch);
@@ -343,11 +360,13 @@ public class ProductServiceImp implements ProductService {
 		productDao.save(product);
 	}
 
+	// Cập nhật số lượng của sản phẩm
 	@Override
 	public void updateQuality(Product product) {
 		productDao.save(product);
 	}
 
+	// Lấy danh sách sản phẩm có doanh số bán hàng cao nhất
 	@Override
 	public List<Product> getListProductSales() {
 		return productDao.getListProductSales();

@@ -1,7 +1,5 @@
 /**
- * @(#)RegisterFormValidator.java.
- *
- * Version 1.00.
+ * Validator để kiểm tra tính hợp lệ của dữ liệu nhập vào khi người dùng đăng ký tài khoản.
  */
 package poly.store.validator.user;
 
@@ -16,58 +14,36 @@ import poly.store.entity.User;
 import poly.store.model.UserRegister;
 import poly.store.service.UserService;
 
-/**
- * Class bat loi form register.html
- * 
- *
- *
- */
 @Component
 public class RegisterFormValidator implements Validator {
 
-	// Thong tin user service
 	@Autowired
 	UserService userService;
 
-	// Kiem tra dinh dang email
+	// Sử dụng thư viện EmailValidator từ Apache Commons để kiểm tra định dạng email
 	private EmailValidator emailValidator = EmailValidator.getInstance();
 
-	/**
-	 * Lien ket class UserLogin voi class bat loi
-	 * 
-	 * @param clazz
-	 * @return Ket qua co dung hay khong
-	 */
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return clazz == UserRegister.class;
+		return clazz == UserRegister.class; // Xác định lớp mà validator này hỗ trợ, trong trường hợp này là UserRegister
 	}
 
-	/**
-	 * Kiem tra form co thoa dieu kien
-	 * 
-	 * @param target
-	 * @param errors
-	 */
 	@Override
 	public void validate(Object target, Errors errors) {
-		// Lien ket Object voi UserRegister class
-		UserRegister userRegister = (UserRegister) target;
-		// Kiem tra co bo trong field ho va ten
+		UserRegister userRegister = (UserRegister) target; // Ép kiểu target sang UserRegister để có thể sử dụng
+
+		// Kiểm tra các trường thông tin đăng ký (fullname, email, password, confirmPassword) có trống không
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fullName", "NotBlank.userRegister.fullname");
-		// Kiem tra co bo trong field email
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotBlank.userRegister.email");
-		// Kiem tra co bo trong field mat khau
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotBlank.userRegister.password");
-		// Kiem tra co bo trong field xac nhan mat khau
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "NotBlank.userRegister.confirmPassword");
 
-		// Kiem tra tai khoan da ton tai hay chua
+		// Kiểm tra tính hợp lệ của định dạng email
 		if (!errors.hasFieldErrors("email")) {
-			// Kiem tra email co dung dinh dang
 			if (!this.emailValidator.isValid(userRegister.getEmail())) {
 				errors.rejectValue("email", "NotPattern.userRegister.email");
 			} else {
+				// Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu chưa
 				User user = userService.findUserByEmail(userRegister.getEmail());
 				if (user != null) {
 					errors.rejectValue("email", "Duplicate.userRegister.email");
@@ -75,7 +51,7 @@ public class RegisterFormValidator implements Validator {
 			}
 		}
 
-		// Kiem tra mat khau co dung dinh dang
+		// Kiểm tra độ dài của mật khẩu
 		if (!errors.hasFieldErrors("password")) {
 			if (userRegister.getPassword().length() < 7) {
 				errors.rejectValue("password", "Min.userRegister.password");
@@ -85,13 +61,13 @@ public class RegisterFormValidator implements Validator {
 			}
 		}
 
-		// Kiem tra xac nhan mat khau co trung khop
+		// Kiểm tra xác nhận mật khẩu
 		if (!errors.hasFieldErrors("confirmPassword")) {
 			if (!userRegister.getPassword().equals(userRegister.getConfirmPassword())) {
 				errors.rejectValue("confirmPassword", "NotDuplicate.userRegister.confirmPassword");
 			}
 		}
-		
+
 	}
 
 }

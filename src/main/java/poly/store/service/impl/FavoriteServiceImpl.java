@@ -30,21 +30,25 @@ public class FavoriteServiceImpl implements FavoriteService {
 	@Autowired
 	UserDao userDao;
 
-	// @SuppressWarnings("null")
+	// Phương thức tạo mới hoặc xóa một sản phẩm yêu thích
 	@Override
 	public Favorite create(int id) {
+		// Lấy thông tin người dùng hiện tại
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
 
+		// Lấy thông tin người dùng từ cơ sở dữ liệu
 		User temp = userDao.findUserByEmail(username);
 
 		Favorite favorite = new Favorite();
 
+		// Kiểm tra xem người dùng có tồn tại không
 		if (temp != null) {
-
+			// Kiểm tra xem sản phẩm đã được thêm vào yêu thích của người dùng hay chưa
 			favorite = favoriteDao.getOneFavorite(username, id);
 
 			if (favorite == null) {
+				// Nếu sản phẩm chưa được thêm vào yêu thích, thì tạo mới một bản ghi yêu thích mới
 				favorite = new Favorite();
 				Date date = new Date();
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -55,36 +59,39 @@ public class FavoriteServiceImpl implements FavoriteService {
 				favorite.setUser(temp);
 				favorite.setDate(strDate);
 				favoriteDao.save(favorite);
-			}
-
-			else {
+			} else {
+				// Nếu sản phẩm đã được thêm vào yêu thích, thì xóa bản ghi yêu thích
 				favoriteDao.delete(favorite);
 				favorite.setId(0);
 			}
-
 		}
 
 		return favorite;
 	}
 
+	// Phương thức lấy danh sách các sản phẩm yêu thích của người dùng hiện tại
 	@Override
 	public List<Favorite> getListFavoriteByEmail() {
+		// Lấy thông tin người dùng hiện tại
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = ((UserDetails) principal).getUsername();
 
 		return favoriteDao.getListFavoriteByEmail(username);
 	}
 
+	// Phương thức xóa một sản phẩm yêu thích
 	@Override
 	public void delete(int id) {
 		Favorite favorite = favoriteDao.findById(id).get();
 		favoriteDao.delete(favorite);
 	}
 
+	// Phương thức lấy thông tin một sản phẩm yêu thích của người dùng hiện tại
 	@Override
 	public Favorite getOneFavorite(int id) {
 		Favorite favorite = new Favorite();
 
+		// Lấy thông tin người dùng hiện tại
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = "";
 		try {
@@ -93,6 +100,7 @@ public class FavoriteServiceImpl implements FavoriteService {
 		}
 		User temp = userDao.findUserByEmail(username);
 
+		// Kiểm tra xem người dùng có tồn tại không
 		if (temp != null) {
 			favorite = favoriteDao.getOneFavorite(username, id);
 		} else {
@@ -101,9 +109,9 @@ public class FavoriteServiceImpl implements FavoriteService {
 		return favorite;
 	}
 
+	// Phương thức lấy danh sách các sản phẩm bán chạy nhất
 	@Override
 	public List<BestSellerModel> getListBestSellerProduct(Pageable topFour) {
 		return favoriteDao.getListBestSellerProduct(topFour);
 	}
-
 }
