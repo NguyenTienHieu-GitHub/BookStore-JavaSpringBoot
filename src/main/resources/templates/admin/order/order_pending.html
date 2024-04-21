@@ -82,15 +82,22 @@
 									<td ng-if="item.discount == null">0</td>
 									<td ng-if="item.discount == null">{{item.total + 50000 | currency : '' : 0}}</td>
 									<td ng-if="item.discount != null">{{item.total + 50000 - item.discount.price | currency : '' : 0}}</td>
-									<td><a ng-click="showModalApprove(item)"
+									<td>
+										<a ng-click="showModalApprove(item)"
 										class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
-										title="Duyệt"> <i class="icon wb-check-circle"></i>
-									</a> <a ng-click="modalDetail(item)"
+										title="Duyệt">
+											<i class="icon wb-check-circle"></i>
+										</a>
+										<a ng-click="modalDetail(item)"
 										class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row"
-										title="Xem chi tiết"> <i class="icon wb-info-circle"></i>
-									</a> <a ng-click="showModal(item)"
-										class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row"><i
-											class="icon wb-close" title="Hủy"></i></a></td>
+										title="Xem chi tiết">
+											<i class="icon wb-info-circle"></i>
+										</a>
+										<a ng-click="showModal(item)"
+										class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row">
+											<i class="icon wb-close" title="Hủy"></i>
+										</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>
