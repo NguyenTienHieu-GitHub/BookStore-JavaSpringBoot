@@ -1,8 +1,3 @@
-/**
- * @(#)ResourcesConfig.java.
- *
- * Version 1.00.
- */
 package poly.store.config;
 
 import org.springframework.context.MessageSource;
